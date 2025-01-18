@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.support_fragments.AssistanceFragment">
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/gotham_book"
+            android:text="@string/assist_hint"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="15sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxStrokeColor="?attr/colorSecondaryVariant"
+            app:boxStrokeWidth="1dp"
+            android:hint="@string/select">
+
+            <AutoCompleteTextView
+                android:id="@+id/acTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gotham_book"
+                android:inputType="none"
+                tools:ignore="LabelFor,SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_margin="15dp"
+        tools:ignore="UselessParent"
+        android:layout_below="@+id/ll1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gotham_book"
+            android:textSize="15sp"
+            android:textColor="?attr/colorOnSecondary"
+            android:text="@string/hint_description"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:cardCornerRadius="15dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="?attr/colorSecondaryVariant">
+
+            <EditText
+                android:id="@+id/etEmailBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:autofillHints=""
+                android:background="@null"
+                android:fontFamily="@font/gotham_book"
+                android:gravity="top"
+                android:hint="@string/describe_your_issue"
+                android:inputType="textMultiLine"
+                android:maxLines="5"
+                android:minHeight="150dp"
+                android:padding="5dp" />
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_margin="15dp"
+        tools:ignore="UselessParent"
+        android:layout_below="@+id/ll2">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gotham_book"
+            android:textSize="15sp"
+            android:textColor="?attr/colorOnSecondary"
+            android:text="@string/hint_email"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:cardCornerRadius="15dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="?attr/colorSecondaryVariant">
+
+            <EditText
+                android:id="@+id/etEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:autofillHints=""
+                android:background="@null"
+                android:ems="30"
+                android:padding="5dp"
+                android:fontFamily="@font/gotham_book"
+                android:gravity="center_vertical"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_margin="15dp"
+        tools:ignore="UselessParent"
+        android:layout_below="@+id/ll3">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mbSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="@string/submit_btn"
+            android:fontFamily="@font/gotham_bold"
+            android:backgroundTint="?attr/colorPrimary"
+            app:cornerRadius="15dp"/>
+    </LinearLayout>
+</RelativeLayout>

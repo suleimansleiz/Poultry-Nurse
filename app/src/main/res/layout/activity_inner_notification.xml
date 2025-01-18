@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.InnerNotification">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/ablNote_AI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.PDDC.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.PDDC.PopupOverlay" >
+
+            <TextView
+                android:id="@+id/tvArrowBack_Note_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                app:drawableStartCompat="@drawable/arrow_back_icon"
+                app:drawableTint="@color/white" />
+
+            <TextView
+                android:id="@+id/tvToolBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/gotham_bold"
+                android:textColor="@color/white"
+                android:text="AI Notification"
+                tools:ignore="HardcodedText" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ablNote_AI"
+        android:layout_centerInParent="true"
+        android:padding="10dp">
+      <androidx.cardview.widget.CardView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:cardCornerRadius="20dp"
+          app:cardElevation="30dp"
+          android:layout_margin="30dp"
+          app:cardBackgroundColor="@color/white">
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:background="@color/white_bluish"
+              android:layout_centerInParent="true"
+              android:padding="10dp">
+              <TextView
+                  android:id="@+id/tvNoteHeader"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textStyle="bold"
+                  android:layout_gravity="center"
+                  android:textSize="20sp"
+                  android:layout_marginBottom="20dp"
+                  android:textColor="@color/purple_700"
+                  android:text="This is the heading"
+                  android:gravity="center_horizontal"
+                  android:fontFamily="@font/gotham_ultra"
+                  tools:ignore="HardcodedText" />
+
+              <TextView
+                  android:id="@+id/tvNoteBody"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:fontFamily="@font/gotham_book"
+                  android:textSize="15sp"
+                  android:textColor="@color/black"
+                  android:gravity="center_horizontal"
+                  android:text="This is the body"
+                  tools:ignore="HardcodedText" />
+          </LinearLayout>
+      </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</RelativeLayout>

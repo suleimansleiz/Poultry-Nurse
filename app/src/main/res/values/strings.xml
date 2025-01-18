@@ -1,0 +1,370 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">P D D C</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">P D D C</string>
+    <string name="nav_header_subtitle">All About Poultry Houses</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_notifications">Notifications</string>
+    <string name="action_AINote">AI Notification</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_Temperature">Temperature</string>
+    <string name="menu_ammonia">Ammonia</string>
+    <string name="menu_humidity">Humidity</string>
+    <string name="menu_Diseases">Diseases</string>
+
+    <string name="progress_ammonia">Ammonia:</string>
+    <string name="progress_temperature">Temperature:</string>
+    <string name="progress_temperature_degree">27\u2103</string>
+    <string name="progress_humidity">Humidity:</string>
+    <string name="progress_humidity_percent">20%</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="fragment_humidity">This is Humidity fragment</string>
+    <string name="fragment_ammonia">This is Ammonia fragment</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="ai_notification">AI notification</string>
+    <string name="morning_brief">Morning Brief</string>
+
+    <!--Notifications Activity Details-->
+    <string-array name="name_AI">
+        <item>AI Notification</item>
+        <item>AI Notification</item>
+        <item>AI Notification</item>
+        <item>AI Notification</item>
+        <item>AI Notification</item>
+        <item>AI Notification</item>
+        <item>AI Notification</item>
+        <item>AI Notification</item>
+        <item>AI Notification</item>
+        <item>AI Notification</item>
+    </string-array>
+
+    <string-array name="rv_Note">
+        <item>Morning Brief</item>
+        <item>Disease Detection Alert</item>
+        <item>Temperature Alert</item>
+        <item>Humidity Alert</item>
+        <item>Ammonia Alert</item>
+        <item>Power Alert</item>
+        <item>Disease Detection Alert</item>
+        <item>Temperature Alert</item>
+        <item>Humidity Alert</item>
+        <item>Ammonia Alert</item>
+    </string-array>
+
+    <string-array name="note_inText">
+        <item>
+            Hello, Good Morning!
+        Today is Sunday, Feb 18th 2024.
+            Have a great day!
+        </item>
+        <item>
+            Attention!
+        I have detected Newcastle Disease among your chicken from the records a few minutes ago.
+        </item>
+        <item>
+            Excuse me for the interruption!
+        The amount of Temperature sensed in your poultry house is too high which is not suitable for the chicken.
+        Please consider regulating immediately to avoid unnecessary Infections.
+            Thank you.
+        </item>
+        <item>
+            Excuse me for the interruption!
+        The amount of Humidity sensed in your poultry house is likely to be caused by wetness in the floor.
+        Please consider changing the wood lashes immediately to avoid unnecessary Infections.
+            Thank you.
+        </item>
+        <item>
+            Excuse me for the interruption!
+        The amount of Ammonia sensed in your poultry house is likely to be caused by too much manure.
+        Please consider cleanliness immediately to avoid unnecessary Infections.
+            Thank you.
+        </item>
+        <item>Attention!
+        It seems like there is a Power outage.
+        Please use the backup Power immediately to resume monitoring.
+            Thanks.
+        </item>
+        <item>
+            Attention!
+        I have detected Coccidiosis Disease among your chicken from the records a few minutes ago.
+        </item>
+        <item>
+            Excuse me for the interruption!
+        The amount of Temperature sensed in your poultry house is very low which is not suitable for the chicken.
+        Please consider regulating immediately to avoid unnecessary Infections.
+            Thank you.
+        </item>
+        <item>
+            Excuse me for the interruption!
+        The amount of Humidity sensed in your poultry house is likely to be caused by wetness in the floor.
+        Please consider changing the wood lashes immediately to avoid unnecessary Infections.
+            Thank you.
+        </item>
+        <item>
+            Excuse me for the interruption!
+        The amount of Ammonia sensed in your poultry house is likely to be caused by too much manure.
+        Please consider cleanliness immediately to avoid unnecessary Infections.
+            Thank you.
+        </item>
+    </string-array>
+
+
+    <!--Diseases-->
+    <string name="cholera_header">Fowl Cholera</string>
+    <string name="cholera_description">
+        Fowl Cholera is a chronic disease caused by Pasteurella Multocidathat can affect the joints, wattles, infraohits, sinuses and other tissues.
+        Common symptoms include loss of appetite, diarrhea with a greenish tinge, ruffled feathers, swollen purple wattle, swollen comb, swollen joints, lameness, oral, nasal and ocular discharge and sudden death.
+Most commonly found in older chickens, Fowl Cholera affects more cocks than it does hens
+    </string>
+    <string name="coccidiosis_header">Coccidiosis</string>
+    <string name="coccidiosis_description">
+        Coccidiosis is a parasitic disease caused by Coccidian protozoa that lives in and damages a specific region of the gut in chickens.
+        The trouble starts when chickens consume a sporulated oocyst which is broken down by chemicals in the gut, releasing an infective sporocyst. This begins the life cycle that causes the destruction of intestinal epithelial cells.
+Together with damage to the gut walls, it causes loss of appetite, diarrhea, ruffled feathers, weight loss and inability to absorb nutrients.
+    </string>
+    <string name="flue_header">Avian Influenza</string>
+    <string name="flue_description">
+        Avian influenza is a disease caused by type A Orthomyxoviruses.
+        They are commonly found and spread by wild aquatic birds which infect domesticated poultry. Diarrhea, nasal discharge, edema in the comb and wattles, purple discoloration, coughing and sneezing, swelling, ruffled feathers and more are symptoms of the bird flu.
+Once spread, avian influenza is deadly.
+    </string>
+    <string name="newcastle_header">Newcastle Disease</string>
+    <string name="newcastle_description">
+        Newcastle disease is an acute respiratory disease that can spread rapidly.
+        Symptoms of the disease depends on whether the infecting virus has a predilection for respiratory, digestive, or nervous systems. While it can affect both wild and domesticated fowl, domestic poultry is much more susceptible to contract severe symptoms.
+    </string>
+    <string name="salmonella_header">Salmonellosis</string>
+    <string name="salmonella_description">
+        Salmonellosis is a bacterial disease that can cause septicemia and enteritis in young chickens.
+        With a low mortality rate, infections are contracted orally and can be spread by rodents.
+Symptoms of salmonellosis include diarrhea, closed eyes, loss of appetite, thirst, ruffled feathers and dejection.
+    </string>
+
+
+    <!--Terms and Conditions-->
+    <string name="terms_header">Terms and Conditions</string>
+    <string name="acceptance">1. Acceptance of Terms</string>
+    <string name="acceptance_description">
+        By downloading, installing, accessing, or using the PDDC System, you agree to be bound by our Terms and Conditions, as well as any applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this system.
+    </string>
+    <string name="system_use">2. Use of the System</string>
+    <string name="system_use_description1">
+        2.1. The PDDC app is intended for use by poultry farmers, veterinarians, and other individuals involved in poultry disease detection and control.
+    </string>
+    <string name="system_use_description2">
+        2.2. You must be at least 18 years old or have reached the age of majority in your jurisdiction to use this system.
+    </string>
+    <string name="system_use_description3">
+        2.3. You agree to use the System in compliance with all applicable laws, regulations, and ethical standards.
+    </string>
+    <string name="disclaimer">3. Disclaimer of Warranties</string>
+    <string name="disclaimer_description1">
+        3.1. The PDDC System is provided on an "as is" and "as available" basis. We make no warranties, expressed or implied, regarding the accuracy, reliability, or completeness of the information provided by the system.
+    </string>
+    <string name="disclaimer_description2">
+        3.2. We do warrant that the App will be error-free, uninterrupted, secure, or free of viruses or other harmful components.
+    </string>
+    <string name="privacy">4. Data Privacy</string>
+    <string name="privacy_description1">
+        4.1. We are committed to protecting the privacy of our users. Please refer to our Privacy Policy for information on how we collect, use, and disclose your personal information.
+    </string>
+    <string name="privacy_description2">
+        4.2. By using the System, you consent to the collection and use of your data in accordance with our Privacy Policy.
+    </string>
+    <string name="intellectual">5. Intellectual Property</string>
+    <string name="intellectual_description1">
+        5.1. The PDDC system, including all content, features, and functionality, is owned by us and is protected by intellectual property laws.
+    </string>
+    <string name="intellectual_description2">
+        5.2. You are granted a limited, non-exclusive, and non-transferable license to use the App for its intended purposes only.
+    </string>
+    <string name="limitation">6. Limitation of Liability</string>
+    <string name="limitation_description1">
+        6.1. In no event shall we be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or in connection with your use of the System.
+    </string>
+    <string name="limitation_description2">
+        6.2. Our total liability to you for any claim arising out of or relating to these Terms and Conditions or your use of the System shall not exceed the amount paid by you, if any, for accessing the System.
+    </string>
+    <string name="modifications">7. Modifications to Terms</string>
+    <string name="modifications_description">
+        We reserve the right to modify these Terms and Conditions at any time without prior notice. By continuing to use the System after such modifications, you agree to be bound by the updated Terms and Conditions.
+    </string>
+    <string name="law">8. Governing Law</string>
+    <string name="law_description">
+        These Terms and Conditions shall be governed by and construed in accordance with the laws of our Jurisdiction, without regard to its conflict of law principles.
+    </string>
+    <string name="contact">9. Contact Us</string>
+    <string name="contact_description">
+        If you have any questions or concerns about these Terms and Conditions, please contact us at [sleizwaredevelopment@gmail.com].
+    </string>
+
+
+    <!--Privacy Policy-->
+    <string name="privacy_header">Privacy Policy</string>
+    <string name="info">1. Information We Collect</string>
+    <string name="info_description1">
+        1.1. Information You Provide: We may collect personal information that you voluntarily provide when using the System, such as your name, email address, phone number, and other contact information.
+    </string>
+    <string name="info_description2" tools:ignore="StringEscaping">
+        1.2. Usage Data: We may also collect information about how you use the System, including your interactions with the System features and functionalities.
+    </string>
+    <string name="info_use">2. Use of Information</string>
+    <string name="info_use_description1">
+        2.1. We may use the information we collect for the following purposes:
+    </string>
+    <string name="info_use_description2">  To provide and maintain the System;</string>
+    <string name="info_use_description3">To personalize your experience and improve the System\'s features and functionalities;</string>
+    <string name="info_use_description4">To communicate with you and respond to your inquiries;</string>
+    <string name="info_use_description5"> To send you updates, newsletters, and promotional materials, if you have opted in to receive them; and</string>
+    <string name="info_use_description6">To comply with legal obligations.</string>
+    <string name="disclosure">3. Data Sharing and Disclosure</string>
+    <string name="disclosure_description1">
+        3.1. We may share your personal information with third-party service providers who assist us in operating the System, conducting our business, or servicing you.
+    </string>
+    <string name="disclosure_description2">
+        3.2. We may also disclose your information in response to valid legal requests, such as a court order or subpoena, or as otherwise required by law.
+    </string>
+    <string name="security">4. Data Security</string>
+    <string name="security_description1">
+        4.1. We take reasonable measures to protect the security of your personal information and prevent unauthorized access, use, or disclosure.
+    </string>
+    <string name="security_description2">
+        4.2. However, please be aware that no method of transmission over the internet or method of electronic storage is 100% secure, and we cannot guarantee absolute security.
+    </string>
+    <string name="children" tools:ignore="StringEscaping">5. Children Privacy</string>
+    <string name="children_description">
+        5.1. The App is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from children under the age of 18. If you are a parent or guardian and believe that your child has provided us with personal information, please contact us to request deletion.
+    </string>
+    <string name="changes">6. Changes to This Privacy Policy</string>
+    <string name="changes_description">
+        6.1. We may update this Privacy Policy from time to time. Any changes will be effective immediately upon posting the revised Privacy Policy on this page.
+    </string>
+    <string name="contact_us">7. Contact Us</string>
+    <string name="contact_us_description">
+        If you have any questions or concerns about this Privacy Policy, please contact us at [sleizwaredevelopment@gmail.com].
+    </string>
+
+
+    <!--    About the App-->
+    <string name="about_app_header">About PDDC</string>
+    <string name="overview">
+1. Overview
+    </string>
+    <string name="overview_description">
+        The PDDC System is a comprehensive tool designed to assist poultry farmers, veterinarians, and other stakeholders in the effective detection and management of diseases affecting poultry populations. The system leverages artificial intelligence (AI) and Internet of Things (IoT) technologies to provide users with accurate and timely information for disease prevention and control.
+    </string>
+    <string name="features">
+        2. Features
+    </string>
+    <string name="features_description1">
+         Disease Detection and Identification:
+    </string>
+    <string name="features_description2">
+        Real-time Monitoring:
+    </string>
+    <string name="features_description3">
+        Diagnostic Assistance:
+    </string>
+    <string name="features_description4">
+        Preventive Measures:
+    </string>
+    <string name="Mission">
+        3. Mission
+    </string>
+    <string name="Mission_description">
+        Our mission is to empower poultry farmers and veterinarians with innovative technology solutions to enhance disease surveillance, early detection, and effective control measures, ultimately contributing to the overall health and well-being of poultry populations.
+    </string>
+    <string name="vision">
+        4. Vision
+    </string>
+    <string name="vision_description">
+        Our vision is to become a leading provider of AI and IoT-based solutions for disease detection and control in the poultry industry, driving positive outcomes for both poultry producers and consumers worldwide.
+    </string>
+
+
+    <string name="developer_hints">
+        Copyright \u00A9 2024, SleizWare Development.
+    </string>
+
+    <string name="fragment_temperature">This is fragment temperature</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment_assistance">Assistance</string>
+    <string name="other_options">App Support</string>
+    <string name="fragment_share">Share</string>
+    <string name="fragment_settings">Settings</string>
+    <string name="fragment_about_app">About PDDC</string>
+    <string name="fragment_privacy">Privacy Policy</string>
+    <string name="fragment_rate">Rate Us</string>
+    <string name="fragment_terms">Terms and Condition</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_rate_us">Rate Us</string>
+    <string name="menu_share_this_app">Share the System</string>
+    <string name="menu_terms">Terms and Conditions</string>
+    <string name="menu_privacy">Privacy Policy</string>
+    <string name="menu_assistance">Assistance</string>
+    <string name="menu_about_app">About PDDC</string>
+    <string name="select">Select your issue</string>
+    <string name="assist_hint">Please let us know what you would like to do</string>
+    <string name="submit_btn">Submit</string>
+    <string name="hint_email">Your Email</string>
+    <string name="hint_description">Description</string>
+    <string name="describe_your_issue">describe your issue</string>
+    <string name="email_address">email</string>
+    <string name="logout">Logout</string>
+    <string name="poultry_house_environment">Poultry House Environment</string>
+    <string name="cleanliness">Cleanliness</string>
+    <string name="clean">Clean</string>
+    <string name="cleanliness_status">Cleanliness Status:</string>
+    <string name="_31_march_2024">31 March, 2024</string>
+    <string name="sunday">Sunday,</string>
+    <string name="detections">Detections</string>
+    <string name="hello">Hello</string>
+    <string name="monitor">Monitor</string>
+    <string name="mkulima_house">Mkulima House</string>
+    <string name="suggestions">Suggestions:</string>
+    <string name="maintain_status">Maintain status</string>
+    <string name="today_is">Today is</string>
+    <string name="customer_no_1">Customer No.1</string>
+    <string name="manage_profile">Manage Profile</string>
+    <string name="full_name">Full Name</string>
+    <string name="customer_name">Customer No.1</string>
+    <string name="email_profile">Email Address</string>
+    <string name="customer1_email">customer1@gmail.com</string>
+    <string name="logout_btn">Logout</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="version">Version - 1.1.0</string>
+    <string name="general_settings">General Settings</string>
+    <string name="log_in">Log in</string>
+    <string name="continue_with_google">Continue With Google</string>
+    <string name="email">Email</string>
+    <string name="house_name">House Name</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="log_in_title">Log In</string>
+    <string name="login_to_continue">Login to continue</string>
+    <string name="or">OR</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="skip_login">Skip Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="forgot_details">Forgot Details</string>
+    <string name="already_have_an_account">Already have an account</string>
+    <string name="create_an_account_to_save_your_poultry_details">Create an account to save your Poultry details</string>
+
+</resources>

@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.support_fragments.PrivacyFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+          <LinearLayout
+              android:id="@+id/llHeadPrivacy"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="10dp"
+              android:layout_marginStart="10dp"
+              android:layout_marginEnd="10dp"
+              android:padding="15dp"
+              android:orientation="vertical">
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:fontFamily="@font/gotham_ultra"
+                  android:gravity="center"
+                  android:text="@string/privacy_header"
+                  android:textColor="?attr/colorSecondary"
+                  android:textSize="25sp"
+                  tools:ignore="TextContrastCheck" />
+
+          </LinearLayout>
+          <LinearLayout
+              android:id="@+id/info"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/llHeadPrivacy"
+              android:layout_marginStart="10dp"
+              android:layout_marginTop="10dp"
+              android:layout_marginEnd="10dp"
+              android:layout_marginBottom="10dp"
+              android:orientation="vertical"
+              android:padding="15dp">
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="@font/gotham_book"
+                  android:text="@string/info"
+                  android:textAlignment="textStart"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:textSize="15sp" />
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="@font/gotham_book"
+                  android:text="@string/info_description1"
+                  android:textAlignment="textStart"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:textSize="15sp" />
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="@font/gotham_book"
+                  android:text="@string/info_description2"
+                  android:textAlignment="textStart"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:textSize="15sp" />
+          </LinearLayout>
+          <LinearLayout
+              android:id="@+id/info_use"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="10dp"
+              android:layout_marginEnd="10dp"
+              android:padding="15dp"
+              android:layout_below="@+id/info"
+              android:orientation="vertical">
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textSize="15sp"
+                  android:fontFamily="@font/gotham_book"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:layout_marginTop="10dp"
+                  android:textAlignment="textStart"
+                  android:text="@string/info_use"/>
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textSize="15sp"
+                  android:fontFamily="@font/gotham_book"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginStart="20dp"
+                  android:textAlignment="textStart"
+                  android:text="@string/info_use_description1"/>
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textSize="15sp"
+                  android:fontFamily="@font/gotham_book"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginStart="20dp"
+                  android:textAlignment="textStart"
+                  android:text="@string/info_use_description2"/>
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textSize="15sp"
+                  android:fontFamily="@font/gotham_book"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginStart="20dp"
+                  android:textAlignment="textStart"
+                  android:text="@string/info_use_description3"/>
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textSize="15sp"
+                  android:fontFamily="@font/gotham_book"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginStart="20dp"
+                  android:textAlignment="textStart"
+                  android:text="@string/info_use_description4"/>
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textSize="15sp"
+                  android:fontFamily="@font/gotham_book"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginStart="20dp"
+                  android:textAlignment="textStart"
+                  android:text="@string/info_use_description5"/>
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textSize="15sp"
+                  android:fontFamily="@font/gotham_book"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginStart="20dp"
+                  android:textAlignment="textStart"
+                  android:text="@string/info_use_description5"/>
+          </LinearLayout>
+          <LinearLayout
+              android:id="@+id/disclosure"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/info_use"
+              android:layout_marginStart="10dp"
+              android:layout_marginTop="10dp"
+              android:layout_marginEnd="10dp"
+              android:layout_marginBottom="10dp"
+              android:orientation="vertical"
+              android:padding="15dp">
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="@font/gotham_book"
+                  android:text="@string/disclosure"
+                  android:textAlignment="textStart"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:textSize="15sp" />
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="@font/gotham_book"
+                  android:text="@string/disclosure_description1"
+                  android:textAlignment="textStart"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:textSize="15sp" />
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="@font/gotham_book"
+                  android:text="@string/disclosure_description2"
+                  android:textAlignment="textStart"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:textSize="15sp" />
+          </LinearLayout>
+          <LinearLayout
+              android:id="@+id/security"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/disclosure"
+              android:layout_marginStart="10dp"
+              android:layout_marginTop="10dp"
+              android:layout_marginEnd="10dp"
+              android:layout_marginBottom="10dp"
+              android:orientation="vertical"
+              android:padding="15dp">
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="@font/gotham_book"
+                  android:text="@string/security"
+                  android:textAlignment="textStart"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:textSize="15sp" />
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="@font/gotham_book"
+                  android:text="@string/security_description1"
+                  android:textAlignment="textStart"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:textSize="15sp" />
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="@font/gotham_book"
+                  android:text="@string/security_description2"
+                  android:textAlignment="textStart"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:textSize="15sp" />
+          </LinearLayout>
+          <LinearLayout
+              android:id="@+id/children"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/security"
+              android:layout_marginStart="10dp"
+              android:layout_marginTop="10dp"
+              android:layout_marginEnd="10dp"
+              android:layout_marginBottom="10dp"
+              android:orientation="vertical"
+              android:padding="15dp">
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="@font/gotham_book"
+                  android:text="@string/children"
+                  android:textAlignment="textStart"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:textSize="15sp" />
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="@font/gotham_book"
+                  android:text="@string/children_description"
+                  android:textAlignment="textStart"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:textSize="15sp" />
+
+          </LinearLayout>
+          <LinearLayout
+              android:id="@+id/changes"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/children"
+              android:layout_marginStart="10dp"
+              android:layout_marginTop="10dp"
+              android:layout_marginEnd="10dp"
+              android:layout_marginBottom="10dp"
+              android:orientation="vertical"
+              android:padding="15dp">
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="@font/gotham_book"
+                  android:text="@string/changes"
+                  android:textAlignment="textStart"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:textSize="15sp" />
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="20dp"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="@font/gotham_book"
+                  android:text="@string/changes_description"
+                  android:textAlignment="textStart"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:textSize="15sp" />
+
+          </LinearLayout>
+          <LinearLayout
+              android:id="@+id/contact_us"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/changes"
+              android:layout_marginStart="10dp"
+              android:layout_marginTop="10dp"
+              android:layout_marginEnd="10dp"
+              android:layout_marginBottom="10dp"
+              android:orientation="vertical"
+              android:padding="15dp">
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="@font/gotham_book"
+                  android:text="@string/contact_us"
+                  android:textAlignment="textStart"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:textSize="15sp" />
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="@font/gotham_book"
+                  android:text="@string/contact_us_description"
+                  android:textAlignment="textStart"
+                  android:textColor="?attr/colorOnSecondary"
+                  android:textSize="15sp" />
+
+          </LinearLayout>
+      </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

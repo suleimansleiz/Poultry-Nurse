@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_icon"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_Temperature"
+            android:icon="@drawable/temperature_icon"
+            android:title="@string/menu_Temperature" />
+        <item
+            android:id="@+id/nav_Humidity"
+            android:icon="@drawable/humidity_icon"
+            android:title="@string/menu_humidity" />
+        <item
+            android:id="@+id/nav_Ammonia"
+            android:icon="@drawable/ammonia_icon"
+            android:title="@string/menu_ammonia" />
+        <item
+            android:id="@+id/nav_Diseases"
+            android:icon="@drawable/diseases_icon"
+            android:title="@string/menu_Diseases" />
+        <item
+            android:id="@+id/nav_Settings"
+            android:icon="@drawable/settings_icon"
+            android:title="@string/fragment_settings" />
+    </group>
+    <item android:title="@string/other_options">
+        <menu>
+           <group android:checkableBehavior="single">
+               <item
+                   android:id="@+id/nav_Assistance"
+                   android:icon="@drawable/assistance_icon"
+                   android:title="@string/fragment_assistance" />
+               <item
+                   android:id="@+id/nav_aboutApp"
+                   android:icon="@drawable/about_icon"
+                   android:title="@string/fragment_about_app" />
+               <item
+                   android:id="@+id/nav_policy"
+                   android:icon="@drawable/privacy_icon"
+                   android:title="@string/fragment_privacy" />
+               <item
+                   android:id="@+id/nav_terms"
+                   android:icon="@drawable/terms_icon"
+                   android:title="@string/fragment_terms" />
+               <item
+                   android:id="@+id/nav_Share"
+                   android:icon="@drawable/share_icon"
+                   android:title="@string/fragment_share" />
+               <item
+                   android:id="@+id/nav_rate"
+                   android:icon="@drawable/rate_icon"
+                   android:title="@string/fragment_rate" />
+           </group>
+        </menu>
+    </item>
+</menu>

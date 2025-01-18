@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.pddc.ui.fragments.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_Temperature"
+        android:name="com.example.pddc.ui.fragments.TemperatureFragment"
+        android:label="@string/menu_Temperature"
+        tools:layout="@layout/fragment_temperature" />
+
+    <fragment
+        android:id="@+id/nav_Humidity"
+        android:name="com.example.pddc.ui.fragments.HumidityFragment"
+        android:label="@string/menu_humidity"
+        tools:layout="@layout/fragment_humidity" />
+
+    <fragment
+        android:id="@+id/nav_Ammonia"
+        android:name="com.example.pddc.ui.fragments.AmmoniaFragment"
+        android:label="@string/menu_ammonia"
+        tools:layout="@layout/fragment_ammonia" />
+
+    <fragment
+        android:id="@+id/nav_Diseases"
+        android:name="com.example.pddc.ui.fragments.DiseasesFragment"
+        android:label="@string/menu_Diseases"
+        tools:layout="@layout/fragment_diseases" />
+
+    <fragment
+        android:id="@+id/nav_Settings"
+        android:name="com.example.pddc.ui.fragments.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/nav_Assistance"
+        android:name="com.example.pddc.ui.support_fragments.AssistanceFragment"
+        android:label="@string/menu_assistance"
+        tools:layout="@layout/fragment_assistance" />
+
+    <fragment
+        android:id="@+id/nav_aboutApp"
+        android:name="com.example.pddc.ui.support_fragments.AboutAppFragment"
+        android:label="@string/menu_about_app"
+        tools:layout="@layout/fragment_about_app" />
+
+    <fragment
+        android:id="@+id/nav_policy"
+        android:name="com.example.pddc.ui.support_fragments.PrivacyFragment"
+        android:label="@string/menu_privacy"
+        tools:layout="@layout/fragment_privacy" />
+
+    <fragment
+        android:id="@+id/nav_terms"
+        android:name="com.example.pddc.ui.support_fragments.TermsFragment"
+        android:label="@string/menu_terms"
+        tools:layout="@layout/fragment_terms" />
+</navigation>

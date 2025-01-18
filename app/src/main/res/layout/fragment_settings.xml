@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.SettingsFragment">
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:scrollbars="none"
+       tools:ignore="UselessParent">
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <TextView
+               android:id="@+id/tvManageProfile"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginStart="10dp"
+               android:layout_marginTop="10dp"
+               android:layout_marginEnd="10dp"
+               android:layout_marginBottom="10dp"
+               android:fontFamily="@font/gotham_book"
+               android:gravity="center_horizontal"
+               android:text="@string/manage_profile"
+               android:textColor="?attr/colorPrimary"
+               android:textSize="25sp"
+               android:textStyle="bold" />
+
+           <androidx.cardview.widget.CardView
+               android:id="@+id/cvManageProfile"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/tvManageProfile"
+               app:cardCornerRadius="15dp"
+               app:cardElevation="0dp"
+               android:layout_margin="20dp">
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical"
+                   android:padding="10dp"
+                   android:background="@drawable/prof_manage_bar">
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal"
+                       android:layout_margin="10dp">
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="@string/full_name"
+                           android:fontFamily="@font/gotham_book"
+                           android:textColor="@color/white"
+                           android:textSize="12sp"
+                           tools:ignore="SmallSp"
+                           android:layout_weight="1"/>
+
+                       <TextView
+                           android:id="@+id/tvFullName"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="@string/customer_name"
+                           android:fontFamily="@font/gotham_book"
+                           android:textColor="@color/white"
+                           android:textSize="12sp"
+                           android:gravity="end"
+                           tools:ignore="SmallSp"
+                           android:layout_weight="1"/>
+                   </LinearLayout>
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal"
+                       android:layout_margin="10dp">
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="@string/email_profile"
+                           android:fontFamily="@font/gotham_book"
+                           android:textColor="@color/white"
+                           android:textSize="12sp"
+                           tools:ignore="SmallSp"
+                           android:layout_weight="1"/>
+
+                       <TextView
+                           android:id="@+id/tvEmailAddress"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:fontFamily="@font/gotham_book"
+                           android:gravity="end"
+                           android:text="@string/customer1_email"
+                           android:textColor="@color/white"
+                           android:textSize="12sp"
+                           tools:ignore="SmallSp,TextContrastCheck" />
+                   </LinearLayout>
+
+                   <com.google.android.material.button.MaterialButton
+                       android:id="@+id/btnEditProfile"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center"
+                       android:backgroundTint="@color/purple_200"
+                       android:fontFamily="@font/gotham_book"
+                       android:text="@string/edit_profile"
+                       android:textAllCaps="false"
+                       android:textSize="12sp"
+                       app:cornerRadius="15dp"
+                       tools:ignore="TextContrastCheck" />
+               </LinearLayout>
+           </androidx.cardview.widget.CardView>
+           <com.google.android.material.button.MaterialButton
+               android:id="@+id/mbLogout"
+               android:layout_width="300dp"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/cvManageProfile"
+               android:layout_centerHorizontal="true"
+               android:text="@string/logout_btn"
+               android:fontFamily="@font/gotham_book"
+               android:textColor="@color/purple_700"
+               android:textAllCaps="false"
+               app:strokeWidth="2dp"
+               app:strokeColor="@color/purple_700"
+               app:cornerRadius="15dp"
+               android:backgroundTint="?attr/colorOnPrimary"/>
+
+           <TextView
+               android:id="@+id/tvGeneralSettings"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/mbLogout"
+               android:layout_margin="15dp"
+               android:layout_marginStart="15dp"
+               android:layout_marginTop="15dp"
+               android:layout_marginEnd="15dp"
+               android:layout_marginBottom="15dp"
+               android:fontFamily="@font/gotham_book"
+               android:gravity="start"
+               android:text="@string/general_settings"
+               android:textColor="?attr/colorPrimary"
+               android:textSize="15sp"
+               android:textStyle="bold"
+               tools:ignore="TextSizeCheck" />
+
+           <TextView
+               android:id="@+id/tvVersion"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/tvGeneralSettings"
+               android:layout_marginStart="15dp"
+               android:layout_marginTop="15dp"
+               android:layout_marginEnd="15dp"
+               android:layout_marginBottom="15dp"
+               android:fontFamily="@font/gotham_book"
+               android:gravity="center_horizontal"
+               android:text="@string/version"
+               android:textColor="@color/grey"
+               android:textSize="8sp"
+               android:textStyle="bold"
+               tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
+       </RelativeLayout>
+   </ScrollView>
+</RelativeLayout>
