@@ -1,15 +1,20 @@
 package com.example.pddc.ui.activities;
 
-import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -19,12 +24,19 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.pddc.R;
 import com.example.pddc.databinding.ActivityMainBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int REQUEST_CALL = 1;
     private AppBarConfiguration mAppBarConfiguration;
 
+    private Animation rotateOpen, rotateClose, fromBottom, toBottom;
+    private Boolean clicked = false;
+
+    private FloatingActionButton fabChat, fabCall, fabSupAgent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +48,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, Notifications.class)));
 
+        // Initialize FloatingActionButtons
+        fabChat = binding.appBarMain.fabChat;
+        fabCall = binding.appBarMain.fabCall;
+        fabSupAgent = binding.appBarMain.fab;
 
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        // Initialize Animations
+        rotateOpen = AnimationUtils.loadAnimation(this, R.anim.rotate_open_anim);
+        rotateClose = AnimationUtils.loadAnimation(this, R.anim.rotate_close_anim);
+        fromBottom = AnimationUtils.loadAnimation(this, R.anim.from_bottom_anim);
+        toBottom = AnimationUtils.loadAnimation(this, R.anim.to_bottom_anim);
+
+        // Set FloatingActionButton Click Listeners
+        fabSupAgent.setOnClickListener(view -> onFabSupportAgentBtnClicked());
+        fabCall.setOnClickListener(view -> makePhoneCall());
+        fabChat.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, ChatWithAgent.class)));
+
+        // Setup Navigation
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_Temperature, R.id.nav_Humidity, R.id.nav_Ammonia, R.id.nav_Diseases, R.id.nav_Settings, R.id.nav_Assistance, R.id.nav_aboutApp, R.id.nav_policy, R.id.nav_terms)
                 .setOpenableLayout(drawer)
@@ -49,93 +74,128 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                if (id == R.id.nav_home) {
-                    navController.navigate(R.id.nav_home);
-                }
-                if (id == R.id.nav_Temperature) {
-                    navController.navigate(R.id.nav_Temperature);
-                }
-                if (id == R.id.nav_Humidity) {
-                    navController.navigate(R.id.nav_Humidity);
-                }
-                if (id == R.id.nav_Ammonia) {
-                    navController.navigate(R.id.nav_Ammonia);
-                }
-                if (id == R.id.nav_Diseases) {
-                    navController.navigate(R.id.nav_Diseases);
-                }
-                if (id == R.id.nav_Settings) {
-                    navController.navigate(R.id.nav_Settings);
-                }
-                if (id == R.id.nav_Assistance) {
-                    navController.navigate(R.id.nav_Assistance);
-                }
-                if (id == R.id.nav_aboutApp) {
-                    navController.navigate(R.id.nav_aboutApp);
-                }
-                if (id == R.id.nav_policy) {
-                    navController.navigate(R.id.nav_policy);
-                }
-                if (id == R.id.nav_terms) {
-                    navController.navigate(R.id.nav_terms);
-                }
-                if (id == R.id.nav_rate) {
-                    rateApp();
-                }
-                if (id == R.id.nav_Share) {
-                    shareApp();
-                    return false;
-                }
-                drawer.closeDrawer(GravityCompat.START);
-                return true;
+        navigationView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+
+            if (id == R.id.nav_home) {
+                navController.navigate(R.id.nav_home);
+            } else if (id == R.id.nav_Temperature) {
+                navController.navigate(R.id.nav_Temperature);
+            } else if (id == R.id.nav_Humidity) {
+                navController.navigate(R.id.nav_Humidity);
+            } else if (id == R.id.nav_Ammonia) {
+                navController.navigate(R.id.nav_Ammonia);
+            } else if (id == R.id.nav_Diseases) {
+                navController.navigate(R.id.nav_Diseases);
+            } else if (id == R.id.nav_Settings) {
+                navController.navigate(R.id.nav_Settings);
+            } else if (id == R.id.nav_Assistance) {
+                navController.navigate(R.id.nav_Assistance);
+            } else if (id == R.id.nav_aboutApp) {
+                navController.navigate(R.id.nav_aboutApp);
+            } else if (id == R.id.nav_policy) {
+                navController.navigate(R.id.nav_policy);
+            } else if (id == R.id.nav_terms) {
+                navController.navigate(R.id.nav_terms);
+            } else if (id == R.id.nav_rate) {
+                rateApp();
+            } else if (id == R.id.nav_Share) {
+                shareApp();
+                return false; // Prevent drawer closure for this case
             }
 
-            private void rateApp() {
-                try {
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("market://details?id=" + getPackageName())));
-                } catch (ActivityNotFoundException e) {
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
-                }
-            }
-
-            private void shareApp() {
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out this awesome Poultry House System: https://sleiz.com/sleizwaredevelopment/PDDC");
-                startActivity(Intent.createChooser(shareIntent, "Share via"));
-            }
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
         });
+
+    }
+
+    private void onFabSupportAgentBtnClicked() {
+        setVisibility(clicked);
+        setAnimation(clicked);
+        setClickable(clicked);
+        clicked = !clicked;
+    }
+
+    private void setVisibility(Boolean clicked) {
+        if (!clicked) {
+            fabChat.setVisibility(View.VISIBLE);
+            fabCall.setVisibility(View.VISIBLE);
+        } else {
+            fabChat.setVisibility(View.INVISIBLE);
+            fabCall.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void setAnimation(Boolean clicked) {
+        if (!clicked) {
+            fabChat.startAnimation(fromBottom);
+            fabCall.startAnimation(fromBottom);
+            fabSupAgent.startAnimation(rotateOpen);
+        } else {
+            fabChat.startAnimation(toBottom);
+            fabCall.startAnimation(toBottom);
+            fabSupAgent.startAnimation(rotateClose);
+        }
+    }
+
+    private void setClickable(Boolean clicked) {
+        fabChat.setClickable(!clicked);
+        fabCall.setClickable(!clicked);
+    }
+
+    private void makePhoneCall() {
+        String number = "255743900555";
+        if (ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+        } else {
+            String dial = "tel:" + number;
+            startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+        }
     }
 
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CALL) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                makePhoneCall();
+            }else {
+                Toast.makeText(this, "Permission DENIED", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void rateApp() {
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
+        }
+    }
+
+    private void shareApp() {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "Are you interested in managing a smart Poultry House? Click the link below to download Poultry Disease Detection and Control (P D D C) App: https://sleiz.com/sleizwaredevelopment/PDDC");
+        startActivity(Intent.createChooser(shareIntent, "Share via"));
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
-    @SuppressLint("NonConstantResourceId")
-
-
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
     }
-
-
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
     }
-
 }
