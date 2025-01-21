@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorOnPrimary"
     tools:context=".ui.fragments.DiseasesFragment">
 
 <ScrollView
@@ -30,7 +31,7 @@
                 android:fontFamily="@font/gotham_ultra"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:textColor="?attr/colorPrimary"
+                android:textColor="?attr/colorPrimaryVariant"
                 android:text="@string/cholera_header"/>
 
             <TextView
@@ -58,7 +59,7 @@
                 android:fontFamily="@font/gotham_ultra"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:textColor="?attr/colorPrimary"
+                android:textColor="?attr/colorPrimaryVariant"
                 android:text="@string/coccidiosis_header"/>
 
             <TextView
@@ -86,7 +87,7 @@
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:textColor="?attr/colorPrimary"
+                android:textColor="?attr/colorPrimaryVariant"
                 android:text="@string/flue_header"/>
 
             <TextView
@@ -114,7 +115,7 @@
                 android:fontFamily="@font/gotham_ultra"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:textColor="?attr/colorPrimary"
+                android:textColor="?attr/colorPrimaryVariant"
                 android:text="@string/newcastle_header"/>
 
             <TextView
@@ -142,7 +143,7 @@
                 android:fontFamily="@font/gotham_ultra"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:textColor="?attr/colorPrimary"
+                android:textColor="?attr/colorPrimaryVariant"
                 android:text="@string/salmonella_header"/>
 
             <TextView

@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorOnPrimary"
     tools:context=".ui.activities.MainActivity">
 
     <!-- Scrollable Content -->
@@ -42,7 +43,7 @@
         android:layout_margin="16dp"
         android:backgroundTint="#1EFF00"
         android:src="@drawable/support_agent_icon"
-        android:tint="@android:color/white"
+        android:tint="?attr/colorOnPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />

@@ -355,7 +355,7 @@ Symptoms of salmonellosis include diarrhea, closed eyes, loss of appetite, thirs
     <string name="log_in">Log in</string>
     <string name="continue_with_google">Continue With Google</string>
     <string name="email">Email</string>
-    <string name="house_name">House Name</string>
+    <string name="house_name">Farm Name</string>
     <string name="forget_password">Forget Password</string>
     <string name="log_in_title">Log In</string>
     <string name="login_to_continue">Login to continue</string>
@@ -366,5 +366,13 @@ Symptoms of salmonellosis include diarrhea, closed eyes, loss of appetite, thirs
     <string name="forgot_details">Forgot Details</string>
     <string name="already_have_an_account">Already have an account</string>
     <string name="create_an_account_to_save_your_poultry_details">Create an account to save your Poultry details</string>
+    <string name="send_message">Send Message</string>
+    <string name="text_message">Text message</string>
+    <string name="assistance_agent_name">Assistance Agent</string>
+    <string name="online">online</string>
+    <string name="search">Search</string>
+    <string name="delete_chat">Delete Chat</string>
+    <string name="agentimage">agentImage</string>
+    <string name="phone">Phone Number</string>
 
 </resources>

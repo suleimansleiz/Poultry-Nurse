@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorOnPrimary"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.SettingsFragment">
 
@@ -26,7 +27,7 @@
                android:fontFamily="@font/gotham_book"
                android:gravity="center_horizontal"
                android:text="@string/manage_profile"
-               android:textColor="?attr/colorPrimary"
+               android:textColor="?attr/colorPrimaryVariant"
                android:textSize="25sp"
                android:textStyle="bold" />
 
@@ -141,7 +142,7 @@
                android:fontFamily="@font/gotham_book"
                android:gravity="start"
                android:text="@string/general_settings"
-               android:textColor="?attr/colorPrimary"
+               android:textColor="?attr/colorPrimaryVariant"
                android:textSize="15sp"
                android:textStyle="bold"
                tools:ignore="TextSizeCheck" />

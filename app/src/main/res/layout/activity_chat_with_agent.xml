@@ -1,19 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorOnPrimary"
     tools:context=".ui.activities.ChatWithAgent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/rlActionBarChatting"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chat with Agent Here"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="?attr/colorPrimary">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:background="?attr/colorPrimary"
+            android:contentDescription="BackBtn"
+            android:src="@drawable/arrow_back_icon"
+            app:tint="@color/white"
+            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvAgent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="@color/white"
+            app:cardCornerRadius="50dp"
+            android:layout_margin="10dp"
+            android:layout_toEndOf="@+id/btnBack">
+
+            <ImageView
+                android:id="@+id/imgAgent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/agentimage"
+                android:src="@drawable/support_agent_icon"
+                android:background="@color/white"
+                app:tint="@color/teal_500"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:id="@+id/llAgent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toEndOf="@+id/cvAgent"
+            android:padding="3dp"
+            android:layout_centerVertical="true"
+            tools:ignore="RelativeOverlap">
+
+            <TextView
+            android:id="@+id/tvAgentName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/assistance_agent_name"
+            android:textColor="@color/white"
+            android:fontFamily="@font/gotham_medium"/>
+
+            <TextView
+                android:id="@+id/tvAgentStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/online"
+                android:textColor="@color/white"
+                android:fontFamily="@font/gotham_light"/>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btnMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:background="?attr/colorPrimary"
+            android:contentDescription="overflowMenu"
+            android:src="@drawable/overflow_menu"
+            app:tint="@color/white"
+            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/svChats"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:layout_below="@+id/rlActionBarChatting"
+        android:layout_above="@id/messageInputLayout"
+        android:layout_marginBottom="5dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewMessages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            tools:listitem="@layout/item_message" />
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/messageInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="?attr/colorOnPrimary"
+        android:elevation="4dp"
+        tools:ignore="Autofill">
+
+        <EditText
+            android:id="@+id/editTextMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/text_message"
+            android:backgroundTint="@color/teal_500"
+            android:importantForAutofill="no"
+            android:padding="12dp"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_edittext"
+            android:imeOptions="actionSend"
+            android:inputType="text"
+            tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+        <ImageButton
+            android:id="@+id/buttonSend"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/colorOnPrimary"
+            android:src="@drawable/send_icon"
+            android:contentDescription="@string/send_message"
+            app:tint="@color/teal_500" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorOnPrimary"
     tools:context=".ui.activities.SignUpActivity">
 
     <RelativeLayout
@@ -44,7 +45,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             app:cardElevation="0dp"
-            android:backgroundTint="@color/white_bluish"
+            android:backgroundTint="?attr/android:colorEdgeEffect"
             app:cardCornerRadius="15dp">
 
             <EditText
@@ -55,6 +56,7 @@
                 android:background="@null"
                 android:ems="30"
                 android:hint="@string/full_name"
+                android:textColor="?attr/colorOnSecondary"
                 android:padding="15dp"
                 android:fontFamily="@font/gotham_book"
                 android:gravity="center_vertical"
@@ -72,7 +74,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             app:cardElevation="0dp"
-            android:backgroundTint="@color/white_bluish"
+            android:backgroundTint="?attr/android:colorEdgeEffect"
             app:cardCornerRadius="15dp">
 
             <EditText
@@ -83,6 +85,7 @@
                 android:background="@null"
                 android:ems="30"
                 android:hint="@string/house_name"
+                android:textColor="?attr/colorOnSecondary"
                 android:padding="15dp"
                 android:fontFamily="@font/gotham_book"
                 android:gravity="center_vertical"
@@ -99,7 +102,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             app:cardElevation="0dp"
-            android:backgroundTint="@color/white_bluish"
+            android:backgroundTint="?attr/android:colorEdgeEffect"
             app:cardCornerRadius="15dp">
 
             <EditText
@@ -109,8 +112,8 @@
                 android:autofillHints=""
                 android:background="@null"
                 android:ems="30"
+                android:textColor="?attr/colorOnSecondary"
                 android:hint="@string/email"
-                android:drawableEnd="@drawable/email_icon"
                 android:drawableTint="@color/purple_700"
                 android:padding="15dp"
                 android:fontFamily="@font/gotham_book"
@@ -120,18 +123,49 @@
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvPhoneNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cvEmail"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardElevation="0dp"
+            android:backgroundTint="?attr/android:colorEdgeEffect"
+            app:cardCornerRadius="15dp">
+
+            <EditText
+                android:id="@+id/etPhoneNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:background="@null"
+                android:drawableTint="@color/purple_700"
+                android:ems="30"
+                android:fontFamily="@font/gotham_book"
+                android:gravity="center_vertical"
+                android:hint="@string/phone"
+                android:inputType="phone"
+                android:minHeight="48dp"
+                android:padding="15dp"
+                android:textColor="?attr/colorOnSecondary"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.card.MaterialCardView>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_below="@+id/cvEmail"
+            android:layout_below="@+id/cvPhoneNo"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:backgroundTint="?attr/colorPrimary"
+            android:backgroundTint="?attr/android:colorAccent"
             android:fontFamily="@font/gotham_bold"
             android:text="@string/sign_up"
             android:textAllCaps="false"
+            android:textColor="?attr/colorSecondaryVariant"
             app:cornerRadius="20dp"
             tools:ignore="DuplicateSpeakableTextCheck" />
 
@@ -163,6 +197,7 @@
             android:padding="10dp"
             app:cardElevation="0dp"
             app:cardCornerRadius="15dp"
+            android:background="?attr/colorOnPrimary"
             app:strokeColor="@color/grey"
             app:strokeWidth="0.1dp">
             <LinearLayout
@@ -225,7 +260,7 @@
                 android:textSize="15sp"
                 android:gravity="start"
                 android:layout_weight="1"
-                android:textColor="?attr/colorPrimary"/>
+                android:textColor="?attr/colorPrimaryVariant"/>
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>
