@@ -17,27 +17,37 @@ import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
-
+    TextView tvFarmName, tvFullName;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        TextView tvUserName = rootView.findViewById(R.id.tvUserName);
-        TextView tv_PHouseName = rootView.findViewById(R.id.tvPHouseName);
+
+        if (getArguments() != null) {
+            String fullName = getArguments().getString("fullName");
+            String farmName = getArguments().getString("farmName");
+
+            tvFarmName = requireView().findViewById(R.id.tvPHouseName);
+            tvFarmName.setText(farmName);
+            tvFullName = requireView().findViewById(R.id.tvUserName);
+            tvFullName.setText(fullName);
+        }
 
         TextView tv_Day = rootView.findViewById(R.id.tvDay);
         TextView tv_Date = rootView.findViewById(R.id.tvDate);
+
+
+
 
         //Current day
         int dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
 
         //Current date
-        int date = Calendar.getInstance().get(Calendar.DATE);
 
         String dayOfWeekString = getDayOfWeekString(dayOfWeek);
 
         //Date format
-        String dateFormat = "d MMMM, yyyy";
+        java.lang.String dateFormat = "d MMMM, yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat, Locale.getDefault());
         String dateString = simpleDateFormat.format(Calendar.getInstance().getTime());
 
@@ -48,7 +58,6 @@ public class HomeFragment extends Fragment {
         return rootView;
     }
 
-    //Helper method converting dat of week ints to Strings
     private String getDayOfWeekString(int dayOfWeek) {
             String[] daysOfWeek = {"Sunday,","Monday,","Tuesday,","Wednesday,","Thursday,","Friday,","Saturday,"};
         return daysOfWeek[dayOfWeek -1];

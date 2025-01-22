@@ -3,12 +3,12 @@ package com.example.pddc.ui.fragments;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.pddc.R;
 import com.example.pddc.ui.activities.LoginActivity;
@@ -24,6 +24,17 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView =  inflater.inflate(R.layout.fragment_settings, container, false);
+
+        if (getArguments() != null) {
+            String fullName = getArguments().getString("fullName");
+            String email = getArguments().getString("email");
+
+            TextView tvFullName = requireView().findViewById(R.id.tvFullName);
+            tvFullName.setText(fullName);
+            TextView tvEmail = requireView().findViewById(R.id.tvEmailAddress);
+            tvEmail.setText(email);
+        }
+
 
         MaterialButton btn_EditProfile = rootView.findViewById(R.id.btnEditProfile);
         btn_EditProfile.setOnClickListener(v -> {

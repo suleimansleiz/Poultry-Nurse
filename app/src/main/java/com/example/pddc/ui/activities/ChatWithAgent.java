@@ -1,7 +1,10 @@
 package com.example.pddc.ui.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -26,11 +29,20 @@ public class ChatWithAgent extends AppCompatActivity {
     private ChatAdapter chatAdapter;
     private List<Message> messages;
 
+
     @SuppressLint("NotifyDataSetChanged")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_with_agent);
+
+
+        ImageButton btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> {
+            Intent intent = new Intent(ChatWithAgent.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         // Initialize Views
         recyclerViewMessages = findViewById(R.id.recyclerViewMessages);
@@ -42,6 +54,13 @@ public class ChatWithAgent extends AppCompatActivity {
         chatAdapter = new ChatAdapter(messages);
         recyclerViewMessages.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewMessages.setAdapter(chatAdapter);
+        chatAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);
+                recyclerViewMessages.smoothScrollToPosition(0);
+            }
+        });
 
         // Initialize with Assistant's Opening Message
         messages.add(new Message("Thank you for reaching out! Am PDDC Assistant AI, How can I assist you today? If you wish to be connected to our real Agent, type yes. To continue with me type no.", false));
@@ -60,6 +79,13 @@ public class ChatWithAgent extends AppCompatActivity {
                 Toast.makeText(this, "Please type a message", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = new MenuInflater(this);
+        menuInflater.inflate(R.menu.agent_chat_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     /**

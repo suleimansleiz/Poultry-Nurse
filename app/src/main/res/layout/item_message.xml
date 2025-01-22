@@ -1,19 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:padding="8dp"
-    android:orientation="horizontal"
-    android:background="@drawable/bubble_user"
-    android:gravity="end"
-    android:layout_gravity="end">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textViewMessage"
+
+    <LinearLayout
+        android:id="@+id/llMessageAgent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:textColor="@color/white"
-        android:textSize="14sp" />
-</LinearLayout>
+        android:layout_marginBottom="8dp"
+        android:padding="8dp"
+        android:orientation="vertical"
+        android:background="@drawable/bubble_agent"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="80dp">
+
+        <TextView
+            android:id="@+id/tvMessageAgent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvTimeAgent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_gravity="end"
+            android:gravity="center_vertical"
+            android:text="@string/time"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llMessageUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:padding="8dp"
+        android:orientation="vertical"
+        android:background="@drawable/bubble_user"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="80dp"
+        tools:ignore="RelativeOverlap">
+
+        <TextView
+            android:id="@+id/tvMessageUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvTimeUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_gravity="end"
+            android:gravity="center_vertical"
+            android:text="@string/time"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            app:drawableEndCompat="@drawable/sent_and_read_icon"
+            app:drawableTint="@color/blue_tick"
+            tools:ignore="SmallSp" />
+    </LinearLayout>
+</RelativeLayout>

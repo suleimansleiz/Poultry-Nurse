@@ -36,7 +36,8 @@
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusTopStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
-            app:boxStrokeColor="?attr/colorSecondaryVariant"
+            android:background="?attr/android:colorEdgeEffect"
+            app:boxStrokeColor="?attr/android:colorEdgeEffect"
             app:boxStrokeWidth="1dp"
             android:hint="@string/select">
 
@@ -46,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gotham_book"
                 android:inputType="none"
+                android:textColor="?attr/colorOnSecondary"
                 tools:ignore="LabelFor,SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -72,8 +74,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             app:cardCornerRadius="15dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="?attr/colorSecondaryVariant">
+            app:cardElevation="0dp"
+            android:background="?attr/android:colorEdgeEffect"
+            app:strokeColor="?attr/android:colorEdgeEffect">
 
             <EditText
                 android:id="@+id/etEmailBody"
@@ -84,11 +87,13 @@
                 android:background="@null"
                 android:fontFamily="@font/gotham_book"
                 android:gravity="top"
+                android:textColor="?attr/colorOnSecondary"
                 android:hint="@string/describe_your_issue"
                 android:inputType="textMultiLine"
                 android:maxLines="5"
                 android:minHeight="150dp"
-                android:padding="5dp" />
+                android:padding="5dp"
+                tools:ignore="TextFields" />
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
     <LinearLayout
@@ -113,8 +118,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             app:cardCornerRadius="15dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="?attr/colorSecondaryVariant">
+            android:background="?attr/android:colorEdgeEffect"
+            app:cardElevation="0dp"
+            app:strokeColor="?attr/android:colorEdgeEffect">
 
             <EditText
                 android:id="@+id/etEmailAddress"
@@ -125,6 +131,7 @@
                 android:background="@null"
                 android:ems="30"
                 android:padding="5dp"
+                android:textColor="?attr/colorOnSecondary"
                 android:fontFamily="@font/gotham_book"
                 android:gravity="center_vertical"
                 android:inputType="textEmailAddress"
@@ -148,8 +155,9 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="@string/submit_btn"
+            android:textColor="@color/white"
             android:fontFamily="@font/gotham_bold"
-            android:backgroundTint="?attr/colorPrimary"
+            android:backgroundTint="?attr/android:colorAccent"
             app:cornerRadius="15dp"/>
     </LinearLayout>
 </RelativeLayout>

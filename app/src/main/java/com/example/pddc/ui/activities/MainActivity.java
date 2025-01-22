@@ -49,6 +49,18 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.appBarMain.toolbar);
 
+        Bundle extras = getIntent().getExtras();
+        String farmName = null;
+        String fullName = null;
+        String email = null;
+        if (extras != null) {
+            fullName = extras.getString("fullName");
+            farmName = extras.getString("farmName");
+            email = extras.getString("email");
+        }
+
+//        passDataToFragments(fullName, farmName, email);
+
         // Initialize FloatingActionButtons
         fabChat = binding.appBarMain.fabChat;
         fabCall = binding.appBarMain.fabCall;
@@ -126,6 +138,29 @@ public class MainActivity extends AppCompatActivity {
             fabCall.setVisibility(View.INVISIBLE);
         }
     }
+
+//    private void passDataToFragments(String fullName, String farmName, String email){
+//        HomeFragment homeFragment = new HomeFragment();
+//        SettingsFragment settingsFragment = new SettingsFragment();
+//
+//        Bundle args = new Bundle();
+//        args.putString("fullName", fullName);
+//        args.putString("farmName", farmName);
+//        args.putString("email", email);
+//        homeFragment.setArguments(args);
+//        settingsFragment.setArguments(args);
+//
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id.nav_home, homeFragment)
+//                .commit();
+//
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id.nav_Settings, settingsFragment)
+//                .commit();
+//    }
+
 
     private void setAnimation(Boolean clicked) {
         if (!clicked) {

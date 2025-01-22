@@ -374,5 +374,7 @@ Symptoms of salmonellosis include diarrhea, closed eyes, loss of appetite, thirs
     <string name="delete_chat">Delete Chat</string>
     <string name="agentimage">agentImage</string>
     <string name="phone">Phone Number</string>
+    <string name="time">14:30</string>
+    <string name="agent_image">agent_image</string>
 
 </resources>

@@ -64,7 +64,6 @@
                            android:id="@+id/tvFullName"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
-                           android:text="@string/customer_name"
                            android:fontFamily="@font/gotham_book"
                            android:textColor="@color/white"
                            android:textSize="12sp"
@@ -94,7 +93,6 @@
                            android:layout_weight="1"
                            android:fontFamily="@font/gotham_book"
                            android:gravity="end"
-                           android:text="@string/customer1_email"
                            android:textColor="@color/white"
                            android:textSize="12sp"
                            tools:ignore="SmallSp,TextContrastCheck" />

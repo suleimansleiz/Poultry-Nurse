@@ -3,6 +3,7 @@ package com.example.pddc.ui.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,13 +30,17 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageViewHol
         @Override
         public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
             Message message = messages.get(position);
-            holder.textViewMessage.setText(message.getContent());
-
+            holder.textViewMessageAgent.setText(message.getContent());
+            holder.textViewMessageUser.setText(message.getContent());
             // Align messages based on user/agent
             if (message.isUser()) {
-                holder.textViewMessage.setBackgroundResource(R.drawable.bubble_user);
+                holder.linearLayoutAgent.setVisibility(View.GONE);
+                holder.linearLayoutUser.setVisibility(View.VISIBLE);
             } else {
-                holder.textViewMessage.setBackgroundResource(R.drawable.bubble_agent);
+//                holder.textViewMessageAgent.setBackgroundResource(R.drawable.bubble_agent);
+                holder.linearLayoutUser.setVisibility(View.GONE);
+                holder.linearLayoutAgent.setVisibility(View.VISIBLE);
+
             }
         }
 
@@ -45,11 +50,16 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageViewHol
         }
 
         public static class MessageViewHolder extends RecyclerView.ViewHolder {
-            TextView textViewMessage;
+            TextView textViewMessageAgent, textViewMessageUser;
+            LinearLayout linearLayoutAgent, linearLayoutUser;
 
             public MessageViewHolder(@NonNull View itemView) {
                 super(itemView);
-                textViewMessage = itemView.findViewById(R.id.textViewMessage);
+
+                linearLayoutAgent = itemView.findViewById(R.id.llMessageAgent);
+                linearLayoutUser = itemView.findViewById(R.id.llMessageUser);
+                textViewMessageAgent = itemView.findViewById(R.id.tvMessageAgent);
+                textViewMessageUser = itemView.findViewById(R.id.tvMessageUser);
             }
         }
 
