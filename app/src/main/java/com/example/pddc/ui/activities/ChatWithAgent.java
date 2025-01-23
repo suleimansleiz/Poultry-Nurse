@@ -2,13 +2,14 @@ package com.example.pddc.ui.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,10 +18,20 @@ import com.example.pddc.R;
 import com.example.pddc.ui.adapters.ChatAdapter;
 import com.example.pddc.ui.classes.Message;
 
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class ChatWithAgent extends AppCompatActivity {
 
@@ -29,14 +40,20 @@ public class ChatWithAgent extends AppCompatActivity {
     private ChatAdapter chatAdapter;
     private List<Message> messages;
 
+    String api_key;
+
+    String OPENAI_API_URL;
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_with_agent);
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR );
 
-
+        api_key = getString(R.string.openai_api_key);
+        OPENAI_API_URL = "https://api.openai.com/v1/completions";
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
             Intent intent = new Intent(ChatWithAgent.this, MainActivity.class);
@@ -54,16 +71,9 @@ public class ChatWithAgent extends AppCompatActivity {
         chatAdapter = new ChatAdapter(messages);
         recyclerViewMessages.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewMessages.setAdapter(chatAdapter);
-        chatAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
-            @Override
-            public void onItemRangeInserted(int positionStart, int itemCount) {
-                super.onItemRangeInserted(positionStart, itemCount);
-                recyclerViewMessages.smoothScrollToPosition(0);
-            }
-        });
 
         // Initialize with Assistant's Opening Message
-        messages.add(new Message("Thank you for reaching out! Am PDDC Assistant AI, How can I assist you today? If you wish to be connected to our real Agent, type yes. To continue with me type no.", false));
+        messages.add(new Message("Hello! I'm Talia, your virtual poultry assistant. I specialize in poultry health, diseases, cures, and smart farming techniques. How can I assist you today?", false));
         chatAdapter.notifyDataSetChanged();
 
         // Send Button Click Listener
@@ -71,59 +81,83 @@ public class ChatWithAgent extends AppCompatActivity {
             String userInput = editTextMessage.getText().toString().trim();
             if (!userInput.isEmpty()) {
                 messages.add(new Message(userInput, true)); // Add user message
-                handleUserInput(userInput); // Handle the user's input
                 chatAdapter.notifyDataSetChanged();
                 editTextMessage.setText("");
                 recyclerViewMessages.scrollToPosition(messages.size() - 1);
+
+                // Send user input to AI
+                sendMessageToAI(userInput);
             } else {
                 Toast.makeText(this, "Please type a message", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = new MenuInflater(this);
-        menuInflater.inflate(R.menu.agent_chat_menu, menu);
-        return super.onCreateOptionsMenu(menu);
+    /**
+     * Sends a message to OpenAI and retrieves a response.
+     */
+    private void sendMessageToAI(String userInput) {
+        OkHttpClient client = new OkHttpClient();
+
+        String jsonRequest = "{"
+                + "\"model\":\"text-davinci-003\","
+                + "\"prompt\":\"You are Talia, a virtual assistant focused on poultry topics such as health, diseases, cures, mitigations, and smart farming. Respond straight to the point and introduce yourself as Talia if necessary. Question: " + userInput + "\","
+                + "\"max_tokens\":150,"
+                + "\"temperature\":0.7"
+                + "}";
+
+        RequestBody body = RequestBody.create(jsonRequest, MediaType.get("application/json"));
+        Request request = new Request.Builder()
+                .url(OPENAI_API_URL)
+                .addHeader("Authorization", "Bearer " + api_key)
+                .post(body)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                runOnUiThread(() -> {
+                    messages.add(new Message("I'm sorry, something went wrong. Please try again later.", false));
+                    chatAdapter.notifyDataSetChanged();
+                    recyclerViewMessages.scrollToPosition(messages.size() - 1);
+                });
+            }
+
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    String responseBody = Objects.requireNonNull(response.body()).string();
+                    String aiResponse = extractResponseFromJSON(responseBody); // Parse JSON for AI response
+
+                    runOnUiThread(() -> {
+                        messages.add(new Message(aiResponse, false)); // Add AI message
+                        chatAdapter.notifyDataSetChanged();
+                        recyclerViewMessages.scrollToPosition(messages.size() - 1);
+                    });
+                } else {
+                    runOnUiThread(() -> {
+                        messages.add(new Message("I'm sorry, I couldn't process your request. Please try again.", false));
+                        chatAdapter.notifyDataSetChanged();
+                        recyclerViewMessages.scrollToPosition(messages.size() - 1);
+                    });
+                }
+            }
+        });
     }
 
     /**
-     * Handles user input and responds based on the current conversation flow.
+     * Extracts AI response text from the JSON response.
      */
-    private void handleUserInput(String userInput) {
-        switch (userInput) {
-            case "yes": // Connect to a real agent
-                messages.add(new Message("Please wait, You will be connected shortly...", false));
-                break;
-
-            case "no": // Continue with the assistant
-                messages.add(new Message("Thank you, please select the topic number about your issues:\n" +
-                        "1: About Diseases,\n" +
-                        "2: About your Poultry house/farm,\n" +
-                        "3: About the PDDC.\n\nIf there is no choice of yours, press 0.", false));
-                break;
-
-            case "1": // User selected "About Diseases"
-                messages.add(new Message("You selected 'About Diseases'. Please state your specific question or concern about diseases.", false));
-                break;
-
-            case "2": // User selected "About your Poultry house/farm"
-                messages.add(new Message("You selected 'About your Poultry house/farm'. Please describe your issue or question.", false));
-                break;
-
-            case "3": // User selected "About the PDDC"
-                messages.add(new Message("You selected 'About the PDDC'. Please specify your question or concern.", false));
-                break;
-
-            case "0": // No matching topics
-                messages.add(new Message("Please state your issue.", false));
-                break;
-
-            default: // Invalid input
-                messages.add(new Message("I'm sorry, I didn't understand that. Please enter a valid option.", false));
-                break;
+    private String extractResponseFromJSON(String jsonResponse) {
+        try {
+            // Use Gson or JSONObject to parse the response
+            JSONObject jsonObject = new JSONObject(jsonResponse);
+            return jsonObject.getJSONArray("choices").getJSONObject(0).getString("text").trim();
+        } catch (Exception e) {
+            return "I'm sorry, I couldn't understand the response.";
         }
     }
 }
-

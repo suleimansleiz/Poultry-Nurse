@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/colorOnPrimary"
+    tools:context=".ui.activities.WelcomePage">
+
+    <ImageView
+        android:id="@+id/ivHen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/image_hen"
+        app:srcCompat="@drawable/hen_three"
+        android:scaleType="centerCrop"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="300dp"/>
+
+    <LinearLayout
+        android:id="@+id/llWelcoming"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-20dp"
+        android:background="@drawable/corner_edges"
+        android:orientation="vertical"
+        tools:ignore="VisualLintBounds">
+
+        <TextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/gotham_book"
+            android:text="@string/welcome"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tvTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/gotham_book"
+            android:text="@string/to"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tvPDDC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/gotham_book"
+            android:text="@string/p_d_d_c"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tvPDDCLong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/gotham_book"
+            android:text="@string/poultry_disease_detection_and_control"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+
+        <LinearLayout
+            android:id="@+id/llTwoBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvPDDCExplanations"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="15dp"
+                android:fontFamily="@font/gotham_book"
+                android:text="@string/pddc_explanations"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="15sp"
+                tools:ignore="SmallSp,VisualLintLongText" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="80dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/mbGoToSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="?attr/colorPrimaryVariant"
+                    android:padding="10dp"
+                    android:text="@string/create_account"
+                    android:fontFamily="@font/gotham_book"
+                    android:textAllCaps="false"
+                    android:textColor="?attr/colorSecondaryVariant"
+                    app:cornerRadius="7dp"
+                    tools:ignore="VisualLintButtonSize" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/mbGoToLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="?attr/colorSecondary"
+                    android:padding="10dp"
+                    android:fontFamily="@font/gotham_book"
+                    android:text="@string/login"
+                    android:textAllCaps="false"
+                    android:textColor="?attr/colorSecondaryVariant"
+                    app:cornerRadius="7dp"
+                    tools:ignore="VisualLintButtonSize" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvCopyright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="25dp"
+                android:fontFamily="@font/gotham_book"
+                android:text="@string/copyright"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="10sp"
+                tools:ignore="SmallSp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

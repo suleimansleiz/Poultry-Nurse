@@ -2,7 +2,9 @@ package com.example.pddc.ui.activities;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pddc.R;
 import com.google.android.material.button.MaterialButton;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
@@ -21,6 +23,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR );
 
         db = FirebaseFirestore.getInstance(); // Initialize Firestore
 
@@ -36,13 +40,6 @@ public class LoginActivity extends AppCompatActivity {
             builder.setMessage("Please contact Developer or Sign Up for new account.");
             builder.setCancelable(true);
             builder.setNegativeButton("Ok", (dialog, which) -> dialog.dismiss()).show();
-        });
-
-        TextView tv_Skip = findViewById(R.id.tvSkip);
-        tv_Skip.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
         });
 
 
@@ -64,51 +61,24 @@ public class LoginActivity extends AppCompatActivity {
 
     // Check Firestore for user details
     private void authenticateUser(String houseName, String phoneNo) {
-        db.collection("Users")
-                .whereEqualTo("farmName", houseName)
+       CollectionReference collRefs = db.collection("Users");
+        collRefs
+                .whereEqualTo("houseName", houseName)
                 .whereEqualTo("phoneNo", phoneNo)
                 .get()
                 .addOnCompleteListener(task -> {
-                    if (task.isSuccessful() && task.getResult() != null) {
-                        if (task.getResult().isEmpty()) {
-                            // Extract user data
-                            DocumentSnapshot document = task.getResult().getDocuments().get(0);
-                            String fullName = document.getString("fullName");
-                            String farmName = document.getString("farmName");
-                            String email = document.getString("email");
-
-//                            saveUserSession(fullName, farmName, email);
-
-                            // Redirect to MainActivity
+                    if (task.isSuccessful() && !task.getResult().isEmpty()) {
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            intent.putExtra("fullName", fullName);
-                            intent.putExtra("farmName", farmName);
-                            intent.putExtra("email", email);
                             startActivity(intent);
-
                             Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                             finish();
                         }else {
                             // User not found
                             showAlertDialog("Login Failed!", "User details not found. Please sign up first.");
                         }
-                    }else {
-                         showAlertDialog("Error!", "Failed to connect to the database. Please check your connection.");
-                    }
                 });
 
     }
-
-
-//    private void saveUserSession(String fullName, String farmName, String email) {
-//        // Save user session data in SharedPreferences
-//        getSharedPreferences("UserSession", MODE_PRIVATE)
-//                .edit()
-//                .putString("fullName", fullName)
-//                .putString("farmName", farmName)
-//                .putString("email", email)
-//                .apply();
-//    }
 
     private void showAlertDialog(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -122,8 +92,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Intent intent = new Intent(LoginActivity.this, WelcomePage.class);
         startActivity(intent);
         finish();
     }

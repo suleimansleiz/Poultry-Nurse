@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.SEND_EMAIL" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -24,6 +24,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PDDC"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.activities.WelcomePage"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_welcome_page"
+            android:theme="@style/Theme.PDDC.Fullscreen" />
         <activity
             android:name=".ui.activities.ChatWithAgent"
             android:exported="false" />

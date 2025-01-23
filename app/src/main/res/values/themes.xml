@@ -10,8 +10,8 @@
         <item name="colorSecondaryVariant">@color/white</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/purple_700</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <!-- Customize your theme here. -->
         <item name="android:colorEdgeEffect">@color/white_bluish</item>
         <item name="android:colorAccent">@color/purple_700</item>
@@ -25,4 +25,15 @@
     <style name="Theme.PDDC.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.PDDC.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.PDDC.Fullscreen" parent="Theme.PDDC">
+        <item name="android:actionBarStyle">@style/Widget.Theme.PDDC.ActionBar.Fullscreen</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <style name="ThemeOverlay.PDDC.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+    </style>
 </resources>

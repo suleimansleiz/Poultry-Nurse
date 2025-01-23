@@ -4,12 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorOnPrimary"
+    android:fitsSystemWindows="true"
     tools:context=".ui.support_fragments.TermsFragment">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        tools:ignore="UselessParent">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -216,7 +218,8 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="20dp"
                     android:textAlignment="textStart"
-                    android:text="@string/intellectual_description1"/>
+                    android:text="@string/intellectual_description1"
+                    tools:ignore="VisualLintLongText" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

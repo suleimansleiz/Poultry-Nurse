@@ -300,7 +300,7 @@ Symptoms of salmonellosis include diarrhea, closed eyes, loss of appetite, thirs
 
 
     <string name="developer_hints">
-        Copyright \u00A9 2024, SleizWare Development.
+        Copyright \u00A9 P D D C 2025, All rights reserved.
     </string>
 
     <string name="fragment_temperature">This is fragment temperature</string>
@@ -372,9 +372,21 @@ Symptoms of salmonellosis include diarrhea, closed eyes, loss of appetite, thirs
     <string name="online">online</string>
     <string name="search">Search</string>
     <string name="delete_chat">Delete Chat</string>
-    <string name="agentimage">agentImage</string>
+    <string name="agentImage">agentImage</string>
     <string name="phone">Phone Number</string>
     <string name="time">14:30</string>
     <string name="agent_image">agent_image</string>
+    <string name="title_activity_welcome_page">WelcomePage</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="image_hen">image_hen</string>
+    <string name="poultry_disease_detection_and_control">Poultry Disease Detection and Control</string>
+    <string name="p_d_d_c">P D D C</string>
+    <string name="to">to</string>
+    <string name="welcome">Welcome</string>
+    <string name="pddc_explanations">Be a smart poultry farmer and engage yourself with smart poultry farming methods using Internet of Things and Artificial Intelligence Technologies.</string>
+    <string name="create_account">Create Account</string>
+    <string name="login">Login</string>
+    <string name="copyright">copyright © P D D C 2025. All rights reserved</string>
 
 </resources>

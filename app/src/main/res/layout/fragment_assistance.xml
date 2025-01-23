@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorOnPrimary"
+    android:fitsSystemWindows="true"
     tools:context=".ui.support_fragments.AssistanceFragment">
 
     <LinearLayout
