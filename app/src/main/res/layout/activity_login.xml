@@ -127,13 +127,13 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="@string/log_in"
-            android:textColor="@color/white"
+            android:textColor="?attr/colorSecondaryVariant"
             android:textAllCaps="false"
             android:layout_below="@+id/tvForgetDetails"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/gotham_bold"
-            android:backgroundTint="?attr/android:colorAccent"
+            android:backgroundTint="?attr/colorPrimaryVariant"
             app:cornerRadius="20dp" />
 
 

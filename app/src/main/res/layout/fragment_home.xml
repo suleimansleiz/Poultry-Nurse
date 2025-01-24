@@ -5,506 +5,523 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorOnPrimary"
-    android:fitsSystemWindows="true"
     tools:context=".ui.fragments.HomeFragment">
 
-    <ScrollView
+    <ImageView
+        android:id="@+id/ivHen"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:contentDescription="@string/image_hen"
+        app:srcCompat="@drawable/hen_three"
+        android:scaleType="centerCrop"
+        android:layout_alignParentTop="true" />
+
+    <RelativeLayout
+        android:id="@+id/rlTopContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="none"
-        tools:ignore="UselessParent">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="70dp"
+        android:padding="5dp">
 
-            <RelativeLayout
-                android:id="@+id/rlTopContainer"
+        <TextView
+            android:id="@+id/tvPHouseName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gotham_ultra"
+            android:gravity="center_horizontal"
+            android:textColor="@color/purple_700"
+            android:textSize="25sp"
+            tools:ignore="TextContrastCheck" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvPHouseName"
+            android:layout_margin="5dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginBottom="0dp"
-                android:background="@drawable/home_gradient_bar"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical"
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/tvPHouseName"
+                    android:id="@+id/tvHello"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/gotham_ultra"
-                    android:gravity="center_horizontal"
-                    android:textColor="@color/purple_700"
-                    android:textSize="25sp"
-                    tools:ignore="TextContrastCheck" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tvPHouseName"
-                    android:layout_margin="5dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <TextView
-                            android:id="@+id/tvHello"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/gotham_book"
-                            android:gravity="start"
-                            android:text="@string/hello"
-                            android:textColor="@color/white"
-                            android:textSize="10sp"
-                            tools:ignore="SmallSp" />
-
-                        <TextView
-                            android:id="@+id/tvUserName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:fontFamily="@font/gotham_bold"
-                            android:gravity="start"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="70dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="15dp"
-                        android:layout_weight="1"
-                        android:src="@drawable/chicken"
-                        tools:ignore="ContentDescription" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:padding="5dp">
-
-                        <TextView
-                            android:id="@+id/tvToday"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/gotham_book"
-                            android:gravity="start"
-                            android:text="@string/today_is"
-                            android:textColor="@color/black"
-                            android:textSize="10sp"
-                            tools:ignore="SmallSp" />
-
-                        <TextView
-                            android:id="@+id/tvDay"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:fontFamily="@font/gotham_bold"
-                            android:gravity="start"
-                            android:text="@string/sunday"
-                            android:textColor="@color/black"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/tvDate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:fontFamily="@font/gotham_bold"
-                            android:gravity="start"
-                            android:text="@string/_31_march_2024"
-                            android:textColor="@color/black"
-                            android:textSize="12sp"
-                            tools:ignore="TextContrastCheck" />
-                    </LinearLayout>
-                </LinearLayout>
-            </RelativeLayout>
-
-            <LinearLayout
-                android:id="@+id/llQuickTabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/rlTopContainer"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="15dp"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
-
-                <LinearLayout
-                    android:id="@+id/llMonitor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/tvMonitorIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        app:drawableTopCompat="@drawable/monitoring_icon"
-                        app:drawableTint="?attr/colorPrimaryVariant" />
-
-                    <TextView
-                        android:id="@+id/tvMonitor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/gotham_book"
-                        android:text="@string/monitor"
-                        android:textColor="?attr/colorOnSecondary" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/llDetections"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/tvDetectionsIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        app:drawableTint="?attr/colorPrimaryVariant"
-                        app:drawableTopCompat="@drawable/detections_icon" />
-
-                    <TextView
-                        android:id="@+id/tvDetections"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/gotham_book"
-                        android:text="@string/detections"
-                        android:textColor="?attr/colorOnSecondary" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/llVaccines"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/tvVaccinesIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        app:drawableTopCompat="@drawable/vaccines_icon"
-                        app:drawableTint="?attr/colorPrimaryVariant" />
-
-                    <TextView
-                        android:id="@+id/tvVaccines"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/gotham_book"
-                        android:text="Vaccines"
-                        android:textColor="?attr/colorOnSecondary"
-                        tools:ignore="HardcodedText" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/llCleanliness"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/tvCleanlinessIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        app:drawableTopCompat="@drawable/cleaning_icon"
-                        app:drawableTint="?attr/colorPrimaryVariant" />
-
-                    <TextView
-                        android:id="@+id/tvCleanliness"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/gotham_book"
-                        android:text="@string/cleanliness"
-                        android:textColor="?attr/colorOnSecondary" />
-                </LinearLayout>
-            </LinearLayout>
-            <RelativeLayout
-                android:id="@+id/rlSeparator"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_below="@+id/llQuickTabs">
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp" />
-            </RelativeLayout>
-            <LinearLayout
-                android:id="@+id/llEnvironment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:padding="10dp"
-                android:layout_below="@+id/rlSeparator"
-                android:orientation="vertical">
+                    android:fontFamily="@font/gotham_book"
+                    android:gravity="start"
+                    android:text="@string/hello"
+                    android:textColor="@color/rich_black"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
 
                 <TextView
+                    android:id="@+id/tvUserName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/poultry_house_environment"
-                    android:textSize="15sp"
-                    android:textColor="?attr/colorPrimaryVariant"
+                    android:layout_marginTop="3dp"
                     android:fontFamily="@font/gotham_bold"
-                    android:layout_margin="10dp"/>
+                    android:gravity="start"
+                    android:textColor="@color/rich_black"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:backgroundTint="?attr/colorOnPrimary"
-                    android:layout_marginBottom="20dp"
-                    app:cardCornerRadius="15dp"
-                    app:cardElevation="20dp"
-                    app:strokeWidth="0.1dp"
-                    app:strokeColor="@color/white">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="5dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:layout_marginBottom="30dp"
-                        android:background="?attr/colorOnPrimary"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="10dp">
-
-                        <TextView
-                            android:id="@+id/tvAmmonia_progress"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:fontFamily="@font/gotham_book"
-                            android:text="@string/progress_ammonia"
-                            android:textColor="?attr/colorOnSecondary"
-                            android:textSize="15sp" />
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <ProgressBar
-                                android:id="@+id/pbAmmonia"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
-                                android:indeterminateOnly="false"
-                                android:progress="30"
-                                android:progressDrawable="@drawable/circle_progress_bar"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:id="@+id/tvAmmonia_inbtn"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/gotham_medium"
-                                android:text="30%"
-                                android:textColor="#189F05"
-                                android:textSize="20sp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="@+id/pbAmmonia"
-                                app:layout_constraintStart_toStartOf="@+id/pbAmmonia"
-                                app:layout_constraintTop_toTopOf="@+id/pbAmmonia"
-                                tools:ignore="HardcodedText" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="108dp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/tvToday"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="15dp"
-                        android:background="?attr/colorOnPrimary"
-                        android:layout_margin="10dp"
-                        app:cardElevation="20dp"
                         android:layout_weight="1"
-                        app:strokeWidth="0.1dp"
-                        app:strokeColor="@color/white">
+                        android:fontFamily="@font/gotham_book"
+                        android:gravity="center"
+                        android:text="@string/today_is"
+                        android:textColor="@color/rich_black"
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp,TextContrastCheck" />
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:backgroundTint="?attr/colorOnPrimary">
-
-                            <TextView
-                                android:id="@+id/tvTemperature"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:fontFamily="@font/gotham_book"
-                                android:text="@string/progress_temperature"
-                                android:textColor="?attr/colorOnSecondary"
-                                app:layout_constraintBottom_toTopOf="@+id/pbTemperature"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-
-                            <ProgressBar
-                                android:id="@+id/pbTemperature"
-                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="15dp"
-                                android:layout_margin="10dp"
-                                android:max="100"
-                                android:progress="27"
-                                android:progressDrawable="@drawable/progressbarcolors"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="0.0"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintVertical_bias="1.0" />
-
-                            <TextView
-                                android:id="@+id/tvTemperature_progress"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:fontFamily="@font/gotham_book"
-                                android:text="@string/progress_temperature_degree"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="@+id/pbTemperature"
-                                app:layout_constraintEnd_toEndOf="@+id/pbTemperature"
-                                app:layout_constraintStart_toStartOf="@+id/pbTemperature"
-                                app:layout_constraintTop_toTopOf="@+id/pbTemperature" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/tvDay"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="15dp"
-                        android:layout_margin="10dp"
-                        android:background="?attr/colorOnPrimary"
-                        app:cardElevation="20dp"
+                        android:layout_marginTop="3dp"
                         android:layout_weight="1"
-                        app:strokeWidth="0.1dp"
-                        app:strokeColor="@color/white">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:backgroundTint="?attr/colorOnPrimary">
-
-                            <TextView
-                                android:id="@+id/tvHumidity"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:fontFamily="@font/gotham_book"
-                                android:text="@string/progress_humidity"
-                                android:textColor="?attr/colorOnSecondary"
-                                app:layout_constraintBottom_toTopOf="@+id/pbHumidity"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-
-                            <ProgressBar
-                                android:id="@+id/pbHumidity"
-                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="15dp"
-                                android:layout_margin="10dp"
-                                android:max="100"
-                                android:progress="20"
-                                android:progressDrawable="@drawable/progressbarcolors"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="0.0"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintVertical_bias="1.0" />
-
-                            <TextView
-                                android:id="@+id/tvHumidity_progress"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:fontFamily="@font/gotham_book"
-                                android:text="@string/progress_humidity_percent"
-                                android:textColor="?attr/colorOnSecondary"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="@+id/pbHumidity"
-                                app:layout_constraintEnd_toEndOf="@+id/pbHumidity"
-                                app:layout_constraintStart_toStartOf="@+id/pbHumidity"
-                                app:layout_constraintTop_toTopOf="@+id/pbHumidity" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </com.google.android.material.card.MaterialCardView>
+                        android:fontFamily="@font/gotham_bold"
+                        android:gravity="start"
+                        android:text="@string/sunday"
+                        android:textColor="@color/rich_black"
+                        android:textSize="12sp"
+                        tools:ignore="TextContrastCheck" />
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/gotham_bold"
+                    android:gravity="center"
+                    android:text="@string/_31_march_2024"
+                    android:textColor="@color/rich_black"
+                    android:textSize="12sp"
+                    tools:ignore="TextContrastCheck" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-10dp"
+        android:background="@drawable/corner_edges"
+        tools:ignore="VisualLintBounds">
+
+        <LinearLayout
+            android:id="@+id/llQuickTabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/llMonitor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="5dp"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:id="@+id/tvMonitorIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/icon"
+                    android:src="@drawable/monitoring_icon"
+                    app:tint="?attr/colorPrimaryVariant" />
+
+                <TextView
+                    android:id="@+id/tvMonitor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/gotham_book"
+                    android:text="@string/monitor"
+                    android:textColor="?attr/colorOnSecondary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llDetections"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="5dp"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:id="@+id/tvDetectionsIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/icon"
+                    android:src="@drawable/detections_icon"
+                    app:tint="?attr/colorPrimaryVariant" />
+
+                <TextView
+                    android:id="@+id/tvDetections"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/gotham_book"
+                    android:text="@string/detections"
+                    android:textColor="?attr/colorOnSecondary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llVaccines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="5dp"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:id="@+id/tvVaccinesIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/icon"
+                    android:src="@drawable/vaccines_icon"
+                    app:tint="?attr/colorPrimaryVariant" />
+
+                <TextView
+                    android:id="@+id/tvVaccines"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/gotham_book"
+                    android:text="Vaccines"
+                    android:textColor="?attr/colorOnSecondary"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llCleanliness"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="5dp"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:id="@+id/tvCleanlinessIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/icon"
+                    android:src="@drawable/cleaning_icon"
+                    app:tint="?attr/colorPrimaryVariant" />
+
+                <TextView
+                    android:id="@+id/tvCleanliness"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/gotham_book"
+                    android:text="@string/cleanliness"
+                    android:textColor="?attr/colorOnSecondary" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlSeparator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llQuickTabs"
+            android:layout_marginTop="5dp">
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/llEnvironment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rlSeparator"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/gotham_bold"
+                android:text="@string/poultry_house_environment"
+                android:textColor="?attr/colorPrimaryVariant"
+                android:textSize="15sp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="?attr/colorOnPrimary"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="20dp"
+                app:strokeColor="@color/white"
+                app:strokeWidth="0.1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="?attr/colorOnPrimary"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tvAmmonia_progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:fontFamily="@font/gotham_book"
+                        android:text="@string/progress_ammonia"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="15sp" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ProgressBar
+                            android:id="@+id/pbAmmonia"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:indeterminateOnly="false"
+                            android:progress="30"
+                            android:progressDrawable="@drawable/circle_progress_bar"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvAmmonia_inbtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gotham_medium"
+                            android:text="30%"
+                            android:textColor="#189F05"
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/pbAmmonia"
+                            app:layout_constraintStart_toStartOf="@+id/pbAmmonia"
+                            app:layout_constraintTop_toTopOf="@+id/pbAmmonia"
+                            tools:ignore="HardcodedText" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="108dp"
+                android:orientation="horizontal">
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:backgroundTint="?attr/colorOnPrimary"
-                    android:layout_marginBottom="30dp"
+                    android:layout_weight="1"
+                    android:background="?attr/colorOnPrimary"
                     app:cardCornerRadius="15dp"
                     app:cardElevation="20dp"
-                    app:strokeWidth="0.1dp"
-                    app:strokeColor="@color/white">
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="0.1dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="?attr/colorOnPrimary">
+
+                        <TextView
+                            android:id="@+id/tvTemperature"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="@font/gotham_book"
+                            android:text="@string/progress_temperature"
+                            android:textColor="?attr/colorOnSecondary"
+                            app:layout_constraintBottom_toTopOf="@+id/pbTemperature"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <ProgressBar
+                            android:id="@+id/pbTemperature"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="15dp"
+                            android:layout_margin="10dp"
+                            android:max="100"
+                            android:progress="27"
+                            android:progressDrawable="@drawable/progressbarcolors"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="1.0" />
+
+                        <TextView
+                            android:id="@+id/tvTemperature_progress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/gotham_book"
+                            android:text="@string/progress_temperature_degree"
+                            android:textColor="@color/rich_black"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/pbTemperature"
+                            app:layout_constraintEnd_toEndOf="@+id/pbTemperature"
+                            app:layout_constraintStart_toStartOf="@+id/pbTemperature"
+                            app:layout_constraintTop_toTopOf="@+id/pbTemperature" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="?attr/colorOnPrimary"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="20dp"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="0.1dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="?attr/colorOnPrimary">
+
+                        <TextView
+                            android:id="@+id/tvHumidity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="@font/gotham_book"
+                            android:text="@string/progress_humidity"
+                            android:textColor="?attr/colorOnSecondary"
+                            app:layout_constraintBottom_toTopOf="@+id/pbHumidity"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <ProgressBar
+                            android:id="@+id/pbHumidity"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="15dp"
+                            android:layout_margin="10dp"
+                            android:max="100"
+                            android:progress="20"
+                            android:progressDrawable="@drawable/progressbarcolors"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="1.0" />
+
+                        <TextView
+                            android:id="@+id/tvHumidity_progress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/gotham_book"
+                            android:text="@string/progress_humidity_percent"
+                            android:textColor="@color/rich_black"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/pbHumidity"
+                            app:layout_constraintEnd_toEndOf="@+id/pbHumidity"
+                            app:layout_constraintStart_toStartOf="@+id/pbHumidity"
+                            app:layout_constraintTop_toTopOf="@+id/pbHumidity" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:backgroundTint="?attr/colorOnPrimary"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="15dp"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="0.1dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:layout_marginBottom="30dp"
-                        android:orientation="vertical"
                         android:background="?attr/colorOnPrimary"
+                        android:orientation="vertical"
                         android:padding="10dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginBottom="10dp">
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/tvCleanliness_status"
@@ -556,11 +573,8 @@
                         </LinearLayout>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"/>
             </LinearLayout>
-        </RelativeLayout>
-    </ScrollView>
+
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

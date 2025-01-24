@@ -3,7 +3,6 @@ package com.example.pddc.ui.activities;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -39,11 +38,12 @@ public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton fabChat, fabCall, fabSupAgent;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR );
+        int statusBarColor = ContextCompat.getColor(this, com.google.android.material.R.color.design_default_color_primary);
+        getWindow().setStatusBarColor(statusBarColor);
 
         com.example.pddc.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         DrawerLayout drawer = binding.drawerLayout;
@@ -52,17 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.appBarMain.toolbar);
 
-        Bundle extras = getIntent().getExtras();
-        String farmName = null;
-        String fullName = null;
-        String email = null;
-        if (extras != null) {
-            fullName = extras.getString("fullName");
-            farmName = extras.getString("farmName");
-            email = extras.getString("email");
-        }
-
-//        passDataToFragments(fullName, farmName, email);
+        //        passDataToFragments(fullName, farmName, email);
 
         // Initialize FloatingActionButtons
         fabChat = binding.appBarMain.fabChat;
@@ -142,28 +132,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    private void passDataToFragments(String fullName, String farmName, String email){
-//        HomeFragment homeFragment = new HomeFragment();
-//        SettingsFragment settingsFragment = new SettingsFragment();
-//
-//        Bundle args = new Bundle();
-//        args.putString("fullName", fullName);
-//        args.putString("farmName", farmName);
-//        args.putString("email", email);
-//        homeFragment.setArguments(args);
-//        settingsFragment.setArguments(args);
-//
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.nav_home, homeFragment)
-//                .commit();
-//
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.nav_Settings, settingsFragment)
-//                .commit();
-//    }
-
 
     private void setAnimation(Boolean clicked) {
         if (!clicked) {
@@ -235,5 +203,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        finishAffinity();
     }
 }

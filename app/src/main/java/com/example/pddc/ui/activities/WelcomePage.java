@@ -53,5 +53,6 @@ public class WelcomePage extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        finishAffinity();
     }
 }

@@ -20,7 +20,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="UselessParent"
+        tools:ignore="UselessParent,VisualLintBounds"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="-10dp"
         android:background="@drawable/corner_edges">
@@ -75,7 +75,7 @@
                 android:gravity="center_vertical"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
@@ -104,7 +104,7 @@
                 android:gravity="center_vertical"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvEmail"
@@ -133,7 +133,7 @@
                 android:gravity="center_vertical"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
@@ -163,7 +163,7 @@
                 android:minHeight="48dp"
                 android:padding="15dp"
                 android:textColor="?attr/colorOnSecondary"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
@@ -174,13 +174,13 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:backgroundTint="?attr/android:colorAccent"
+            android:backgroundTint="?attr/colorPrimaryVariant"
             android:fontFamily="@font/gotham_bold"
             android:text="@string/sign_up"
             android:textAllCaps="false"
             android:textColor="?attr/colorSecondaryVariant"
             app:cornerRadius="20dp"
-            tools:ignore="DuplicateSpeakableTextCheck" />
+            tools:ignore="DuplicateSpeakableTextCheck,VisualLintButtonSize" />
 
 
 

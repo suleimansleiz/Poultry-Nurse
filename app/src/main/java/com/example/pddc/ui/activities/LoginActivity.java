@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -46,6 +47,9 @@ public class LoginActivity extends AppCompatActivity {
         EditText et_HouseName = findViewById(R.id.etHouseName);
         EditText et_PhoneNo = findViewById(R.id.etPhoneNo);
         MaterialButton btn_Login = findViewById(R.id.btnLogin);
+
+        et_HouseName.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        et_PhoneNo.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
 
         btn_Login.setOnClickListener(v -> {
             String houseName = et_HouseName.getText().toString().trim();

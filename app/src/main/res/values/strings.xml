@@ -370,6 +370,7 @@ Symptoms of salmonellosis include diarrhea, closed eyes, loss of appetite, thirs
     <string name="text_message">Text message</string>
     <string name="assistance_agent_name">Assistance Agent</string>
     <string name="online">online</string>
+    <string name="offline">offline</string>
     <string name="search">Search</string>
     <string name="delete_chat">Delete Chat</string>
     <string name="agentImage">agentImage</string>
@@ -388,5 +389,7 @@ Symptoms of salmonellosis include diarrhea, closed eyes, loss of appetite, thirs
     <string name="create_account">Create Account</string>
     <string name="login">Login</string>
     <string name="copyright">copyright © P D D C 2025. All rights reserved</string>
+    <string name="icon">Icon</string>
+    <string name="floating_card">Floating card</string>
 
 </resources>

@@ -10,17 +10,20 @@
     tools:context=".ui.activities.MainActivity">
 
     <!-- Scrollable Content -->
+
+    <!-- App Bar -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
 
         <include layout="@layout/content_main" />
     </androidx.core.widget.NestedScrollView>
 
-    <!-- App Bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
@@ -32,7 +35,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/home_gradient_bar"
+            android:background="?attr/colorOnPrimary"
             app:popupTheme="@style/Theme.PDDC.PopupOverlay" />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -45,6 +48,7 @@
         android:backgroundTint="#1EFF00"
         android:src="@drawable/support_agent_icon"
         android:tint="?attr/colorOnPrimary"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
@@ -76,6 +80,8 @@
         app:layout_constraintEnd_toEndOf="@id/fabChat"
         android:layout_margin="16dp"
         tools:ignore="ContentDescription" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

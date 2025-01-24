@@ -1,16 +1,21 @@
 package com.example.pddc.ui.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.view.View;
+import android.text.InputType;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,9 +54,39 @@ public class ChatWithAgent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_with_agent);
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR );
+        int statusBarColor = ContextCompat.getColor(this, com.google.android.material.R.color.design_default_color_primary);
+        getWindow().setStatusBarColor(statusBarColor);
 
+        //check connectivity
+        TextView tvOnline = findViewById(R.id.tvAgentStatus);
+        if (isOnline()){
+            tvOnline.setText(R.string.online);
+        } else {
+            tvOnline.setText(R.string.offline);
+        }
+
+        //Emoji Button
+        ImageButton btnEmoji = findViewById(R.id.btnEmoji);
+        btnEmoji.setOnClickListener(v -> {
+            editTextMessage.requestFocus();
+            editTextMessage.setInputType(InputType.TYPE_CLASS_TEXT);
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (inputMethodManager != null) {
+                inputMethodManager.showSoftInput(editTextMessage, InputMethodManager.SHOW_IMPLICIT);
+            }
+        });
+
+        //Attachment Button
+        ImageButton btnAttachFile = findViewById(R.id.btnAttachFile);
+        btnAttachFile.setOnClickListener(v -> {
+            Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+            i.setType("*/*");
+            i.addCategory(Intent.CATEGORY_OPENABLE);
+            startActivityForResult(Intent.createChooser(i, "Select a file"),100);
+        });
+
+
+        //AI Integration
         api_key = getString(R.string.openai_api_key);
         OPENAI_API_URL = "https://api.openai.com/v1/completions";
         ImageButton btnBack = findViewById(R.id.btnBack);
@@ -66,6 +101,7 @@ public class ChatWithAgent extends AppCompatActivity {
         editTextMessage = findViewById(R.id.editTextMessage);
         ImageButton buttonSend = findViewById(R.id.buttonSend);
 
+        editTextMessage.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         // Setup RecyclerView
         messages = new ArrayList<>();
         chatAdapter = new ChatAdapter(messages);
@@ -91,6 +127,15 @@ public class ChatWithAgent extends AppCompatActivity {
                 Toast.makeText(this, "Please type a message", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private boolean isOnline() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null){
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            return networkInfo != null && networkInfo.isConnectedOrConnecting();
+        }
+        return false;
     }
 
     /**

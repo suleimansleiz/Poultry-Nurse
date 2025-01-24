@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
@@ -45,6 +46,11 @@ public class SignUpActivity extends AppCompatActivity {
         EditText etHouseName = findViewById(R.id.etHouseName);
         EditText etEmail = findViewById(R.id.etEmail);
         EditText etPhoneNo = findViewById(R.id.etPhoneNo);
+
+        etFullName.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        etHouseName.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        etEmail.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        etPhoneNo.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
 
         MaterialButton btnSignUp = findViewById(R.id.btnSignUp);
         btnSignUp.setOnClickListener(v -> {
