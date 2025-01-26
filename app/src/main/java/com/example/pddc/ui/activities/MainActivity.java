@@ -1,11 +1,9 @@
 package com.example.pddc.ui.activities;
 
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -24,7 +22,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.pddc.R;
 import com.example.pddc.databinding.ActivityMainBinding;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
 
 
@@ -33,10 +31,12 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CALL = 1;
     private AppBarConfiguration mAppBarConfiguration;
 
-    private Animation rotateOpen, rotateClose, fromBottom, toBottom;
+    private Animation fromBottom;
+    private Animation toBottom;
     private Boolean clicked = false;
 
-    private FloatingActionButton fabChat, fabCall, fabSupAgent;
+    private MaterialCardView fabChat;
+    private MaterialCardView fabCall;
 
 
     @Override
@@ -53,15 +53,15 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.appBarMain.toolbar);
 
         //        passDataToFragments(fullName, farmName, email);
+        Intent intent = getIntent();
+        String houseName = intent.getStringExtra("houseName");
 
         // Initialize FloatingActionButtons
         fabChat = binding.appBarMain.fabChat;
         fabCall = binding.appBarMain.fabCall;
-        fabSupAgent = binding.appBarMain.fab;
+        MaterialCardView fabSupAgent = binding.appBarMain.fab;
 
         // Initialize Animations
-        rotateOpen = AnimationUtils.loadAnimation(this, R.anim.rotate_open_anim);
-        rotateClose = AnimationUtils.loadAnimation(this, R.anim.rotate_close_anim);
         fromBottom = AnimationUtils.loadAnimation(this, R.anim.from_bottom_anim);
         toBottom = AnimationUtils.loadAnimation(this, R.anim.to_bottom_anim);
 
@@ -102,12 +102,8 @@ public class MainActivity extends AppCompatActivity {
                 navController.navigate(R.id.nav_policy);
             } else if (id == R.id.nav_terms) {
                 navController.navigate(R.id.nav_terms);
-            } else if (id == R.id.nav_rate) {
-                rateApp();
-            } else if (id == R.id.nav_Share) {
-                shareApp();
-                return false; // Prevent drawer closure for this case
-            }
+            } // Prevent drawer closure for this case
+
 
             drawer.closeDrawer(GravityCompat.START);
             return true;
@@ -137,11 +133,9 @@ public class MainActivity extends AppCompatActivity {
         if (!clicked) {
             fabChat.startAnimation(fromBottom);
             fabCall.startAnimation(fromBottom);
-            fabSupAgent.startAnimation(rotateOpen);
         } else {
             fabChat.startAnimation(toBottom);
             fabCall.startAnimation(toBottom);
-            fabSupAgent.startAnimation(rotateClose);
         }
     }
 
@@ -151,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void makePhoneCall() {
-        String number = "255743900555";
+        String number = getString(R.string.agent_phone_no);
         if (ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.CALL_PHONE}, REQUEST_CALL);
         } else {
@@ -171,27 +165,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Permission DENIED", Toast.LENGTH_SHORT).show();
             }
         }
-    }
-
-    private void rateApp() {
-        try {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
-        } catch (ActivityNotFoundException e) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
-        }
-    }
-
-    private void shareApp() {
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_TEXT, "Are you interested in managing a smart Poultry House? Click the link below to download Poultry Disease Detection and Control (P D D C) App: https://sleiz.com/sleizwaredevelopment/PDDC");
-        startActivity(Intent.createChooser(shareIntent, "Share via"));
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
     }
 
     @Override

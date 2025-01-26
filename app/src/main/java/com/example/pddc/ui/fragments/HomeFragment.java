@@ -23,15 +23,17 @@ public class HomeFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
+        //Passing FarmName
         if (getArguments() != null) {
             String fullName = getArguments().getString("fullName");
-            String farmName = getArguments().getString("farmName");
+            String farmName = getArguments().getString("houseName");
 
             tvFarmName = requireView().findViewById(R.id.tvPHouseName);
             tvFarmName.setText(farmName);
             tvFullName = requireView().findViewById(R.id.tvUserName);
             tvFullName.setText(fullName);
         }
+
 
         TextView tv_Day = rootView.findViewById(R.id.tvDay);
         TextView tv_Date = rootView.findViewById(R.id.tvDate);
@@ -43,7 +45,6 @@ public class HomeFragment extends Fragment {
         int dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
 
         //Current date
-
         String dayOfWeekString = getDayOfWeekString(dayOfWeek);
 
         //Date format

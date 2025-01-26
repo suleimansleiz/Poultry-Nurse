@@ -48,14 +48,6 @@
                    android:id="@+id/nav_terms"
                    android:icon="@drawable/terms_icon"
                    android:title="@string/fragment_terms" />
-               <item
-                   android:id="@+id/nav_Share"
-                   android:icon="@drawable/share_icon"
-                   android:title="@string/fragment_share" />
-               <item
-                   android:id="@+id/nav_rate"
-                   android:icon="@drawable/rate_icon"
-                   android:title="@string/fragment_rate" />
            </group>
         </menu>
     </item>

@@ -8,160 +8,312 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.SettingsFragment">
 
-   <ScrollView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:scrollbars="none"
-       tools:ignore="UselessParent">
-       <RelativeLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp">
 
-           <TextView
-               android:id="@+id/tvManageProfile"
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:layout_marginStart="10dp"
-               android:layout_marginTop="10dp"
-               android:layout_marginEnd="10dp"
-               android:layout_marginBottom="10dp"
-               android:fontFamily="@font/gotham_book"
-               android:gravity="center_horizontal"
-               android:text="@string/manage_profile"
-               android:textColor="?attr/colorPrimaryVariant"
-               android:textSize="25sp"
-               android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tvManageProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/gotham_book"
+            android:gravity="center_horizontal"
+            android:text="@string/manage_profile"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="25sp" />
 
-           <androidx.cardview.widget.CardView
-               android:id="@+id/cvManageProfile"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_below="@+id/tvManageProfile"
-               app:cardCornerRadius="15dp"
-               app:cardElevation="0dp"
-               android:layout_margin="20dp">
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="vertical"
-                   android:padding="10dp"
-                   android:background="@drawable/prof_manage_bar">
-                   <LinearLayout
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:orientation="horizontal"
-                       android:layout_margin="10dp">
-                       <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="@string/full_name"
-                           android:fontFamily="@font/gotham_book"
-                           android:textColor="@color/white"
-                           android:textSize="12sp"
-                           tools:ignore="SmallSp"
-                           android:layout_weight="1"/>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvManageProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvManageProfile"
+            android:layout_margin="20dp"
+            app:cardCornerRadius="15dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/grey"
+            app:cardElevation="5dp">
 
-                       <TextView
-                           android:id="@+id/tvFullName"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:fontFamily="@font/gotham_book"
-                           android:textColor="@color/white"
-                           android:textSize="12sp"
-                           android:gravity="end"
-                           tools:ignore="SmallSp"
-                           android:layout_weight="1"/>
-                   </LinearLayout>
-                   <LinearLayout
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:orientation="horizontal"
-                       android:layout_margin="10dp">
-                       <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="@string/email_profile"
-                           android:fontFamily="@font/gotham_book"
-                           android:textColor="@color/white"
-                           android:textSize="12sp"
-                           tools:ignore="SmallSp"
-                           android:layout_weight="1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorOnPrimary"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-                       <TextView
-                           android:id="@+id/tvEmailAddress"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_weight="1"
-                           android:fontFamily="@font/gotham_book"
-                           android:gravity="end"
-                           android:textColor="@color/white"
-                           android:textSize="12sp"
-                           tools:ignore="SmallSp,TextContrastCheck" />
-                   </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
 
-                   <com.google.android.material.button.MaterialButton
-                       android:id="@+id/btnEditProfile"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:backgroundTint="@color/purple_200"
-                       android:fontFamily="@font/gotham_book"
-                       android:text="@string/edit_profile"
-                       android:textAllCaps="false"
-                       android:textSize="12sp"
-                       app:cornerRadius="15dp"
-                       tools:ignore="TextContrastCheck" />
-               </LinearLayout>
-           </androidx.cardview.widget.CardView>
-           <com.google.android.material.button.MaterialButton
-               android:id="@+id/mbLogout"
-               android:layout_width="300dp"
-               android:layout_height="wrap_content"
-               android:layout_below="@+id/cvManageProfile"
-               android:layout_centerHorizontal="true"
-               android:text="@string/logout_btn"
-               android:fontFamily="@font/gotham_book"
-               android:textColor="@color/purple_700"
-               android:textAllCaps="false"
-               app:strokeWidth="2dp"
-               app:strokeColor="@color/purple_700"
-               app:cornerRadius="15dp"
-               android:backgroundTint="?attr/colorOnPrimary"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/gotham_book"
+                        android:text="@string/full_name"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="12sp"
+                        tools:ignore="SmallSp" />
 
-           <TextView
-               android:id="@+id/tvGeneralSettings"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_below="@+id/mbLogout"
-               android:layout_margin="15dp"
-               android:layout_marginStart="15dp"
-               android:layout_marginTop="15dp"
-               android:layout_marginEnd="15dp"
-               android:layout_marginBottom="15dp"
-               android:fontFamily="@font/gotham_book"
-               android:gravity="start"
-               android:text="@string/general_settings"
-               android:textColor="?attr/colorPrimaryVariant"
-               android:textSize="15sp"
-               android:textStyle="bold"
-               tools:ignore="TextSizeCheck" />
+                    <TextView
+                        android:id="@+id/tvFullName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/gotham_book"
+                        android:gravity="end"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="12sp"
+                        tools:ignore="SmallSp" />
+                </LinearLayout>
 
-           <TextView
-               android:id="@+id/tvVersion"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_below="@+id/tvGeneralSettings"
-               android:layout_marginStart="15dp"
-               android:layout_marginTop="15dp"
-               android:layout_marginEnd="15dp"
-               android:layout_marginBottom="15dp"
-               android:fontFamily="@font/gotham_book"
-               android:gravity="center_horizontal"
-               android:text="@string/version"
-               android:textColor="@color/grey"
-               android:textSize="8sp"
-               android:textStyle="bold"
-               tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
-       </RelativeLayout>
-   </ScrollView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/gotham_book"
+                        android:text="@string/house_name"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="12sp"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/tvFarmName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/gotham_book"
+                        android:gravity="end"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="12sp"
+                        tools:ignore="SmallSp,TextContrastCheck" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEditProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="?attr/colorSecondary"
+                    android:fontFamily="@font/gotham_book"
+                    android:text="@string/edit_profile"
+                    android:textAllCaps="false"
+                    android:textColor="?attr/colorSecondaryVariant"
+                    android:textSize="12sp"
+                    app:cornerRadius="15dp"
+                    tools:ignore="TextContrastCheck" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mbLogout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cvManageProfile"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="?attr/colorOnPrimary"
+            android:fontFamily="@font/gotham_book"
+            android:text="@string/logout_btn"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorOnSecondary"
+            app:cornerRadius="15dp"
+            app:strokeColor="?attr/colorSecondary"
+            app:strokeWidth="2dp" />
+
+        <TextView
+            android:id="@+id/tvGeneralSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mbLogout"
+            android:layout_margin="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/gotham_book"
+            android:gravity="start"
+            android:text="@string/general_settings"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            tools:ignore="TextSizeCheck" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvGeneralSettings"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:backgroundTint="?attr/colorOnPrimary"
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="3dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="@string/theme"
+                android:fontFamily="@font/gotham_book"
+                android:textSize="18sp"
+                android:textColor="?attr/colorOnSecondary"
+                app:drawableEndCompat="@drawable/arrow_forward_icon"
+                app:drawableTint="?attr/colorOnSecondary" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mcvTheme"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:backgroundTint="?attr/colorOnPrimary"
+            app:cardCornerRadius="7dp"
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp"
+            app:cardElevation="3dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="@string/change_language"
+                android:fontFamily="@font/gotham_book"
+                android:textSize="18sp"
+                android:textColor="?attr/colorOnSecondary"
+                app:drawableEndCompat="@drawable/arrow_forward_icon"
+                app:drawableTint="?attr/colorOnSecondary" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mcvLanguage"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:backgroundTint="?attr/colorOnPrimary"
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="3dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="@string/notifications"
+                android:fontFamily="@font/gotham_book"
+                android:textSize="18sp"
+                android:textColor="?attr/colorOnSecondary"
+                app:drawableEndCompat="@drawable/arrow_forward_icon"
+                app:drawableTint="?attr/colorOnSecondary" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvShareApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mcvNotifications"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:backgroundTint="?attr/colorOnPrimary"
+            app:cardCornerRadius="7dp"
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp"
+            app:cardElevation="3dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="@string/share_app"
+                android:fontFamily="@font/gotham_book"
+                android:textSize="18sp"
+                android:textColor="?attr/colorOnSecondary"
+                app:drawableEndCompat="@drawable/arrow_forward_icon"
+                app:drawableTint="?attr/colorOnSecondary" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvRateApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mcvShareApp"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:backgroundTint="?attr/colorOnPrimary"
+            app:cardCornerRadius="7dp"
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp"
+            app:cardElevation="3dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="@string/rate_this_app"
+                android:fontFamily="@font/gotham_book"
+                android:textSize="18sp"
+                android:textColor="?attr/colorOnSecondary"
+                app:drawableEndCompat="@drawable/arrow_forward_icon"
+                app:drawableTint="?attr/colorOnSecondary" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tvFrom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_above="@+id/tvSWD"
+            android:fontFamily="@font/gotham_book"
+            android:gravity="center_horizontal"
+            android:text="@string/from"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="12sp"
+            tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
+
+        <TextView
+            android:id="@+id/tvSWD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_above="@+id/tvVersion"
+            android:fontFamily="@font/gotham_book"
+            android:gravity="center_horizontal"
+            android:text="@string/sleizware_development"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
+
+        <TextView
+            android:id="@+id/tvVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="15dp"
+            android:fontFamily="@font/gotham_book"
+            android:gravity="center_horizontal"
+            android:text="@string/version"
+            android:textColor="@color/grey"
+            android:textSize="8sp"
+            android:textStyle="bold"
+            tools:ignore="SmallSp,TextContrastCheck,TextSizeCheck" />
+    </RelativeLayout>
 </RelativeLayout>

@@ -27,30 +27,32 @@
             android:textColor="?attr/colorOnSecondary"
             android:textSize="15sp" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardCornerRadius="12sp"
+            app:strokeWidth="1dp"
+            android:elevation="0dp"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            app:boxCornerRadiusBottomStart="15dp"
-            app:boxCornerRadiusBottomEnd="15dp"
-            app:boxCornerRadiusTopStart="15dp"
-            app:boxCornerRadiusTopEnd="15dp"
-            android:background="?attr/android:colorEdgeEffect"
-            app:boxStrokeColor="?attr/android:colorEdgeEffect"
-            app:boxStrokeWidth="1dp"
-            android:hint="@string/select">
+            android:layout_marginBottom="15dp">
 
-            <AutoCompleteTextView
-                android:id="@+id/acTextView"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/gotham_book"
-                android:inputType="none"
-                android:textColor="?attr/colorOnSecondary"
-                tools:ignore="LabelFor,SpeakableTextPresentCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="match_parent"
+                android:hint="@string/select">
+
+                <AutoCompleteTextView
+                    android:id="@+id/acTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/android:colorEdgeEffect"
+                    android:fontFamily="@font/gotham_book"
+                    android:inputType="none"
+                    android:textColor="?attr/colorOnSecondary"
+                    tools:ignore="LabelFor,SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/ll2"
@@ -77,13 +79,14 @@
             app:cardCornerRadius="15dp"
             app:cardElevation="0dp"
             android:background="?attr/android:colorEdgeEffect"
-            app:strokeColor="?attr/android:colorEdgeEffect">
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp">
 
             <EditText
                 android:id="@+id/etEmailBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_margin="10dp"
                 android:autofillHints=""
                 android:background="@null"
                 android:fontFamily="@font/gotham_book"
@@ -121,17 +124,19 @@
             app:cardCornerRadius="15dp"
             android:background="?attr/android:colorEdgeEffect"
             app:cardElevation="0dp"
-            app:strokeColor="?attr/android:colorEdgeEffect">
+            app:strokeColor="@color/grey"
+            app:strokeWidth="1dp">
 
             <EditText
                 android:id="@+id/etEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_margin="10dp"
                 android:autofillHints=""
                 android:background="@null"
                 android:ems="30"
                 android:padding="5dp"
+                android:hint="@string/email"
                 android:textColor="?attr/colorOnSecondary"
                 android:fontFamily="@font/gotham_book"
                 android:gravity="center_vertical"
@@ -156,9 +161,9 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="@string/submit_btn"
-            android:textColor="@color/white"
+            android:textColor="?attr/colorOnPrimary"
             android:fontFamily="@font/gotham_bold"
-            android:backgroundTint="?attr/android:colorAccent"
+            android:backgroundTint="?attr/colorSecondary"
             app:cornerRadius="15dp"/>
     </LinearLayout>
 </RelativeLayout>

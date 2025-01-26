@@ -1,14 +1,16 @@
 package com.example.pddc.ui.activities;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -51,14 +53,24 @@ public class LoginActivity extends AppCompatActivity {
         et_HouseName.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         et_PhoneNo.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
 
+
+        /**
+           Performing login
+         **/
+
         btn_Login.setOnClickListener(v -> {
             String houseName = et_HouseName.getText().toString().trim();
             String phoneNo = et_PhoneNo.getText().toString().trim();
 
             if (houseName.isEmpty() || phoneNo.isEmpty()) {
                 showAlertDialog("Error!", "Please fill all the required fields.");
-            } else {
+            } else if(isOnline()) {
+                btn_Login.setEnabled(false);
+                btn_Login.setText(R.string.signing_in);
                 authenticateUser(houseName, phoneNo);
+            }else {
+                btn_Login.setEnabled(true);
+                showAlertDialog("Error!", "Please check your network and try again.");
             }
         });
     }
@@ -73,8 +85,8 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful() && !task.getResult().isEmpty()) {
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent.putExtra("houseName", houseName);
                             startActivity(intent);
-                            Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                             finish();
                         }else {
                             // User not found
@@ -90,6 +102,15 @@ public class LoginActivity extends AppCompatActivity {
         builder.setMessage(message);
         builder.setNegativeButton("OK", (dialog, which) -> dialog.dismiss());
         builder.show();
+    }
+
+    private boolean isOnline() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null){
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            return networkInfo != null && networkInfo.isConnectedOrConnecting();
+        }
+        return false;
     }
 
 

@@ -1,12 +1,18 @@
 package com.example.pddc.ui.activities;
 
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -14,8 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,8 +32,11 @@ import com.example.pddc.ui.classes.Message;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import okhttp3.Call;
@@ -45,31 +54,24 @@ public class ChatWithAgent extends AppCompatActivity {
     private ChatAdapter chatAdapter;
     private List<Message> messages;
 
+    private Uri selectedFileUri;
     String api_key;
 
-    String OPENAI_API_URL;
+    private static String OPENAI_API_URL = "https://api.openai.com/v1/completions";
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_with_agent);
-        int statusBarColor = ContextCompat.getColor(this, com.google.android.material.R.color.design_default_color_primary);
-        getWindow().setStatusBarColor(statusBarColor);
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
 
-        //check connectivity
-        TextView tvOnline = findViewById(R.id.tvAgentStatus);
-        if (isOnline()){
-            tvOnline.setText(R.string.online);
-        } else {
-            tvOnline.setText(R.string.offline);
-        }
 
         //Emoji Button
         ImageButton btnEmoji = findViewById(R.id.btnEmoji);
         btnEmoji.setOnClickListener(v -> {
             editTextMessage.requestFocus();
-            editTextMessage.setInputType(InputType.TYPE_CLASS_TEXT);
+            editTextMessage.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             if (inputMethodManager != null) {
                 inputMethodManager.showSoftInput(editTextMessage, InputMethodManager.SHOW_IMPLICIT);
@@ -79,10 +81,10 @@ public class ChatWithAgent extends AppCompatActivity {
         //Attachment Button
         ImageButton btnAttachFile = findViewById(R.id.btnAttachFile);
         btnAttachFile.setOnClickListener(v -> {
-            Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-            i.setType("*/*");
-            i.addCategory(Intent.CATEGORY_OPENABLE);
-            startActivityForResult(Intent.createChooser(i, "Select a file"),100);
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("*/*");
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            startActivityForResult(Intent.createChooser(intent, "Select a file"),100);
         });
 
 
@@ -100,8 +102,8 @@ public class ChatWithAgent extends AppCompatActivity {
         recyclerViewMessages = findViewById(R.id.recyclerViewMessages);
         editTextMessage = findViewById(R.id.editTextMessage);
         ImageButton buttonSend = findViewById(R.id.buttonSend);
-
         editTextMessage.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+
         // Setup RecyclerView
         messages = new ArrayList<>();
         chatAdapter = new ChatAdapter(messages);
@@ -109,14 +111,16 @@ public class ChatWithAgent extends AppCompatActivity {
         recyclerViewMessages.setAdapter(chatAdapter);
 
         // Initialize with Assistant's Opening Message
-        messages.add(new Message("Hello! I'm Talia, your virtual poultry assistant. I specialize in poultry health, diseases, cures, and smart farming techniques. How can I assist you today?", false));
+        messages.add(new Message("Hello! I'm Talia, your virtual poultry assistant. I specialize in poultry health, diseases, cures, and smart farming techniques. How can I assist you today?", false, getCurrentTime()));
         chatAdapter.notifyDataSetChanged();
 
         // Send Button Click Listener
         buttonSend.setOnClickListener(v -> {
             String userInput = editTextMessage.getText().toString().trim();
+
             if (!userInput.isEmpty()) {
-                messages.add(new Message(userInput, true)); // Add user message
+                 // Add user message
+                messages.add(new Message(userInput, true, getCurrentTime()));
                 chatAdapter.notifyDataSetChanged();
                 editTextMessage.setText("");
                 recyclerViewMessages.scrollToPosition(messages.size() - 1);
@@ -129,13 +133,26 @@ public class ChatWithAgent extends AppCompatActivity {
         });
     }
 
-    private boolean isOnline() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivityManager != null){
-            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-            return networkInfo != null && networkInfo.isConnectedOrConnecting();
+    private String getCurrentTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm ", Locale.getDefault());
+        return sdf.format(new Date());
+    }
+
+    private void sendAttachment() {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("*/*");
+        shareIntent.putExtra(Intent.EXTRA_STREAM, selectedFileUri);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
+            selectedFileUri = data.getData();
+            Objects.requireNonNull(selectedFileUri).getLastPathSegment();
+
         }
-        return false;
     }
 
     /**
@@ -145,7 +162,7 @@ public class ChatWithAgent extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
 
         String jsonRequest = "{"
-                + "\"model\":\"text-davinci-003\","
+                + "\"model\":\"gpt-3.5-turbo\","
                 + "\"prompt\":\"You are Talia, a virtual assistant focused on poultry topics such as health, diseases, cures, mitigations, and smart farming. Respond straight to the point and introduce yourself as Talia if necessary. Question: " + userInput + "\","
                 + "\"max_tokens\":150,"
                 + "\"temperature\":0.7"
@@ -163,11 +180,7 @@ public class ChatWithAgent extends AppCompatActivity {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                runOnUiThread(() -> {
-                    messages.add(new Message("I'm sorry, something went wrong. Please try again later.", false));
-                    chatAdapter.notifyDataSetChanged();
-                    recyclerViewMessages.scrollToPosition(messages.size() - 1);
-                });
+                runOnUiThread(() -> Toast.makeText(ChatWithAgent.this, "Network Error", Toast.LENGTH_SHORT).show());
             }
 
             @SuppressLint("NotifyDataSetChanged")
@@ -178,13 +191,18 @@ public class ChatWithAgent extends AppCompatActivity {
                     String aiResponse = extractResponseFromJSON(responseBody); // Parse JSON for AI response
 
                     runOnUiThread(() -> {
-                        messages.add(new Message(aiResponse, false)); // Add AI message
+                         // Add AI message
+                        messages.add(new Message(aiResponse, true, getCurrentTime()));
                         chatAdapter.notifyDataSetChanged();
                         recyclerViewMessages.scrollToPosition(messages.size() - 1);
                     });
                 } else {
+                    // Log response body for debugging
+                    String errorBody = response.body() != null ? response.body().string() : "Unknown Error";
+                    System.out.println("Error Response: " + errorBody);
+
                     runOnUiThread(() -> {
-                        messages.add(new Message("I'm sorry, I couldn't process your request. Please try again.", false));
+                        messages.add(new Message("I'm sorry, I couldn't process your request. Please try again.", false, getCurrentTime()));
                         chatAdapter.notifyDataSetChanged();
                         recyclerViewMessages.scrollToPosition(messages.size() - 1);
                     });
@@ -198,11 +216,61 @@ public class ChatWithAgent extends AppCompatActivity {
      */
     private String extractResponseFromJSON(String jsonResponse) {
         try {
-            // Use Gson or JSONObject to parse the response
+            // Parse the response JSON
             JSONObject jsonObject = new JSONObject(jsonResponse);
             return jsonObject.getJSONArray("choices").getJSONObject(0).getString("text").trim();
         } catch (Exception e) {
-            return "I'm sorry, I couldn't understand the response.";
+            return "I'm sorry, I couldn't understand the response. Error: " + e.getMessage();
         }
+    }
+
+
+
+    /**
+     * Network Connectivity.
+     */
+    private boolean isOnline() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null){
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            return networkInfo != null && networkInfo.isConnectedOrConnecting();
+        }
+        return false;
+    }
+
+    private final BroadcastReceiver networkReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            TextView tvOnline = findViewById(R.id.tvAgentStatus);
+            if (isOnline()) {
+                tvOnline.setText(R.string.online);
+            } else {
+                tvOnline.setText(R.string.offline);
+            }
+        }
+    };
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkReceiver, filter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(networkReceiver);
+    }
+
+
+
+    //ActionBar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = new MenuInflater(this);
+        inflater.inflate(R.menu.agent_chat_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }

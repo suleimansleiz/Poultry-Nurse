@@ -32,6 +32,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageViewHol
             Message message = messages.get(position);
             holder.textViewMessageAgent.setText(message.getContent());
             holder.textViewMessageUser.setText(message.getContent());
+            holder.tvTimeUser.setText(message.getTime());
+            holder.tvTimeAgent.setText(message.getTime());
             // Align messages based on user/agent
             if (message.isUser()) {
                 holder.linearLayoutAgent.setVisibility(View.GONE);
@@ -40,7 +42,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageViewHol
 //                holder.textViewMessageAgent.setBackgroundResource(R.drawable.bubble_agent);
                 holder.linearLayoutUser.setVisibility(View.GONE);
                 holder.linearLayoutAgent.setVisibility(View.VISIBLE);
-
             }
         }
 
@@ -50,7 +51,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageViewHol
         }
 
         public static class MessageViewHolder extends RecyclerView.ViewHolder {
-            TextView textViewMessageAgent, textViewMessageUser;
+            TextView textViewMessageAgent, textViewMessageUser, tvTimeUser, tvTimeAgent;
             LinearLayout linearLayoutAgent, linearLayoutUser;
 
             public MessageViewHolder(@NonNull View itemView) {
@@ -60,6 +61,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageViewHol
                 linearLayoutUser = itemView.findViewById(R.id.llMessageUser);
                 textViewMessageAgent = itemView.findViewById(R.id.tvMessageAgent);
                 textViewMessageUser = itemView.findViewById(R.id.tvMessageUser);
+                tvTimeUser = itemView.findViewById(R.id.tvTimeUser);
+                tvTimeAgent = itemView.findViewById(R.id.tvTimeAgent);
             }
         }
 

@@ -364,7 +364,7 @@ Symptoms of salmonellosis include diarrhea, closed eyes, loss of appetite, thirs
     <string name="skip_login">Skip Login</string>
     <string name="sign_up">Sign Up</string>
     <string name="forgot_details">Forgot Details</string>
-    <string name="already_have_an_account">Already have an account</string>
+    <string name="already_have_an_account">Already have an account?</string>
     <string name="create_an_account_to_save_your_poultry_details">Create an account to save your Poultry details</string>
     <string name="send_message">Send Message</string>
     <string name="text_message">Text message</string>
@@ -391,5 +391,36 @@ Symptoms of salmonellosis include diarrhea, closed eyes, loss of appetite, thirs
     <string name="copyright">copyright © P D D C 2025. All rights reserved</string>
     <string name="icon">Icon</string>
     <string name="floating_card">Floating card</string>
+    <string name="theme">Theme</string>
+    <string name="change_language">Change Language</string>
+    <string name="share_app">Invite your fellow Farmers</string>
+    <string name="rate_this_app">Rate this App</string>
+    <string name="from">from</string>
+    <string name="sleizware_development">SleizWare Development</string>
+    <string name="notifications">Notifications</string>
+    <string name="your_farm_size">Your farm size</string>
+    <string name="number_of_chicken">Number of chicken</string>
+    <string name="farm_location">Farm Location</string>
+    <string name="region">Region</string>
+    <string name="number_of_farms">Number Of farms</string>
+    <string name="support">support</string>
+    <string name="call">call</string>
+    <string name="chat">chat</string>
+    <string name="signing_in">Signing in</string>
+    <string name="signing_up">Signing Up...</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="light_mode">Light Mode</string>
+
+    <string-array name="farm_size">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
+
+    <string-array name="number_of_chicken">
+        <item>Less than 50</item>
+        <item>Between 50 and 300</item>
+        <item>More than 300</item>
+    </string-array>
 
 </resources>
