@@ -34,8 +34,8 @@
             android:layout_below="@+id/tvManageProfile"
             android:layout_margin="20dp"
             app:cardCornerRadius="15dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="@color/grey"
+            app:strokeWidth="0.5dp"
+            app:strokeColor="@color/white"
             app:cardElevation="5dp">
 
             <LinearLayout
@@ -52,24 +52,24 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/gotham_book"
                         android:text="@string/full_name"
                         android:textColor="?attr/colorOnSecondary"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         tools:ignore="SmallSp" />
 
                     <TextView
                         android:id="@+id/tvFullName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/gotham_book"
                         android:gravity="end"
                         android:textColor="?attr/colorOnSecondary"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         tools:ignore="SmallSp" />
                 </LinearLayout>
 
@@ -80,24 +80,24 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/gotham_book"
                         android:text="@string/house_name"
                         android:textColor="?attr/colorOnSecondary"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         tools:ignore="SmallSp" />
 
                     <TextView
                         android:id="@+id/tvFarmName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/gotham_book"
                         android:gravity="end"
                         android:textColor="?attr/colorOnSecondary"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         tools:ignore="SmallSp,TextContrastCheck" />
                 </LinearLayout>
 
@@ -158,8 +158,8 @@
             android:layout_margin="5dp"
             android:padding="10dp"
             android:backgroundTint="?attr/colorOnPrimary"
-            app:strokeColor="@color/grey"
-            app:strokeWidth="1dp"
+            app:strokeWidth="0.5dp"
+            app:strokeColor="@color/white"
             app:cardCornerRadius="7dp"
             app:cardElevation="3dp">
 
@@ -184,8 +184,8 @@
             android:padding="10dp"
             android:backgroundTint="?attr/colorOnPrimary"
             app:cardCornerRadius="7dp"
-            app:strokeColor="@color/grey"
-            app:strokeWidth="1dp"
+            app:strokeWidth="0.5dp"
+            app:strokeColor="@color/white"
             app:cardElevation="3dp">
 
             <TextView
@@ -208,8 +208,8 @@
             android:layout_margin="5dp"
             android:padding="10dp"
             android:backgroundTint="?attr/colorOnPrimary"
-            app:strokeColor="@color/grey"
-            app:strokeWidth="1dp"
+            app:strokeWidth="0.5dp"
+            app:strokeColor="@color/white"
             app:cardCornerRadius="7dp"
             app:cardElevation="3dp">
 
@@ -234,8 +234,8 @@
             android:padding="10dp"
             android:backgroundTint="?attr/colorOnPrimary"
             app:cardCornerRadius="7dp"
-            app:strokeColor="@color/grey"
-            app:strokeWidth="1dp"
+            app:strokeWidth="0.5dp"
+            app:strokeColor="@color/white"
             app:cardElevation="3dp">
 
             <TextView
@@ -259,8 +259,8 @@
             android:padding="10dp"
             android:backgroundTint="?attr/colorOnPrimary"
             app:cardCornerRadius="7dp"
-            app:strokeColor="@color/grey"
-            app:strokeWidth="1dp"
+            app:strokeWidth="0.5dp"
+            app:strokeColor="@color/white"
             app:cardElevation="3dp">
 
             <TextView

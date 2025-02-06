@@ -5,12 +5,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.inputmethod.InputMethodManager;
@@ -28,6 +30,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.pddc.R;
 import com.example.pddc.ui.adapters.ChatAdapter;
 import com.example.pddc.ui.classes.Message;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONObject;
 
@@ -54,10 +57,7 @@ public class ChatWithAgent extends AppCompatActivity {
     private ChatAdapter chatAdapter;
     private List<Message> messages;
 
-    private Uri selectedFileUri;
     String api_key;
-
-    private static String OPENAI_API_URL = "https://api.openai.com/v1/completions";
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
@@ -65,6 +65,8 @@ public class ChatWithAgent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_with_agent);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
         //Emoji Button
@@ -88,9 +90,6 @@ public class ChatWithAgent extends AppCompatActivity {
         });
 
 
-        //AI Integration
-        api_key = getString(R.string.openai_api_key);
-        OPENAI_API_URL = "https://api.openai.com/v1/completions";
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
             Intent intent = new Intent(ChatWithAgent.this, MainActivity.class);
@@ -110,46 +109,50 @@ public class ChatWithAgent extends AppCompatActivity {
         recyclerViewMessages.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewMessages.setAdapter(chatAdapter);
 
-        // Initialize with Assistant's Opening Message
-        messages.add(new Message("Hello! I'm Talia, your virtual poultry assistant. I specialize in poultry health, diseases, cures, and smart farming techniques. How can I assist you today?", false, getCurrentTime()));
-        chatAdapter.notifyDataSetChanged();
+        SharedPreferences displayCredentials = getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
+        String userId = displayCredentials.getString("membershipNo", null);
+
+        String agentId = "VA25-Agent-00001";
+        String chatRoomId = userId + "_" + agentId; // Unique chat room ID
+
+        // Load existing messages
 
         // Send Button Click Listener
         buttonSend.setOnClickListener(v -> {
             String userInput = editTextMessage.getText().toString().trim();
 
             if (!userInput.isEmpty()) {
-                 // Add user message
-                messages.add(new Message(userInput, true, getCurrentTime()));
-                chatAdapter.notifyDataSetChanged();
-                editTextMessage.setText("");
-                recyclerViewMessages.scrollToPosition(messages.size() - 1);
+                        // Add user message
+                        messages.add(new Message(userInput, true, getCurrentTime()));
+                        chatAdapter.notifyDataSetChanged();
+                        editTextMessage.setText("");
+                        recyclerViewMessages.scrollToPosition(messages.size() - 1);
 
-                // Send user input to AI
-                sendMessageToAI(userInput);
+                        // Send user input to AI
+                        sendMessageToAI(userInput);
+
             } else {
                 Toast.makeText(this, "Please type a message", Toast.LENGTH_SHORT).show();
             }
         });
+
+        // Initializing Assistant's Message
+        messages.add(new Message("Hello! I'm Talia, your virtual Poultry Nurse. How can I assist you today?", false, getCurrentTime()));
+        chatAdapter.notifyDataSetChanged();
     }
+
+
 
     private String getCurrentTime() {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm ", Locale.getDefault());
         return sdf.format(new Date());
     }
 
-    private void sendAttachment() {
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("*/*");
-        shareIntent.putExtra(Intent.EXTRA_STREAM, selectedFileUri);
-
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
-            selectedFileUri = data.getData();
+            Uri selectedFileUri = data.getData();
             Objects.requireNonNull(selectedFileUri).getLastPathSegment();
 
         }
@@ -162,16 +165,17 @@ public class ChatWithAgent extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
 
         String jsonRequest = "{"
-                + "\"model\":\"gpt-3.5-turbo\","
-                + "\"prompt\":\"You are Talia, a virtual assistant focused on poultry topics such as health, diseases, cures, mitigations, and smart farming. Respond straight to the point and introduce yourself as Talia if necessary. Question: " + userInput + "\","
-                + "\"max_tokens\":150,"
-                + "\"temperature\":0.7"
+                + "\"model\": \"deepseek-chat\","
+                + "\"messages\": [{\"role\": \"user\", \"content\": \"" + userInput + "\"}],"
+                + "\"temperature\": 0.7,"
+                + "\"max_tokens\": 150"
                 + "}";
 
         RequestBody body = RequestBody.create(jsonRequest, MediaType.get("application/json"));
+        String deepSeekApiKey = "YOUR_DEEPSEEK_API_KEY";
         Request request = new Request.Builder()
-                .url(OPENAI_API_URL)
-                .addHeader("Authorization", "Bearer " + api_key)
+                .url("https://api.deepseek.com/v1/chat/completions")
+                .addHeader("Authorization", "Bearer " + deepSeekApiKey)
                 .post(body)
                 .build();
 
@@ -188,18 +192,18 @@ public class ChatWithAgent extends AppCompatActivity {
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if (response.isSuccessful()) {
                     String responseBody = Objects.requireNonNull(response.body()).string();
-                    String aiResponse = extractResponseFromJSON(responseBody); // Parse JSON for AI response
+                    String aiResponse = extractResponseFromJSON(responseBody);
 
                     runOnUiThread(() -> {
-                         // Add AI message
-                        messages.add(new Message(aiResponse, true, getCurrentTime()));
+                        messages.add(new Message(aiResponse, false, getCurrentTime()));
                         chatAdapter.notifyDataSetChanged();
                         recyclerViewMessages.scrollToPosition(messages.size() - 1);
+
                     });
-                } else {
-                    // Log response body for debugging
+
+                }else {
                     String errorBody = response.body() != null ? response.body().string() : "Unknown Error";
-                    System.out.println("Error Response: " + errorBody);
+                    Log.e("DeepSeek Error", errorBody);
 
                     runOnUiThread(() -> {
                         messages.add(new Message("I'm sorry, I couldn't process your request. Please try again.", false, getCurrentTime()));
@@ -216,9 +220,8 @@ public class ChatWithAgent extends AppCompatActivity {
      */
     private String extractResponseFromJSON(String jsonResponse) {
         try {
-            // Parse the response JSON
             JSONObject jsonObject = new JSONObject(jsonResponse);
-            return jsonObject.getJSONArray("choices").getJSONObject(0).getString("text").trim();
+            return jsonObject.getJSONArray("choices").getJSONObject(0).getJSONObject("message").getString("content").trim();
         } catch (Exception e) {
             return "I'm sorry, I couldn't understand the response. Error: " + e.getMessage();
         }

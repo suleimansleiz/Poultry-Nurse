@@ -3,16 +3,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorOnPrimary"
     android:fitsSystemWindows="true"
     tools:context=".ui.fragments.HumidityFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:text="@string/fragment_humidity" />
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/tvAmmoniaIntro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/know_everything_about_humidity_here"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:layout_margin="15dp"
+            android:textColor="?attr/colorOnSecondary"
+            android:fontFamily="@font/gotham_medium"
+            android:textSize="15sp"
+            />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvHumidity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_below="@+id/tvAmmoniaIntro"
+            android:layout_centerHorizontal="true"
+            android:background="?attr/colorOnPrimary"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="10dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="0.1dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="?attr/colorOnPrimary">
+
+                <TextView
+                    android:id="@+id/tvHumidity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/gotham_book"
+                    android:text="@string/progress_humidity"
+                    android:textColor="?attr/colorOnSecondary"
+                    app:layout_constraintBottom_toTopOf="@+id/pbHumidity"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <ProgressBar
+                    android:id="@+id/pbHumidity"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_margin="10dp"
+                    android:max="100"
+                    android:progress="60"
+                    android:progressDrawable="@drawable/progressbarcolors"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <TextView
+                    android:id="@+id/tvHumidity_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/gotham_book"
+                    android:text="@string/progress_humidity_percent"
+                    android:textColor="@color/rich_black"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/pbHumidity"
+                    app:layout_constraintEnd_toEndOf="@+id/pbHumidity"
+                    app:layout_constraintStart_toStartOf="@+id/pbHumidity"
+                    app:layout_constraintTop_toTopOf="@+id/pbHumidity" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tvAmmonia_exp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/humidity_exp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/mcvHumidity"
+            android:layout_margin="13dp"
+            android:textColor="?attr/colorOnSecondary"
+            android:fontFamily="@font/gotham_book"
+            android:textSize="15sp"
+            />
+    </RelativeLayout>
 
 </RelativeLayout>

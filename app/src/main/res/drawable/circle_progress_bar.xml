@@ -18,6 +18,7 @@
                 <gradient
                     android:endColor="#25F606"
                     android:startColor="#F64209"
+                    android:centerColor="#FFC000"
                     />
             </shape>
         </rotate>

@@ -4,9 +4,10 @@ public class Message {
         private final String content;
         private final boolean isUser;
 
-        private String time;
+        private final String time;
 
-    public Message(String content, boolean isUser, String time) {
+
+    public Message(String content, boolean isUser, String time ) {
             this.content = content;
             this.isUser = isUser;
             this.time = time;

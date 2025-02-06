@@ -18,23 +18,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         layout="@layout/content_main"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        />
 
-    <com.google.android.material.appbar.AppBarLayout
+    <RelativeLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
         android:theme="@style/Theme.PDDC.NoActionBar"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorOnPrimary"
-            app:popupTheme="@style/Theme.PDDC.NoActionBar" />
-    </com.google.android.material.appbar.AppBarLayout>
+        <TextView
+            android:id="@+id/btn_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/btnmenu"
+            android:gravity="start"
+            app:drawableStartCompat="@drawable/drawer_menu_icon"
+            app:drawableTint="@color/white" />
+
+        <TextView
+            android:id="@+id/tvPHouseName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="15dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/gotham_book"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            tools:ignore="RelativeOverlap" />
+
+    </RelativeLayout>
 
     <!-- Main FAB -->
     <com.google.android.material.card.MaterialCardView

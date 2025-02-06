@@ -8,15 +8,14 @@
     android:background="?attr/colorOnPrimary"
     tools:context=".ui.activities.WelcomePage">
 
-    <ImageView
-        android:id="@+id/ivHen"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/image_hen"
-        app:srcCompat="@drawable/hen_three"
-        android:scaleType="centerCrop"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="300dp"/>
+        android:layout_above="@+id/llWelcoming"
+        android:layout_marginBottom="-30dp"
+        android:clipToPadding="false" />
+
 
     <LinearLayout
         android:id="@+id/llWelcoming"
@@ -34,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="5dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/gotham_book"
             android:text="@string/welcome"
             android:textColor="?attr/colorOnSecondary"

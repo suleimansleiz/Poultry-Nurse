@@ -3,12 +3,12 @@ package com.example.pddc.ui.activities;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.InputType;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -22,12 +22,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class LoginActivity extends AppCompatActivity {
 
     FirebaseFirestore db;
+    String farmerId, userId = "P25-Farm";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR );
 
         db = FirebaseFirestore.getInstance(); // Initialize Firestore
 
@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         et_PhoneNo.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
 
 
-        /**
+        /*
            Performing login
          **/
 
@@ -68,8 +68,16 @@ public class LoginActivity extends AppCompatActivity {
                 btn_Login.setEnabled(false);
                 btn_Login.setText(R.string.signing_in);
                 authenticateUser(houseName, phoneNo);
+                farmerId = userId + "-" + phoneNo;
+                SharedPreferences userCredPreferences = getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = userCredPreferences.edit();
+                editor.putBoolean("isLoggedIn", true);
+                editor.putString("farmerId", farmerId);
+                editor.apply();
+
             }else {
                 btn_Login.setEnabled(true);
+                btn_Login.setText(R.string.sign_in);
                 showAlertDialog("Error!", "Please check your network and try again.");
             }
         });
@@ -85,7 +93,6 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful() && !task.getResult().isEmpty()) {
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            intent.putExtra("houseName", houseName);
                             startActivity(intent);
                             finish();
                         }else {

@@ -10,375 +10,384 @@
     <ImageView
         android:id="@+id/ivHen"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="0dp"
+        android:layout_above="@+id/rlSignUp"
+        android:layout_marginBottom="-30dp"
         android:contentDescription="@string/image_hen"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/hen_one" />
+        app:srcCompat="@drawable/hen_five" />
 
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/rlSignUp"
         android:layout_width="match_parent"
-        android:layout_height="700dp"
-        android:scrollbars="none"
-        android:paddingTop="50dp"
+        android:layout_height="650dp"
         android:layout_marginTop="5dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="-10dp"
         android:background="@drawable/corner_edges"
-        tools:ignore="UselessParent,VisualLintBounds">
+        tools:ignore="VisualLintBounds">
 
-        <RelativeLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp">
+            android:paddingTop="50dp"
+            android:scrollbars="none"
+            tools:ignore="UselessParent,VisualLintBounds">
 
-            <TextView
-                android:id="@+id/tvLoginTitle"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/gotham_book"
-                android:gravity="center_horizontal"
-                android:text="@string/sign_up"
-                android:textColor="?attr/colorOnSecondary"
-                android:textSize="25sp" />
+                android:layout_marginTop="30dp">
 
-            <TextView
-                android:id="@+id/tvLoginTitleSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvLoginTitle"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/gotham_book"
-                android:gravity="center_horizontal"
-                android:text="@string/create_an_account_to_save_your_poultry_details"
-                android:textColor="@color/grey"
-                android:textSize="10sp"
-                tools:ignore="SmallSp,TextContrastCheck" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvFullName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvLoginTitleSmall"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="?attr/android:colorEdgeEffect"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="0dp">
-
-                <EditText
-                    android:id="@+id/etFullName"
+                <TextView
+                    android:id="@+id/tvLoginTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:background="@null"
-                    android:ems="30"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:fontFamily="@font/gotham_book"
-                    android:gravity="center_vertical"
-                    android:hint="@string/full_name"
-                    android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    android:padding="15dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/sign_up"
                     android:textColor="?attr/colorOnSecondary"
-                    tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
-            </com.google.android.material.card.MaterialCardView>
+                    android:textSize="25sp" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvHouseName2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cvFullName"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="?attr/android:colorEdgeEffect"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="0dp">
-
-                <EditText
-                    android:id="@+id/etHouseName"
+                <TextView
+                    android:id="@+id/tvLoginTitleSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:background="@null"
-                    android:ems="30"
+                    android:layout_below="@+id/tvLoginTitle"
+                    android:layout_marginBottom="10dp"
                     android:fontFamily="@font/gotham_book"
-                    android:gravity="center_vertical"
-                    android:hint="@string/house_name"
-                    android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    android:padding="15dp"
-                    android:textColor="?attr/colorOnSecondary"
-                    tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
-            </com.google.android.material.card.MaterialCardView>
+                    android:gravity="center_horizontal"
+                    android:text="@string/create_an_account_to_save_your_poultry_details"
+                    android:textColor="@color/grey"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp,TextContrastCheck" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cvHouseName2"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="?attr/android:colorEdgeEffect"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="0dp">
-
-                <EditText
-                    android:id="@+id/etEmail"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvFullName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:background="@null"
-                    android:drawableTint="@color/purple_700"
-                    android:ems="30"
-                    android:fontFamily="@font/gotham_book"
-                    android:gravity="center_vertical"
-                    android:hint="@string/email"
-                    android:inputType="textEmailAddress"
-                    android:minHeight="48dp"
-                    android:padding="15dp"
-                    android:textColor="?attr/colorOnSecondary"
-                    tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
-            </com.google.android.material.card.MaterialCardView>
+                    android:layout_below="@+id/tvLoginTitleSmall"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="?attr/android:colorEdgeEffect"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvPhoneNo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cvEmail"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="?attr/android:colorEdgeEffect"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="0dp">
-
-                <EditText
-                    android:id="@+id/etPhoneNo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:background="@null"
-                    android:drawableTint="@color/purple_700"
-                    android:ems="30"
-                    android:fontFamily="@font/gotham_book"
-                    android:gravity="center_vertical"
-                    android:hint="@string/phone"
-                    android:inputType="phone"
-                    android:minHeight="48dp"
-                    android:padding="15dp"
-                    android:textColor="?attr/colorOnSecondary"
-                    tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvFarmLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cvPhoneNo"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="?attr/android:colorEdgeEffect"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="0dp">
-
-                <EditText
-                    android:id="@+id/etFarmLocation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:background="@null"
-                    android:ems="30"
-                    android:fontFamily="@font/gotham_book"
-                    android:gravity="center_vertical"
-                    android:hint="@string/farm_location"
-                    android:inputType="text"
-                    android:minHeight="48dp"
-                    android:padding="15dp"
-                    android:textColor="?attr/colorOnSecondary"
-                    tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvRegion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cvFarmLocation"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="?attr/android:colorEdgeEffect"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="0dp">
-
-                <EditText
-                    android:id="@+id/etRegion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:background="@null"
-                    android:drawableTint="@color/purple_700"
-                    android:ems="30"
-                    android:fontFamily="@font/gotham_book"
-                    android:gravity="center_vertical"
-                    android:hint="@string/region"
-                    android:inputType="text"
-                    android:minHeight="48dp"
-                    android:padding="15dp"
-                    android:textColor="?attr/colorOnSecondary"
-                    tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/ddmFarmSize"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cvRegion"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="?attr/android:colorEdgeEffect"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="0dp">
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:boxStrokeWidth="1dp"
-                    android:hint="@string/your_farm_size">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/acFarmSize"
+                    <EditText
+                        android:id="@+id/etFullName"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/android:colorEdgeEffect"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="30"
                         android:fontFamily="@font/gotham_book"
-                        android:inputType="none"
+                        android:gravity="center_vertical"
+                        android:hint="@string/full_name"
+                        android:inputType="textPersonName"
+                        android:minHeight="48dp"
+                        android:padding="15dp"
                         android:textColor="?attr/colorOnSecondary"
-                        tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </com.google.android.material.card.MaterialCardView>
+                        tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
+                </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/ddmNumberOfChicken"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ddmFarmSize"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="?attr/android:colorEdgeEffect"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="0dp">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvHouseName2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:boxStrokeWidth="1dp"
-                    android:hint="@string/number_of_chicken"
+                    android:layout_below="@+id/cvFullName"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="?attr/android:colorEdgeEffect"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp">
+
+                    <EditText
+                        android:id="@+id/etHouseName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="30"
+                        android:fontFamily="@font/gotham_book"
+                        android:gravity="center_vertical"
+                        android:hint="@string/house_name"
+                        android:inputType="textPersonName"
+                        android:minHeight="48dp"
+                        android:padding="15dp"
+                        android:textColor="?attr/colorOnSecondary"
+                        tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cvHouseName2"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="?attr/android:colorEdgeEffect"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp">
+
+                    <EditText
+                        android:id="@+id/etEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:drawableTint="@color/purple_700"
+                        android:ems="30"
+                        android:fontFamily="@font/gotham_book"
+                        android:gravity="center_vertical"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:minHeight="48dp"
+                        android:padding="15dp"
+                        android:textColor="?attr/colorOnSecondary"
+                        tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvPhoneNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cvEmail"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="?attr/android:colorEdgeEffect"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp">
+
+                    <EditText
+                        android:id="@+id/etPhoneNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:drawableTint="@color/purple_700"
+                        android:ems="30"
+                        android:fontFamily="@font/gotham_book"
+                        android:gravity="center_vertical"
+                        android:hint="@string/phone"
+                        android:inputType="phone"
+                        android:minHeight="48dp"
+                        android:padding="15dp"
+                        android:textColor="?attr/colorOnSecondary"
+                        tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvFarmLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cvPhoneNo"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="?attr/android:colorEdgeEffect"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp">
+
+                    <EditText
+                        android:id="@+id/etFarmLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:ems="30"
+                        android:fontFamily="@font/gotham_book"
+                        android:gravity="center_vertical"
+                        android:hint="@string/farm_location"
+                        android:inputType="text"
+                        android:minHeight="48dp"
+                        android:padding="15dp"
+                        android:textColor="?attr/colorOnSecondary"
+                        tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvRegion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cvFarmLocation"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="?attr/android:colorEdgeEffect"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp">
+
+                    <EditText
+                        android:id="@+id/etRegion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:drawableTint="@color/purple_700"
+                        android:ems="30"
+                        android:fontFamily="@font/gotham_book"
+                        android:gravity="center_vertical"
+                        android:hint="@string/region"
+                        android:inputType="text"
+                        android:minHeight="48dp"
+                        android:padding="15dp"
+                        android:textColor="?attr/colorOnSecondary"
+                        tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/ddmFarmSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cvRegion"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="?attr/android:colorEdgeEffect"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/your_farm_size"
+                        app:boxStrokeWidth="1dp">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/acFarmSize"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/android:colorEdgeEffect"
+                            android:fontFamily="@font/gotham_book"
+                            android:inputType="none"
+                            android:textColor="?attr/colorOnSecondary"
+                            tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/ddmNumberOfChicken"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ddmFarmSize"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="?attr/android:colorEdgeEffect"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/number_of_chicken"
+                        app:boxStrokeWidth="1dp"
+                        tools:ignore="VisualLintBounds">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/acNumberOfChicken"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/android:colorEdgeEffect"
+                            android:fontFamily="@font/gotham_book"
+                            android:inputType="none"
+                            android:textColor="?attr/colorOnSecondary"
+                            tools:ignore="LabelFor,SpeakableTextPresentCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvNumberOfFarms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ddmNumberOfChicken"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="?attr/android:colorEdgeEffect"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="0dp"
                     tools:ignore="VisualLintBounds">
 
-                    <AutoCompleteTextView
-                        android:id="@+id/acNumberOfChicken"
+                    <EditText
+                        android:id="@+id/etNumberOfFarms"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/android:colorEdgeEffect"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:drawableTint="@color/purple_700"
+                        android:ems="30"
                         android:fontFamily="@font/gotham_book"
-                        android:inputType="none"
+                        android:gravity="center_vertical"
+                        android:hint="@string/number_of_farms"
+                        android:inputType="phone"
+                        android:minHeight="48dp"
+                        android:padding="15dp"
                         android:textColor="?attr/colorOnSecondary"
-                        tools:ignore="LabelFor,SpeakableTextPresentCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </com.google.android.material.card.MaterialCardView>
+                        tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
+                </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvNumberOfFarms"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ddmNumberOfChicken"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="?attr/android:colorEdgeEffect"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="0dp"
-                tools:ignore="VisualLintBounds">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_below="@+id/cvNumberOfFarms"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="?attr/colorPrimaryVariant"
+                    android:fontFamily="@font/gotham_bold"
+                    android:text="@string/sign_up"
+                    android:textAllCaps="false"
+                    android:textColor="?attr/colorSecondaryVariant"
+                    app:cornerRadius="20dp"
+                    tools:ignore="DuplicateSpeakableTextCheck,VisualLintButtonSize,VisualLintBounds" />
 
-                <EditText
-                    android:id="@+id/etNumberOfFarms"
+
+                <LinearLayout
+                    android:id="@+id/llToSignUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:background="@null"
-                    android:drawableTint="@color/purple_700"
-                    android:ems="30"
-                    android:fontFamily="@font/gotham_book"
-                    android:gravity="center_vertical"
-                    android:hint="@string/number_of_farms"
-                    android:inputType="phone"
-                    android:minHeight="48dp"
-                    android:padding="15dp"
-                    android:textColor="?attr/colorOnSecondary"
-                    tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
-            </com.google.android.material.card.MaterialCardView>
+                    android:layout_below="@+id/btnSignUp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="60dp"
+                    android:layout_marginBottom="90dp"
+                    android:orientation="horizontal"
+                    tools:ignore="VisualLintBounds">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSignUp"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_below="@+id/cvNumberOfFarms"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="?attr/colorPrimaryVariant"
-                android:fontFamily="@font/gotham_bold"
-                android:text="@string/sign_up"
-                android:textAllCaps="false"
-                android:textColor="?attr/colorSecondaryVariant"
-                app:cornerRadius="20dp"
-                tools:ignore="DuplicateSpeakableTextCheck,VisualLintButtonSize,VisualLintBounds" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/gotham_book"
+                        android:gravity="end"
+                        android:text="@string/already_have_an_account"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="15sp" />
 
-
-            <LinearLayout
-                android:id="@+id/llToSignUp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/btnSignUp"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginEnd="60dp"
-                android:layout_marginBottom="90dp"
-                android:orientation="horizontal"
-                tools:ignore="VisualLintBounds">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/gotham_book"
-                    android:gravity="end"
-                    android:text="@string/already_have_an_account"
-                    android:textColor="?attr/colorOnSecondary"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/tvToLogin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="3dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/gotham_book"
-                    android:gravity="start"
-                    android:text="@string/log_in"
-                    android:textColor="?attr/colorPrimaryVariant"
-                    android:textSize="15sp" />
-            </LinearLayout>
-        </RelativeLayout>
-    </ScrollView>
+                    <TextView
+                        android:id="@+id/tvToLogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/gotham_book"
+                        android:gravity="start"
+                        android:text="@string/log_in"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
 </RelativeLayout>

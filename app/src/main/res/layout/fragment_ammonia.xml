@@ -3,16 +3,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorOnPrimary"
     android:fitsSystemWindows="true"
     tools:context=".ui.fragments.AmmoniaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/fragment_ammonia"
-        android:layout_centerInParent="true"
-        android:gravity="center"/>
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/tvAmmoniaIntro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/know_everything_about_ammonia_here"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:layout_margin="15dp"
+            android:textColor="?attr/colorOnSecondary"
+            android:fontFamily="@font/gotham_medium"
+            android:textSize="15sp"
+            />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvAmmonia"
+            android:layout_below="@+id/tvAmmoniaIntro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:backgroundTint="?attr/colorOnPrimary"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="10dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="0.1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="30dp"
+                android:background="?attr/colorOnPrimary"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/tvAmmonia_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:fontFamily="@font/gotham_book"
+                    android:text="@string/progress_ammonia"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="15sp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/pbAmmonia"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:indeterminateOnly="false"
+                        android:progress="25"
+                        android:progressDrawable="@drawable/circle_progress_bar"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvAmmonia_inbtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gotham_medium"
+                        android:text="@string/_25_ppm"
+                        android:textColor="#189F05"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/pbAmmonia"
+                        app:layout_constraintStart_toStartOf="@+id/pbAmmonia"
+                        app:layout_constraintTop_toTopOf="@+id/pbAmmonia"
+                         />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tvAmmonia_exp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ammonia_exp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/mcvAmmonia"
+            android:layout_margin="13dp"
+            android:textColor="?attr/colorOnSecondary"
+            android:fontFamily="@font/gotham_book"
+            android:textSize="15sp"
+            tools:ignore="VisualLintLongText" />
+    </RelativeLayout>
 
 </RelativeLayout>

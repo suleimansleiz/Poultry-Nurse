@@ -1,12 +1,16 @@
 package com.example.pddc.ui.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +28,7 @@ import com.example.pddc.R;
 import com.example.pddc.databinding.ActivityMainBinding;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -37,24 +42,44 @@ public class MainActivity extends AppCompatActivity {
 
     private MaterialCardView fabChat;
     private MaterialCardView fabCall;
+    private FirebaseFirestore db;
+    TextView tvPHouseName;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int statusBarColor = ContextCompat.getColor(this, com.google.android.material.R.color.design_default_color_primary);
-        getWindow().setStatusBarColor(statusBarColor);
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
 
-        com.example.pddc.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+        TextView btnMenu = binding.appBarMain.btnMenu;
+        tvPHouseName = binding.appBarMain.tvPHouseName;
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.appBarMain.toolbar);
 
-        //        passDataToFragments(fullName, farmName, email);
-        Intent intent = getIntent();
-        String houseName = intent.getStringExtra("houseName");
+        // Open Drawer when ImageButton is clicked
+        btnMenu.setOnClickListener(v -> {
+            if (!drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.openDrawer(GravityCompat.START);
+            }
+        });
+
+        //Passing User Credentials
+        db = FirebaseFirestore.getInstance();
+
+        SharedPreferences userCredPreferences = getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
+        String farmerId = userCredPreferences.getString("farmerId", "");
+
+        if (!farmerId.isEmpty()) {
+            fetchUserDetails(farmerId);
+        }
+        tvPHouseName.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, FarmDetails.class);
+            startActivity(intent);
+        });
+
 
         // Initialize FloatingActionButtons
         fabChat = binding.appBarMain.fabChat;
@@ -76,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
         navigationView.setNavigationItemSelectedListener(item -> {
@@ -110,6 +135,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+private void fetchUserDetails(String farmerId) {
+    db.collection("Users").document(farmerId)
+            .get()
+            .addOnSuccessListener(documentSnapshot -> {
+                if (documentSnapshot.exists()) {
+                    String houseName = documentSnapshot.getString("houseName");
+
+                    tvPHouseName.setText(houseName);
+                } else {
+                    Toast.makeText(MainActivity.this, "Error fetching Details", Toast.LENGTH_SHORT).show();
+                }
+            })
+            .addOnFailureListener(e -> Log.e("Firestore", "Error fetching data", e));
+}
 
     private void onFabSupportAgentBtnClicked() {
         setVisibility(clicked);
@@ -172,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
     }
+
 
     @Override
     public void onBackPressed() {

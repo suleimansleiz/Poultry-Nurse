@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+   <androidx.cardview.widget.CardView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:padding="5dp"
+       app:cardCornerRadius="10dp"
+       android:layout_margin="5dp"
+       android:elevation="5dp"
+       app:cardBackgroundColor="?attr/colorOnContainer"
+       tools:ignore="PrivateResource">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/tvAIName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:drawablePadding="10dp"
+                android:textColor="?attr/colorOnSecondary"
+                android:text="@string/batch_one"
+                android:textSize="15sp"
+                android:fontFamily="@font/gotham_bold" />
+
+            <TextView
+                android:id="@+id/tvChicksAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/tvAIName"
+                android:layout_margin="10dp"
+                android:text="@string/_2_weeks"
+                android:fontFamily="@font/gotham_bold"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tvRecyclerNote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/tvArrowForward"
+                android:layout_margin="10dp"
+                android:text="@string/_06_12_2025"
+                android:fontFamily="@font/gotham_book"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                tools:ignore="RelativeOverlap" />
+
+            <TextView
+                android:id="@+id/tvChicksNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:layout_below="@+id/tvAIName"
+                android:text="@string/_20_chicks"
+                android:fontFamily="@font/gotham_book"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+
+            <ImageButton
+                android:id="@+id/tvArrowForward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/colorOnContainer"
+                android:src="@drawable/edit_icon"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                app:tint="?attr/colorOnSecondary"
+                tools:ignore="ContentDescription,PrivateResource,RelativeOverlap,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        </RelativeLayout>
+
+   </androidx.cardview.widget.CardView>
+
+</LinearLayout>

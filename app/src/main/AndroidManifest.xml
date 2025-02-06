@@ -26,6 +26,9 @@
         android:theme="@style/Theme.PDDC"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activities.FarmDetails"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.ProfileEditActivity"
             android:exported="false" />
         <activity
@@ -57,7 +60,7 @@
             android:name=".ui.activities.InnerNotification"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.Notifications"
+            android:name=".ui.activities.BatchesActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.MainActivity"

@@ -9,7 +9,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.InputType;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
@@ -34,6 +33,8 @@ public class SignUpActivity extends AppCompatActivity {
     ArrayAdapter<String> adapterFarmSize, adapterNumberOfChicken;
     private FirebaseFirestore db;
 
+    String idLetter = "P25-Farm", membershipNo;
+
     String selectedFarmSize, selectedChickenNo;
 
     @SuppressLint("MissingInflatedId")
@@ -42,7 +43,6 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR );
 
         //AutoComplete Input Field.
         acFarmSize = findViewById(R.id.acFarmSize);
@@ -77,33 +77,40 @@ public class SignUpActivity extends AppCompatActivity {
         EditText etEmail = findViewById(R.id.etEmail);
         EditText etPhoneNo = findViewById(R.id.etPhoneNo);
         EditText etRegion = findViewById(R.id.etRegion);
+        EditText etFarmLocation = findViewById(R.id.etFarmLocation);
         EditText etNumberOfFarms = findViewById(R.id.etNumberOfFarms);
 
         etFullName.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         etHouseName.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         etPhoneNo.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         etRegion.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        etFarmLocation.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
 
         //Performing SignUp
         MaterialButton btnSignUp = findViewById(R.id.btnSignUp);
         btnSignUp.setOnClickListener(v -> {
+            String userId = idLetter + "-";
             String fullName = etFullName.getText().toString().trim();
             String houseName = etHouseName.getText().toString().trim();
             String email = etEmail.getText().toString().trim();
             String phoneNo = etPhoneNo.getText().toString().trim();
             String region = etRegion.getText().toString().trim();
+            String farmLocation = etFarmLocation.getText().toString().trim();
             String numberOfFarms = etNumberOfFarms.getText().toString().trim();
             String farmSize = selectedFarmSize.trim();
             String chickenNo = selectedChickenNo.trim();
+            membershipNo = userId + phoneNo;
 
 
-            if (houseName.isEmpty() || fullName.isEmpty() || email.isEmpty() || phoneNo.isEmpty() || region.isEmpty() || numberOfFarms.isEmpty() || chickenNo.isEmpty() || farmSize.isEmpty()){
+            if (houseName.isEmpty() || fullName.isEmpty() || email.isEmpty() || farmLocation.isEmpty() || phoneNo.isEmpty() || region.isEmpty() || numberOfFarms.isEmpty() || chickenNo.isEmpty() || farmSize.isEmpty()){
                 showAlertDialog("Please fill all the required information.");
             }else if (isOnline()) {
                 btnSignUp.setEnabled(false);
                 btnSignUp.setText(R.string.signing_up);
+                checkIfUserExists(membershipNo, userId, fullName, houseName, email, phoneNo, region, farmLocation, farmSize, chickenNo, numberOfFarms);
             } else {
                 btnSignUp.setEnabled(true);
+                btnSignUp.setText(R.string.sign_up);
                 showAlertDialog("Please check your network and try again");
             }
         });
@@ -119,35 +126,40 @@ public class SignUpActivity extends AppCompatActivity {
                 .show();
     }
 
-    private void checkIfUserExists(String fullName, String houseName, String email, String phoneNo, String region, String farmSize, String chickenNo, String numberOfFarms) {
+    private void checkIfUserExists(String membershipNo, String userId, String fullName, String houseName, String email, String phoneNo, String region, String farmLocation, String farmSize, String chickenNo, String numberOfFarms) {
+        this.membershipNo = membershipNo;
         CollectionReference usersRef = db.collection("Users");
 
         usersRef
                 .whereEqualTo("email", email)
+                .whereEqualTo("phoneNo", phoneNo)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful() && !task.getResult().isEmpty()) {
-                        showAlertDialog("An account with this email already exists!");
+                        showAlertDialog("An account with these credentials already exists!");
                     } else {
-                        saveUserDetails(fullName, houseName, email, phoneNo, region, farmSize, chickenNo, numberOfFarms);
+                        saveUserDetails(userId, fullName, houseName, email, phoneNo, region, farmLocation, farmSize, chickenNo, numberOfFarms);
                     }
                 })
                 .addOnFailureListener(e -> Toast.makeText(SignUpActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
-    private void saveUserDetails(String fullName, String houseName, String email, String phoneNo, String region, String farmSize, String chickenNo, String numberOfFarms) {
+    private void saveUserDetails(String userId, String fullName, String houseName, String email, String phoneNo, String region, String farmLocation, String farmSize, String chickenNo, String numberOfFarms) {
         Map<String, Object> user = new HashMap<>();
+        user.put("membershipNo", membershipNo);
         user.put("fullName", fullName);
         user.put("houseName", houseName);
         user.put("email", email);
         user.put("phoneNo", phoneNo);
+        user.put("farmLocation", farmLocation);
         user.put("region", region);
         user.put("farmSize", farmSize);
         user.put("chickenNo", chickenNo);
         user.put("numberOfFarms", numberOfFarms);
 
         db.collection("Users")
-                .add(user)
+                .document(userId + phoneNo)
+                .set(user)
                 .addOnSuccessListener(documentReference -> {
                     Toast.makeText(SignUpActivity.this, "Account Created Successfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(SignUpActivity.this, LoginActivity.class));

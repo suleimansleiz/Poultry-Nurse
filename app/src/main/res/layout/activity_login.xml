@@ -10,166 +10,177 @@
     <ImageView
         android:id="@+id/ivHen"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rlLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-30dp"
         android:contentDescription="@string/image_hen"
-        app:srcCompat="@drawable/hen_one"
+        app:srcCompat="@drawable/hen_three"
         android:scaleType="centerCrop"
         android:layout_alignParentTop="true"
         />
 
     <RelativeLayout
+        android:id="@+id/rlLogin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="600dp"
         tools:ignore="UselessParent"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="-10dp"
         android:background="@drawable/corner_edges">
-        <TextView
-            android:id="@+id/tvLoginTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:layout_marginBottom="10dp"
-            android:text="@string/log_in_title"
-            android:textSize="25sp"
-            android:textColor="?attr/colorOnSecondary"
-            android:fontFamily="@font/gotham_book"
-            android:gravity="center_horizontal"/>
 
-        <TextView
-            android:id="@+id/tvLoginTitleSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvLoginTitle"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/gotham_book"
-            android:gravity="center_horizontal"
-            android:text="@string/login_to_continue"
-            android:textColor="@color/grey"
-            android:textSize="10sp"
-            tools:ignore="SmallSp,TextContrastCheck" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cvHouseName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvLoginTitleSmall"
-            android:layout_marginTop="50dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            app:cardElevation="0dp"
-            android:backgroundTint="?attr/android:colorEdgeEffect"
-            app:cardCornerRadius="15dp">
-
-            <EditText
-                android:id="@+id/etHouseName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:background="@null"
-                android:textColor="?attr/colorOnSecondary"
-                android:ems="30"
-                android:hint="@string/house_name"
-                android:padding="15dp"
-                android:fontFamily="@font/gotham_book"
-                android:gravity="center_vertical"
-                android:inputType="textPersonName"
-                android:minHeight="48dp"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </com.google.android.material.card.MaterialCardView>
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cvEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/cvHouseName"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            app:cardElevation="0dp"
-            android:backgroundTint="?attr/android:colorEdgeEffect"
-            app:cardCornerRadius="15dp">
-
-            <EditText
-                android:id="@+id/etPhoneNo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:background="@null"
-                android:ems="30"
-                android:fontFamily="@font/gotham_book"
-                android:gravity="center_vertical"
-                android:hint="@string/phone"
-                android:inputType="phone"
-                android:minHeight="48dp"
-                android:padding="15dp"
-                android:textColor="?attr/colorOnSecondary"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <TextView
-            android:id="@+id/tvForgetDetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/cvEmail"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="30dp"
-            android:fontFamily="@font/gotham_book"
-            android:gravity="end"
-            android:text="@string/forgot_details"
-            android:textColor="?attr/colorPrimaryVariant"
-            android:textSize="10sp"
-            tools:ignore="SmallSp" />
-
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="@string/log_in"
-            android:textColor="?attr/colorSecondaryVariant"
-            android:textAllCaps="false"
-            android:layout_below="@+id/tvForgetDetails"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:fontFamily="@font/gotham_bold"
-            android:backgroundTint="?attr/colorPrimaryVariant"
-            app:cornerRadius="20dp" />
-
-        <LinearLayout
-            android:id="@+id/llToSignUp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="60dp"
-            android:layout_marginEnd="60dp"
-            android:layout_below="@+id/btnLogin"
-            android:layout_marginBottom="30dp"
-            android:layout_marginTop="50dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvLoginTitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_marginTop="70dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/log_in_title"
+                android:textSize="25sp"
+                android:textColor="?attr/colorOnSecondary"
+                android:fontFamily="@font/gotham_book"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/tvLoginTitleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvLoginTitle"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/gotham_book"
+                android:gravity="center_horizontal"
+                android:text="@string/login_to_continue"
+                android:textColor="@color/grey"
+                android:textSize="10sp"
+                tools:ignore="ObsoleteLayoutParam,SmallSp,TextContrastCheck" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvHouseName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvLoginTitleSmall"
+                android:layout_marginTop="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:cardElevation="0dp"
+                android:backgroundTint="?attr/android:colorEdgeEffect"
+                app:cardCornerRadius="15dp"
+                tools:ignore="ObsoleteLayoutParam">
+
+                <EditText
+                    android:id="@+id/etHouseName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@null"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:ems="30"
+                    android:hint="@string/house_name"
+                    android:padding="15dp"
+                    android:fontFamily="@font/gotham_book"
+                    android:gravity="center_vertical"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cvHouseName"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:cardElevation="0dp"
+                android:backgroundTint="?attr/android:colorEdgeEffect"
+                app:cardCornerRadius="15dp"
+                tools:ignore="ObsoleteLayoutParam">
+
+                <EditText
+                    android:id="@+id/etPhoneNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@null"
+                    android:ems="30"
+                    android:fontFamily="@font/gotham_book"
+                    android:gravity="center_vertical"
+                    android:hint="@string/phone"
+                    android:inputType="phone"
+                    android:minHeight="48dp"
+                    android:padding="15dp"
+                    android:textColor="?attr/colorOnSecondary"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tvForgetDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cvEmail"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="30dp"
                 android:fontFamily="@font/gotham_book"
                 android:gravity="end"
-                android:text="@string/don_t_have_an_account"
-                android:textColor="?attr/colorOnSecondary"
-                android:textSize="15sp" />
+                android:text="@string/forgot_details"
+                android:textColor="?attr/colorPrimaryVariant"
+                android:textSize="10sp"
+                tools:ignore="ObsoleteLayoutParam,SmallSp" />
 
-            <TextView
-                android:id="@+id/tvToSignUp"
-                android:layout_width="wrap_content"
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="@string/log_in"
+                android:textColor="?attr/colorSecondaryVariant"
+                android:textAllCaps="false"
+                android:layout_below="@+id/tvForgetDetails"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/gotham_bold"
+                android:backgroundTint="?attr/colorPrimaryVariant"
+                app:cornerRadius="20dp"
+                tools:ignore="ObsoleteLayoutParam" />
+
+            <LinearLayout
+                android:id="@+id/llToSignUp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/sign_up"
-                android:layout_marginStart="3dp"
-                android:fontFamily="@font/gotham_book"
-                android:textSize="15sp"
-                android:gravity="start"
-                android:layout_weight="1"
-                android:textColor="?attr/colorPrimaryVariant"/>
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:layout_marginStart="60dp"
+                android:layout_marginEnd="60dp"
+                android:layout_below="@+id/btnLogin"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="50dp"
+                tools:ignore="ObsoleteLayoutParam">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/gotham_book"
+                    android:gravity="end"
+                    android:text="@string/don_t_have_an_account"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tvToSignUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sign_up"
+                    android:layout_marginStart="3dp"
+                    android:fontFamily="@font/gotham_book"
+                    android:textSize="15sp"
+                    android:gravity="start"
+                    android:layout_weight="1"
+                    android:textColor="?attr/colorPrimaryVariant"/>
+            </LinearLayout>
+
 
     </RelativeLayout>
 </RelativeLayout>

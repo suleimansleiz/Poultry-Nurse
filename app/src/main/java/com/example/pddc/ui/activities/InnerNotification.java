@@ -32,7 +32,7 @@ public class InnerNotification extends AppCompatActivity {
 
         TextView tv_ArrowBack_Note_in = findViewById(tvArrowBack_Note_in);
         tv_ArrowBack_Note_in.setOnClickListener(v -> {
-            Intent intent = new Intent(InnerNotification.this, Notifications.class);
+            Intent intent = new Intent(InnerNotification.this, BatchesActivity.class);
             startActivity(intent);
             finishAffinity();
         });

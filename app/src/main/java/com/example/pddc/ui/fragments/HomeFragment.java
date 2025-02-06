@@ -1,67 +1,38 @@
 package com.example.pddc.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.pddc.R;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
+import com.example.pddc.ui.activities.BatchesActivity;
+import com.google.android.material.card.MaterialCardView;
 
 public class HomeFragment extends Fragment {
 
-    TextView tvFarmName, tvFullName;
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+//        //Passing User Credentials
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-        //Passing FarmName
-        if (getArguments() != null) {
-            String fullName = getArguments().getString("fullName");
-            String farmName = getArguments().getString("houseName");
+        //Navigate to Profile Editing Page
 
-            tvFarmName = requireView().findViewById(R.id.tvPHouseName);
-            tvFarmName.setText(farmName);
-            tvFullName = requireView().findViewById(R.id.tvUserName);
-            tvFullName.setText(fullName);
-        }
-
-
-        TextView tv_Day = rootView.findViewById(R.id.tvDay);
-        TextView tv_Date = rootView.findViewById(R.id.tvDate);
-
-
-
-
-        //Current day
-        int dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
-
-        //Current date
-        String dayOfWeekString = getDayOfWeekString(dayOfWeek);
-
-        //Date format
-        java.lang.String dateFormat = "d MMMM, yyyy";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat, Locale.getDefault());
-        String dateString = simpleDateFormat.format(Calendar.getInstance().getTime());
-
-        //Updating day and date.
-        tv_Day.setText(dayOfWeekString);
-        tv_Date.setText(dateString);
+        MaterialCardView mcvBatches = rootView.findViewById(R.id.mcvBatches);
+        mcvBatches.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), BatchesActivity.class);
+            startActivity(intent);
+        });
 
         return rootView;
-    }
-
-    private String getDayOfWeekString(int dayOfWeek) {
-            String[] daysOfWeek = {"Sunday,","Monday,","Tuesday,","Wednesday,","Thursday,","Friday,","Saturday,"};
-        return daysOfWeek[dayOfWeek -1];
     }
 
     @Override

@@ -40,8 +40,8 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.2.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
-    implementation("androidx.navigation:navigation-fragment:2.8.5")
-    implementation("androidx.navigation:navigation-ui:2.8.5")
+    implementation("androidx.navigation:navigation-fragment:2.8.6")
+    implementation("androidx.navigation:navigation-ui:2.8.6")
     implementation("androidx.preference:preference:1.2.1")
     implementation("com.google.android.datatransport:transport-api:4.0.0")
     implementation("androidx.activity:activity:1.10.0")
@@ -56,6 +56,7 @@ dependencies {
     implementation ("androidx.emoji2:emoji2:1.5.0")
     implementation ("androidx.emoji2:emoji2-views:1.5.0")
     implementation ("androidx.emoji2:emoji2-views-helper:1.5.0")
+    implementation ("androidx.viewpager2:viewpager2:1.1.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")

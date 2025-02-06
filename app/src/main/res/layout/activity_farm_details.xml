@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.activities.FarmDetails">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbFarmDetails"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/Theme.PDDC.PopupOverlay">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:background="?attr/colorPrimary"
+            android:contentDescription="BackBtn"
+            android:src="@drawable/arrow_back_icon"
+            app:tint="@color/white"
+            tools:ignore="HardcodedText,TouchTargetSizeCheck,ImageContrastCheck" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/tvDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="3dp"
+                android:fontFamily="@font/gotham_book"
+                android:text="@string/sunday"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="3dp"
+                android:fontFamily="@font/gotham_book"
+                android:text="@string/_31_march_2024"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:ignore="TextContrastCheck" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tbFarmDetails"
+        android:orientation="vertical"
+        android:background="?attr/colorOnPrimary">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/your_farm_details"
+            android:textColor="?attr/colorOnSecondary"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/gotham_book"
+            android:textSize="25sp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="10dp"
+            app:cardCornerRadius="15dp"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:background="?attr/colorOnPrimary">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/personal_details"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/gotham_book"
+                    android:textSize="20sp"/>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/grey"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="15dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/membership_number"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
+                        android:fontFamily="@font/gotham_book"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/membershipNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:gravity="start"
+                        android:fontFamily="@font/gotham_bold"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="15dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/farm_name"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
+                        android:fontFamily="@font/gotham_book"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/farmName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:gravity="start"
+                        android:fontFamily="@font/gotham_bold"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="15dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/your_full_name"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
+                        android:fontFamily="@font/gotham_book"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/fullName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:gravity="start"
+                        android:fontFamily="@font/gotham_bold"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="15dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/your_email_address"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
+                        android:fontFamily="@font/gotham_book"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:gravity="start"
+                        android:fontFamily="@font/gotham_bold"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="15dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/phone_number"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
+                        android:fontFamily="@font/gotham_book"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/phoneNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:gravity="start"
+                        android:fontFamily="@font/gotham_bold"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="15dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/your_farm_location"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
+                        android:fontFamily="@font/gotham_book"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/farmLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:gravity="start"
+                        android:fontFamily="@font/gotham_bold"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="15dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/farm_region"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
+                        android:fontFamily="@font/gotham_book"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/region"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:gravity="start"
+                        android:fontFamily="@font/gotham_bold"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="15dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no_of_chicken"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
+                        android:fontFamily="@font/gotham_book"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/chickenNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:gravity="start"
+                        android:fontFamily="@font/gotham_bold"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="15dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/farm_size"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
+                        android:fontFamily="@font/gotham_book"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/farmSize"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:gravity="start"
+                        android:fontFamily="@font/gotham_bold"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="15dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no_of_farms"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:gravity="end"
+                        android:fontFamily="@font/gotham_book"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/noOfFarms"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:gravity="start"
+                        android:fontFamily="@font/gotham_bold"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chicken_batches"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:gravity="center_horizontal"
+                    android:layout_margin="20dp"
+                    android:fontFamily="@font/gotham_book"
+                    android:textSize="20sp"/>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/grey"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/batch_unavailable"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/gotham_book"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</RelativeLayout>

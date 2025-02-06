@@ -10,25 +10,31 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 import com.example.pddc.R;
 import com.example.pddc.ui.activities.ProfileEditActivity;
+import com.example.pddc.ui.activities.WelcomePage;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
 
 
 public class SettingsFragment extends Fragment {
     AlertDialog.Builder builder;
+    TextView tvFullName, tvFarmName;
+    private FirebaseFirestore db;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,6 +45,20 @@ public class SettingsFragment extends Fragment {
         View rootView =  inflater.inflate(R.layout.fragment_settings, container, false);
 
 
+        //Passing User Credentials
+        db = FirebaseFirestore.getInstance();
+
+        tvFullName = rootView.findViewById(R.id.tvFullName);
+        tvFarmName = rootView.findViewById(R.id.tvFarmName);
+
+        SharedPreferences userCredPreferences = requireContext().getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
+        String farmerId = userCredPreferences.getString("farmerId", "");
+
+        if (!farmerId.isEmpty()) {
+            fetchUserDetails(farmerId);
+        }
+
+
         //Navigate to Profile Editing Page
         MaterialButton btn_EditProfile = rootView.findViewById(R.id.btnEditProfile);
         btn_EditProfile.setOnClickListener(v -> {
@@ -46,9 +66,12 @@ public class SettingsFragment extends Fragment {
             startActivity(intent);
         });
 
+        //Logging out
+        MaterialButton mbLogout = rootView.findViewById(R.id.mbLogout);
+        mbLogout.setOnClickListener(v -> handleLogOut());
+
 
         //Handling General Settings
-
 
         MaterialCardView mcvShareApp = rootView.findViewById(R.id.mcvShareApp);
         MaterialCardView mcvRateApp = rootView.findViewById(R.id.mcvRateApp);
@@ -61,6 +84,24 @@ public class SettingsFragment extends Fragment {
         mcvRateApp.setOnClickListener(v -> rateApp());
 
         return rootView;
+    }
+
+    /** Fetching details from db **/
+    private void fetchUserDetails(String farmerId) {
+        db.collection("Users").document(farmerId)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        String fullName = documentSnapshot.getString("fullName");
+                        String houseName = documentSnapshot.getString("houseName");
+
+                        tvFullName.setText(fullName);
+                        tvFarmName.setText(houseName);
+                    } else {
+                        Log.d("Firestore", "No such document");
+                    }
+                })
+                .addOnFailureListener(e -> Log.e("Firestore", "Error fetching data", e));
     }
 
     /**
@@ -81,8 +122,6 @@ public class SettingsFragment extends Fragment {
         RadioButton rbDarkMode = dialogView.findViewById(R.id.rbDarkMode);
         RadioButton rbLightMode = dialogView.findViewById(R.id.rbLightMode);
 
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Select Theme")
                 .setView(dialogView)
                 .setCancelable(true)
@@ -95,12 +134,34 @@ public class SettingsFragment extends Fragment {
                     }
                 })
                 .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
-
-        // Show the dialog
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
+
+    /**
+     Handling Logout
+     **/
+    private void handleLogOut() {
+        builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Wait")
+                .setMessage("Are you sure you want to logout")
+        .setPositiveButton("Yes", (dialog, which) -> {
+            SharedPreferences preferences = requireContext().getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.clear(); // Clear all saved data
+            editor.apply();
+            Intent intent = new Intent(getActivity(), WelcomePage.class);
+            startActivity(intent);
+        })
+        .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
+        .setCancelable(true);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+
+
+    }
 
     private void shareApp() {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);

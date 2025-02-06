@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="?attr/colorPrimary"
+    tools:context=".ui.activities.BatchesActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/ablNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.PDDC.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.PDDC.PopupOverlay" >
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_margin="5dp"
+                android:background="?attr/colorPrimary"
+                android:contentDescription="BackBtn"
+                android:src="@drawable/arrow_back_icon"
+                app:tint="@color/white"
+                tools:ignore="HardcodedText,TouchTargetSizeCheck,ImageContrastCheck" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp">
+
+                <TextView
+                    android:id="@+id/tvDay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="3dp"
+                    android:fontFamily="@font/gotham_book"
+                    android:text="@string/sunday"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    tools:ignore="TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="3dp"
+                    android:fontFamily="@font/gotham_book"
+                    android:text="@string/_31_march_2024"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    tools:ignore="TextContrastCheck" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ablNotification"
+        android:background="?attr/colorOnPrimary">
+
+        <LinearLayout
+            android:id="@+id/llBatchesHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:text="@string/batches"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="20sp"
+                android:fontFamily="@font/gotham_book"/>
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="?attr/colorOnPrimary"
+                android:contentDescription="@string/addbtn"
+                android:src="@drawable/add_icon"
+                app:tint="?attr/colorOnSecondary"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/llBatchesHeader"/>
+    </RelativeLayout>
+</RelativeLayout>

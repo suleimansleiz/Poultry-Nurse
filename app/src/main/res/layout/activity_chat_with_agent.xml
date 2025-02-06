@@ -45,8 +45,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/white"
                 android:contentDescription="@string/agent_image"
-                android:src="@drawable/support_agent_icon"
-                app:tint="@color/teal_500" />
+                android:src="@drawable/agent" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -76,8 +75,6 @@
                 android:text="@string/online"
                 android:textColor="@color/white" />
         </LinearLayout>
-
-
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView

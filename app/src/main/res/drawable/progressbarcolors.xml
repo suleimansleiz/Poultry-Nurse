@@ -13,6 +13,7 @@
                 <gradient
                     android:endColor="#F64209"
                     android:startColor="#25F606"
+                    android:centerColor="#FFC000"
                     android:useLevel="false" />
                 <corners android:radius="10dp" />
             </shape>

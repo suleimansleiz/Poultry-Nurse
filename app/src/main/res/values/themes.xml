@@ -15,6 +15,9 @@
         <!-- Customize your theme here. -->
         <item name="android:colorEdgeEffect">@color/white_bluish</item>
         <item name="android:colorAccent">@color/purple_700</item>
+        <item name="action">@color/moccasin</item>
+        <item name="colorContainer">@color/light_pink</item>
+        <item name="colorOnContainer">@color/misty_rose</item>
     </style>
 
     <style name="Theme.PDDC.NoActionBar">

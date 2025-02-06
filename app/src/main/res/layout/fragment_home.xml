@@ -8,148 +8,192 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.fragments.HomeFragment">
 
-    <ImageView
-        android:id="@+id/ivHen"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:contentDescription="@string/image_hen"
-        app:srcCompat="@drawable/hen_two"
-        android:scaleType="centerCrop"
-        android:layout_alignParentTop="true" />
-
-    <RelativeLayout
-        android:id="@+id/rlTopContainer"
+    <LinearLayout
+        android:id="@+id/llActions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="70dp"
+        android:orientation="vertical"
         android:padding="5dp">
 
         <TextView
-            android:id="@+id/tvPHouseName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/gotham_ultra"
-            android:gravity="center_horizontal"
-            android:textColor="@color/purple_700"
-            android:textSize="25sp"
+            android:layout_margin="15dp"
+            android:fontFamily="@font/gotham_book"
+            android:text="@string/actions"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="18sp"
+            android:textStyle="bold"
             tools:ignore="TextContrastCheck" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvPHouseName"
-            android:layout_margin="5dp"
-            android:baselineAligned="false"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcvSchedules"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:padding="5dp">
-
-                <TextView
-                    android:id="@+id/tvHello"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/gotham_book"
-                    android:gravity="start"
-                    android:text="@string/hello"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    tools:ignore="SmallSp" />
-
-                <TextView
-                    android:id="@+id/tvUserName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:fontFamily="@font/gotham_bold"
-                    android:gravity="start"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="15sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:padding="5dp">
+                android:backgroundTint="?attr/colorContainer"
+                android:elevation="5dp"
+                app:cardCornerRadius="10dp"
+                app:strokeColor="?attr/colorContainer"
+                app:strokeWidth="0.5dp"
+                tools:ignore="PrivateResource">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tvToday"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_margin="5dp"
                         android:fontFamily="@font/gotham_book"
-                        android:gravity="center"
-                        android:text="@string/today_is"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-                        tools:ignore="SmallSp,TextContrastCheck" />
+                        android:text="@string/schedules"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvDay"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/gotham_bold"
-                        android:gravity="start"
-                        android:text="@string/sunday"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        tools:ignore="TextContrastCheck" />
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/gotham_book"
+                        android:text="@string/schedules_exp"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="12sp" />
                 </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:id="@+id/tvDate"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcvBatches"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="?attr/colorOnContainer"
+                android:elevation="5dp"
+                app:cardCornerRadius="10dp"
+                app:strokeColor="?attr/colorOnContainer"
+                app:strokeWidth="0.5dp"
+                tools:ignore="PrivateResource">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:fontFamily="@font/gotham_bold"
-                    android:gravity="center"
-                    android:text="@string/_31_march_2024"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    tools:ignore="TextContrastCheck" />
-            </LinearLayout>
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/gotham_book"
+                        android:text="@string/batches"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/gotham_book"
+                        android:text="@string/batch_exp"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
-    </RelativeLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvReport"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:elevation="5dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            app:cardCornerRadius="10dp"
+            app:strokeColor="?attr/action"
+            app:strokeWidth="0.5dp"
+            android:backgroundTint="?attr/action"
+            tools:ignore="PrivateResource">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/gotham_book"
+                    android:textStyle="bold"
+                    android:layout_margin="5dp"
+                    android:textColor="?attr/colorOnSecondary"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_exp"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/gotham_book"
+                    android:layout_margin="5dp"
+                    android:textColor="?attr/colorOnSecondary"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llActions"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="-10dp"
-        android:paddingTop="20dp"
+        android:layout_marginBottom="-8dp"
         android:background="@drawable/corner_edges"
+        android:paddingTop="20dp"
         android:scrollbars="none">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:ignore="VisualLintBounds"
             android:layout_marginBottom="50dp"
-            android:layout_marginTop="20dp">
+            tools:ignore="VisualLintBounds">
+
+            <TextView
+                android:id="@+id/tvQuickLinks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/gotham_book"
+                android:text="@string/quick_links"
+                android:textColor="?attr/colorPrimaryVariant"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
 
             <LinearLayout
                 android:id="@+id/llQuickTabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/tvQuickLinks"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:baselineAligned="false"
@@ -172,7 +216,8 @@
                         android:layout_gravity="center"
                         android:contentDescription="@string/icon"
                         android:src="@drawable/monitoring_icon"
-                        app:tint="?attr/colorPrimaryVariant" />
+                        app:tint="?attr/colorPrimaryVariant"
+                        tools:ignore="ImageContrastCheck" />
 
                     <TextView
                         android:id="@+id/tvMonitor"
@@ -201,7 +246,8 @@
                         android:layout_gravity="center"
                         android:contentDescription="@string/icon"
                         android:src="@drawable/detections_icon"
-                        app:tint="?attr/colorPrimaryVariant" />
+                        app:tint="?attr/colorPrimaryVariant"
+                        tools:ignore="ImageContrastCheck" />
 
                     <TextView
                         android:id="@+id/tvDetections"
@@ -230,7 +276,8 @@
                         android:layout_gravity="center"
                         android:contentDescription="@string/icon"
                         android:src="@drawable/vaccines_icon"
-                        app:tint="?attr/colorPrimaryVariant" />
+                        app:tint="?attr/colorPrimaryVariant"
+                        tools:ignore="ImageContrastCheck" />
 
                     <TextView
                         android:id="@+id/tvVaccines"
@@ -260,7 +307,8 @@
                         android:layout_gravity="center"
                         android:contentDescription="@string/icon"
                         android:src="@drawable/cleaning_icon"
-                        app:tint="?attr/colorPrimaryVariant" />
+                        app:tint="?attr/colorPrimaryVariant"
+                        tools:ignore="ImageContrastCheck" />
 
                     <TextView
                         android:id="@+id/tvCleanliness"
@@ -293,29 +341,27 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rlSeparator"
                 android:layout_marginTop="15dp"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/gotham_bold"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/gotham_book"
                     android:text="@string/poultry_house_environment"
                     android:textColor="?attr/colorPrimaryVariant"
-                    android:textSize="15sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:ignore="TextContrastCheck" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_margin="20dp"
                     android:backgroundTint="?attr/colorOnPrimary"
                     app:cardCornerRadius="15dp"
-                    app:cardElevation="20dp"
+                    app:cardElevation="10dp"
                     app:strokeColor="@color/white"
                     app:strokeWidth="0.1dp">
 
@@ -348,7 +394,7 @@
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
                                 android:indeterminateOnly="false"
-                                android:progress="30"
+                                android:progress="25"
                                 android:progressDrawable="@drawable/circle_progress_bar"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -360,14 +406,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/gotham_medium"
-                                android:text="30%"
+                                android:text="@string/_25_ppm"
                                 android:textColor="#189F05"
-                                android:textSize="20sp"
+                                android:textSize="16sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="@+id/pbAmmonia"
                                 app:layout_constraintStart_toStartOf="@+id/pbAmmonia"
-                                app:layout_constraintTop_toTopOf="@+id/pbAmmonia"
-                                tools:ignore="HardcodedText" />
+                                app:layout_constraintTop_toTopOf="@+id/pbAmmonia" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -380,11 +425,14 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_weight="1"
-                        android:background="?attr/colorOnPrimary"
+                        android:backgroundTint="?attr/colorOnPrimary"
                         app:cardCornerRadius="15dp"
-                        app:cardElevation="20dp"
+                        app:cardElevation="10dp"
                         app:strokeColor="@color/white"
                         app:strokeWidth="0.1dp">
 
@@ -414,7 +462,7 @@
                                 android:layout_height="15dp"
                                 android:layout_margin="10dp"
                                 android:max="100"
-                                android:progress="27"
+                                android:progress="32"
                                 android:progressDrawable="@drawable/progressbarcolors"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -443,11 +491,14 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_weight="1"
                         android:background="?attr/colorOnPrimary"
                         app:cardCornerRadius="15dp"
-                        app:cardElevation="20dp"
+                        app:cardElevation="10dp"
                         app:strokeColor="@color/white"
                         app:strokeWidth="0.1dp">
 
@@ -477,7 +528,7 @@
                                 android:layout_height="15dp"
                                 android:layout_margin="10dp"
                                 android:max="100"
-                                android:progress="20"
+                                android:progress="60"
                                 android:progressDrawable="@drawable/progressbarcolors"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -506,17 +557,17 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="150dp"
                     android:orientation="horizontal">
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+                        android:layout_margin="20dp"
                         android:layout_marginBottom="15dp"
                         android:backgroundTint="?attr/colorOnPrimary"
                         app:cardCornerRadius="15dp"
-                        app:cardElevation="15dp"
+                        app:cardElevation="10dp"
                         app:strokeColor="@color/white"
                         app:strokeWidth="0.1dp">
 

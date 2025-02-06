@@ -8,155 +8,267 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.fragments.DiseasesFragment">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:scrollbars="none"
-    tools:ignore="UselessParent">
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:scrollbars="none"
+        tools:ignore="UselessParent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:orientation="vertical"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_cholera_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:fontFamily="@font/gotham_ultra"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:textColor="?attr/colorPrimaryVariant"
-                android:text="@string/cholera_header"/>
+            android:layout_marginBottom="20dp"
+            tools:ignore="UselessParent">
 
             <TextView
-                android:id="@+id/tv_cholera_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:fontFamily="@font/gotham_book"
-                android:textSize="25sp"
-                android:textColor="?attr/colorOnSecondary"
-                android:text="@string/cholera_description"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_coccidiosis_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:fontFamily="@font/gotham_ultra"
-                android:textSize="30sp"
-                android:textStyle="bold"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/gotham_bold"
+                android:gravity="center_horizontal"
+                android:text="@string/most_common_chicken_diseases"
                 android:textColor="?attr/colorPrimaryVariant"
-                android:text="@string/coccidiosis_header"/>
+                android:textSize="18sp"
+                tools:ignore="TextContrastCheck" />
 
-            <TextView
-                android:id="@+id/tv_coccidiosis_description"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:fontFamily="@font/gotham_book"
-                android:textSize="25sp"
-                android:textColor="?attr/colorOnSecondary"
-                android:text="@string/coccidiosis_description"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_flue_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/gotham_ultra"
-                android:textAlignment="center"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:textColor="?attr/colorPrimaryVariant"
-                android:text="@string/flue_header"/>
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_flue_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:fontFamily="@font/gotham_book"
-                android:textSize="25sp"
-                android:textColor="?attr/colorOnSecondary"
-                android:text="@string/flue_description"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_newcastle_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:fontFamily="@font/gotham_ultra"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:textColor="?attr/colorPrimaryVariant"
-                android:text="@string/newcastle_header"/>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcvFowlCholera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="8dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="12dp"
+                    android:layout_margin="10dp">
 
-            <TextView
-                android:id="@+id/tv_newcastle_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:fontFamily="@font/gotham_book"
-                android:textSize="25sp"
-                android:textColor="?attr/colorOnSecondary"
-                android:text="@string/newcastle_description"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_salmonella_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:fontFamily="@font/gotham_ultra"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:textColor="?attr/colorPrimaryVariant"
-                android:text="@string/salmonella_header"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_salmonella_description"
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/ivFowlCholera"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_alignParentTop="true"
+                            app:cardCornerRadius="12dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="250dp"
+                                android:scaleType="centerCrop"
+                                android:layout_centerInParent="true"
+                                android:contentDescription="@string/fowlcholera"
+                                android:src="@drawable/hen_four"/>
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cholera_header"
+                            android:layout_margin="10dp"
+                            android:layout_below="@+id/ivFowlCholera"
+                            android:textColor="?attr/colorOnSecondary"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/gotham_bold"/>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcvCoccidiosis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="8dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="12dp"
+                    android:layout_margin="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/ivCoccidiosis"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_alignParentTop="true"
+                            app:cardCornerRadius="12dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="250dp"
+                                android:scaleType="centerCrop"
+                                android:layout_centerInParent="true"
+                                android:contentDescription="@string/fowlcholera"
+                                android:src="@drawable/hen_four"/>
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/coccidiosis_header"
+                            android:layout_margin="10dp"
+                            android:layout_below="@+id/ivCoccidiosis"
+                            android:textColor="?attr/colorOnSecondary"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/gotham_bold"/>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:fontFamily="@font/gotham_book"
-                android:textSize="25sp"
-                android:textColor="?attr/colorOnSecondary"
-                android:text="@string/salmonella_description"/>
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcvAvian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="8dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="12dp"
+                    android:layout_margin="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/ivAvian"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_alignParentTop="true"
+                            app:cardCornerRadius="12dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="250dp"
+                                android:scaleType="centerCrop"
+                                android:layout_centerInParent="true"
+                                android:contentDescription="@string/fowlcholera"
+                                android:src="@drawable/hen_four"/>
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/flue_header"
+                            android:layout_margin="10dp"
+                            android:layout_below="@+id/ivAvian"
+                            android:textColor="?attr/colorOnSecondary"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/gotham_bold"/>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcvNewCastle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="8dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="12dp"
+                    android:layout_margin="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/ivNewCastle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_alignParentTop="true"
+                            app:cardCornerRadius="12dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="250dp"
+                                android:scaleType="centerCrop"
+                                android:layout_centerInParent="true"
+                                android:contentDescription="@string/fowlcholera"
+                                android:src="@drawable/hen_four"/>
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/newcastle_header"
+                            android:layout_margin="10dp"
+                            android:layout_below="@+id/ivNewCastle"
+                            android:textColor="?attr/colorOnSecondary"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/gotham_bold"/>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcvSalmonellosis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="8dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_margin="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/ivSalmonellosis"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_alignParentTop="true"
+                            app:cardCornerRadius="12dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="250dp"
+                                android:scaleType="centerCrop"
+                                android:layout_centerInParent="true"
+                                android:contentDescription="@string/fowlcholera"
+                                android:src="@drawable/hen_four"
+                                tools:ignore="VisualLintBounds" />
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/salmonella_header"
+                            android:layout_margin="10dp"
+                            android:layout_below="@+id/ivSalmonellosis"
+                            android:textColor="?attr/colorOnSecondary"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/gotham_bold"
+                            tools:ignore="VisualLintBounds" />
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+
+
 </RelativeLayout>

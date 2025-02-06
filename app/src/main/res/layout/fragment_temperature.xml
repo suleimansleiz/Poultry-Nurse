@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,5 +8,102 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.fragments.TemperatureFragment">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvAmmoniaIntro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/know_everything_about_temperature_here"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:layout_margin="15dp"
+            android:textColor="?attr/colorOnSecondary"
+            android:fontFamily="@font/gotham_medium"
+            android:textSize="15sp"
+            />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvTemperature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_below="@+id/tvAmmoniaIntro"
+            android:backgroundTint="?attr/colorOnPrimary"
+            android:layout_centerHorizontal="true"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="10dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="0.1dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="?attr/colorOnPrimary">
+
+                <TextView
+                    android:id="@+id/tvTemperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/gotham_book"
+                    android:text="@string/progress_temperature"
+                    android:textColor="?attr/colorOnSecondary"
+                    app:layout_constraintBottom_toTopOf="@+id/pbTemperature"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <ProgressBar
+                    android:id="@+id/pbTemperature"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_margin="10dp"
+                    android:max="100"
+                    android:progress="32"
+                    android:progressDrawable="@drawable/progressbarcolors"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <TextView
+                    android:id="@+id/tvTemperature_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/gotham_book"
+                    android:text="@string/progress_temperature_degree"
+                    android:textColor="@color/rich_black"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/pbTemperature"
+                    app:layout_constraintEnd_toEndOf="@+id/pbTemperature"
+                    app:layout_constraintStart_toStartOf="@+id/pbTemperature"
+                    app:layout_constraintTop_toTopOf="@+id/pbTemperature" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tvAmmonia_exp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/temperature_exp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/mcvTemperature"
+            android:layout_margin="15dp"
+            android:textColor="?attr/colorOnSecondary"
+            android:fontFamily="@font/gotham_book"
+            android:textSize="15sp"
+            tools:ignore="VisualLintLongText" />
+    </RelativeLayout>
+
+</RelativeLayout>
