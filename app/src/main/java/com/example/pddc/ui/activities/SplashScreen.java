@@ -28,7 +28,6 @@ public class SplashScreen extends AppCompatActivity {
         EdgeToEdge.enable(this);
 
 
-
         /* App Themes Globally */
         SharedPreferences preferences = getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
         int themeMode = preferences.getInt("ThemeMode", AppCompatDelegate.MODE_NIGHT_NO);
@@ -48,6 +47,6 @@ public class SplashScreen extends AppCompatActivity {
             }
             startActivity(intent);
             finish();
-        },3000);
+        },1000);
     }
 }

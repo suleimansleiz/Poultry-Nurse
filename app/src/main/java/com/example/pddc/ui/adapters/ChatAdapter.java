@@ -25,7 +25,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageViewHol
         public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_message, parent, false);
             return new MessageViewHolder(view);
-
         }
 
 

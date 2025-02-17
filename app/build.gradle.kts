@@ -10,7 +10,6 @@ android {
     defaultConfig {
         applicationId = "com.example.pddc"
         minSdk = 23
-        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -40,16 +39,18 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.2.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
-    implementation("androidx.navigation:navigation-fragment:2.8.6")
-    implementation("androidx.navigation:navigation-ui:2.8.6")
+    implementation("androidx.navigation:navigation-fragment:2.8.7")
+    implementation("androidx.navigation:navigation-ui:2.8.7")
     implementation("androidx.preference:preference:1.2.1")
     implementation("com.google.android.datatransport:transport-api:4.0.0")
     implementation("androidx.activity:activity:1.10.0")
-    implementation("com.google.firebase:firebase-firestore:25.1.1")
-    implementation("com.google.firebase:firebase-auth:23.1.0")
-    implementation ("com.google.firebase:firebase-firestore:25.1.1")
-    implementation ("com.google.firebase:firebase-firestore:25.1.1")
-    implementation ("com.google.firebase:firebase-auth:23.1.0")
+    implementation("com.google.firebase:firebase-firestore:25.1.2")
+    implementation("com.google.firebase:firebase-auth:23.2.0")
+    implementation ("com.google.firebase:firebase-firestore:25.1.2")
+    implementation ("com.google.firebase:firebase-firestore:25.1.2")
+    implementation ("com.google.firebase:firebase-auth:23.2.0")
+    implementation ("com.google.android.gms:play-services-auth:21.3.0")
+    implementation (platform("com.google.firebase:firebase-bom:33.9.0"))
     implementation ("com.squareup.okhttp3:okhttp:4.9.3")
     implementation ("com.google.code.gson:gson:2.10.1")
     implementation ("com.squareup.okhttp3:okhttp:4.9.3")

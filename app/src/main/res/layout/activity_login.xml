@@ -68,21 +68,21 @@
                 app:cardCornerRadius="15dp"
                 tools:ignore="ObsoleteLayoutParam">
 
-                <EditText
-                    android:id="@+id/etHouseName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:background="@null"
-                    android:textColor="?attr/colorOnSecondary"
-                    android:ems="30"
-                    android:hint="@string/house_name"
-                    android:padding="15dp"
-                    android:fontFamily="@font/gotham_book"
-                    android:gravity="center_vertical"
-                    android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    tools:ignore="SpeakableTextPresentCheck" />
+
+                    <EditText
+                        android:id="@+id/etHouseName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:fontFamily="@font/gotham_book"
+                        android:gravity="center_vertical"
+                        android:hint="@string/house_name"
+                        android:inputType="textPersonName"
+                        android:minHeight="48dp"
+                        android:padding="15dp"
+                        android:textColor="?attr/colorOnSecondary"
+                        tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvEmail"
@@ -97,21 +97,37 @@
                 app:cardCornerRadius="15dp"
                 tools:ignore="ObsoleteLayoutParam">
 
-                <EditText
-                    android:id="@+id/etPhoneNo"
+                <RelativeLayout
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv255"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:background="@null"
-                    android:ems="30"
-                    android:fontFamily="@font/gotham_book"
-                    android:gravity="center_vertical"
-                    android:hint="@string/phone"
-                    android:inputType="phone"
-                    android:minHeight="48dp"
-                    android:padding="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_centerVertical="true"
                     android:textColor="?attr/colorOnSecondary"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    android:textSize="14sp"
+                    android:text="@string/_255"
+                    android:fontFamily="@font/gotham_book"/>
+
+                    <EditText
+                        android:id="@+id/etPhoneNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:layout_toEndOf="@+id/tv255"
+                        android:fontFamily="@font/gotham_book"
+                        android:gravity="center_vertical"
+                        android:hint="@string/phone"
+                        android:inputType="phone"
+                        android:minHeight="48dp"
+                        android:padding="10dp"
+                        android:textColor="?attr/colorOnSecondary"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <TextView

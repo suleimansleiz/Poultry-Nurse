@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
-        TextView btnMenu = binding.appBarMain.btnMenu;
+        ImageButton btnMenu = binding.appBarMain.btnMenu;
         tvPHouseName = binding.appBarMain.tvPHouseName;
         setContentView(binding.getRoot());
 
@@ -77,9 +78,11 @@ public class MainActivity extends AppCompatActivity {
         }
         tvPHouseName.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, FarmDetails.class);
-            startActivity(intent);
+            startActivity(intent); //Navigating to Farm Details Page
         });
 
+//        //showing the banner
+//        showBanner();
 
         // Initialize FloatingActionButtons
         fabChat = binding.appBarMain.fabChat;
@@ -149,7 +152,64 @@ private void fetchUserDetails(String farmerId) {
                 }
             })
             .addOnFailureListener(e -> Log.e("Firestore", "Error fetching data", e));
-}
+    }
+
+//    public int getRemainingDays() {
+//        SharedPreferences prefs = getSharedPreferences("AppTrialPrefs", MODE_PRIVATE);
+//        long createdTime = prefs.getLong("account_created", 0);
+//
+//        if (createdTime == 0) return 30;
+//
+//        long currentTime = System.currentTimeMillis();
+//        long elapsedTime = currentTime -createdTime;
+//        long daysPassed = TimeUnit.MICROSECONDS.toDays(elapsedTime);
+//
+//        return (int) (30 - daysPassed);
+//    }
+//
+//    private void showBanner(){
+//        int daysLeft = getRemainingDays();
+//        SharedPreferences prefs = getSharedPreferences("AppTrialPrefs", MODE_PRIVATE);
+//        long lastDismissTime = prefs.getLong("banner_dismissed_Time", 0);
+//        long currentTime = System.currentTimeMillis();
+//
+//        if ((daysLeft == 30 || daysLeft == 10 || daysLeft == 5 || daysLeft == 3 || daysLeft <= 0) && !isSameDay(lastDismissTime, currentTime)) {
+//            callBanner(daysLeft);
+//        }
+//    }
+//
+//    private boolean isSameDay(long timestamp1, long timestamp2) {
+//        Calendar cal1 = Calendar.getInstance();
+//        cal1.setTimeInMillis(timestamp1);
+//
+//        Calendar cal2 = Calendar.getInstance();
+//        cal2.setTimeInMillis(timestamp2);
+//
+//        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) && cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
+//    }
+//
+//    @SuppressLint("DefaultLocale")
+//    private void callBanner(int daysLeft){
+//        MaterialCardView mcvBanner = findViewById(R.id.mcvBanner);
+//        TextView tvContent = findViewById(R.id.tvContent);
+//        ImageButton ibCloseBanner = findViewById(R.id.ibCloseBanner);
+//
+//        if (daysLeft > 0) {
+//            tvContent.setText(String.format("Your Trial expires in %d days, pay early to continue enjoying Poultry Nurse.", daysLeft));
+//        } else {
+//            tvContent.setText(R.string.trial_expired);
+//        }
+//
+//        Animation slideInAnim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.slide_in);
+//        mcvBanner.startAnimation(slideInAnim);
+//        mcvBanner.setVisibility(View.VISIBLE);
+//
+//        ibCloseBanner.setOnClickListener(v -> {
+//            Animation slideOutAnim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.slide_out);
+//            mcvBanner.startAnimation(slideOutAnim);
+//            mcvBanner.setVisibility(View.GONE);
+//        });
+//    }
 
     private void onFabSupportAgentBtnClicked() {
         setVisibility(clicked);

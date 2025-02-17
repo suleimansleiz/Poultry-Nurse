@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llPayment_number_dialog"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/corner_edges">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="18sp"
+        android:text="@string/payment_number"
+        android:gravity="center_horizontal"
+        android:fontFamily="@font/gotham_book"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="0dp"
+        android:layout_margin="10dp"
+        android:backgroundTint="?attr/android:colorEdgeEffect">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv255"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_centerVertical="true"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="14sp"
+                android:text="@string/_255"
+                android:fontFamily="@font/gotham_book"/>
+
+            <EditText
+                android:id="@+id/etPaymentNo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@+id/tv255"
+                android:background="?attr/android:colorEdgeEffect"
+                android:fontFamily="@font/gotham_book"
+                android:hint="@string/pay_no"
+                android:inputType="text"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="14sp"
+                tools:ignore="Autofill,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tvAmountToBePaid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="15sp"
+        android:fontFamily="@font/gotham_book"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="15sp"
+        android:text="@string/click_continue_to_finish_your_payment"
+        android:fontFamily="@font/gotham_book"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancel"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            app:elevation="0dp"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="?attr/colorOnPrimary"
+            android:fontFamily="@font/gotham_bold"
+            android:text="@string/cancel_pay"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorOnSecondary"
+            app:cornerRadius="10dp"
+            tools:ignore="ObsoleteLayoutParam,VisualLintButtonSize,TextContrastCheck"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnContinue"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="?attr/colorPrimaryVariant"
+            android:fontFamily="@font/gotham_bold"
+            android:text="@string/continue_pay"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorSecondaryVariant"
+            app:cornerRadius="10dp"
+            tools:ignore="ObsoleteLayoutParam,VisualLintButtonSize,TextContrastCheck"/>
+    </LinearLayout>
+</LinearLayout>

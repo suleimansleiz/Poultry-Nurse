@@ -8,13 +8,14 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -50,6 +51,7 @@ public class SettingsFragment extends Fragment {
 
         tvFullName = rootView.findViewById(R.id.tvFullName);
         tvFarmName = rootView.findViewById(R.id.tvFarmName);
+
 
         SharedPreferences userCredPreferences = requireContext().getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
         String farmerId = userCredPreferences.getString("farmerId", "");
@@ -116,25 +118,39 @@ public class SettingsFragment extends Fragment {
     }
 
     private void showThemeDialog() {
-        View dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.theme_dialog, null);
+        LinearLayout llThemeDialog = requireView().findViewById(R.id.llThemeDialog);
+        View dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.theme_dialog, llThemeDialog);
 
         RadioGroup radioGroupTheme = dialogView.findViewById(R.id.radioGroupTheme);
-        RadioButton rbDarkMode = dialogView.findViewById(R.id.rbDarkMode);
-        RadioButton rbLightMode = dialogView.findViewById(R.id.rbLightMode);
+        TextView tvCancelTheme = dialogView.findViewById(R.id.tvCancelTheme);
+        TextView tvOkTheme = dialogView.findViewById(R.id.tvOkTheme);
 
-        builder.setTitle("Select Theme")
-                .setView(dialogView)
-                .setCancelable(true)
-                .setPositiveButton("OK", (dialog, which) -> {
-                    int selectedId = radioGroupTheme.getCheckedRadioButtonId();
-                    if (selectedId == R.id.rbDarkMode) {
-                        setAppTheme(AppCompatDelegate.MODE_NIGHT_YES);
-                    } else if (selectedId == R.id.rbLightMode) {
-                        setAppTheme(AppCompatDelegate.MODE_NIGHT_NO);
-                    }
-                })
-                .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+        builder = new AlertDialog.Builder(requireContext());
+        builder.setView(dialogView)
+                .setCancelable(true);
         AlertDialog dialog = builder.create();
+        tvOkTheme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int selectedId = radioGroupTheme.getCheckedRadioButtonId();
+                if (selectedId == R.id.rbDarkMode) {
+                    setAppTheme(AppCompatDelegate.MODE_NIGHT_YES);
+                    dialog.dismiss();
+                } else if (selectedId == R.id.rbLightMode) {
+                    setAppTheme(AppCompatDelegate.MODE_NIGHT_NO);
+                    dialog.dismiss();
+                }
+            }
+        });
+        tvCancelTheme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
         dialog.show();
     }
 
@@ -143,20 +159,28 @@ public class SettingsFragment extends Fragment {
      Handling Logout
      **/
     private void handleLogOut() {
+        LinearLayout llLogout = requireView().findViewById(R.id.llLogout);
+        View dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.logout_dialog, llLogout);
+        TextView tvYesLogout = dialogView.findViewById(R.id.tvYesLogout);
+        TextView tvCancelLogout = dialogView.findViewById(R.id.tvCancelLogout);
+
         builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("Wait")
-                .setMessage("Are you sure you want to logout")
-        .setPositiveButton("Yes", (dialog, which) -> {
+        builder.setView(dialogView)
+                .setCancelable(true);
+
+        AlertDialog dialog = builder.create();
+        tvYesLogout.setOnClickListener(v -> {
             SharedPreferences preferences = requireContext().getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();
             editor.clear(); // Clear all saved data
             editor.apply();
             Intent intent = new Intent(getActivity(), WelcomePage.class);
             startActivity(intent);
-        })
-        .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
-        .setCancelable(true);
-        AlertDialog dialog = builder.create();
+        });
+        tvCancelLogout.setOnClickListener(v -> dialog.dismiss());
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
         dialog.show();
 
 

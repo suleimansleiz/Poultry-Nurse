@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llTrialRemainderDialog"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/corner_edges">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="18sp"
+        android:text="@string/trial_remainder"
+        android:gravity="center_horizontal"
+        android:fontFamily="@font/gotham_book"/>
+
+    <TextView
+        android:id="@+id/tvTrialDaysRemaining"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="15sp"
+        android:fontFamily="@font/gotham_book"/>
+
+    <TextView
+        android:id="@+id/tvClickPayNow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="15sp"
+        android:text="@string/click_pay_now_to_make_payments_now"
+        android:fontFamily="@font/gotham_book"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/btnPayNow"
+            android:fontFamily="@font/gotham_bold"
+            android:text="@string/cancel_pay"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSecondary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPayNow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="?attr/colorPrimaryVariant"
+            android:fontFamily="@font/gotham_bold"
+            android:text="@string/pay_now"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorSecondaryVariant"
+            app:cornerRadius="10dp"
+            tools:ignore="ObsoleteLayoutParam,VisualLintButtonSize,TextContrastCheck"/>
+    </RelativeLayout>
+</LinearLayout>

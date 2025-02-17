@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcvSchedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        app:cardCornerRadius="12dp"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:id="@+id/llSchedules"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorContainer"
+            android:padding="10dp"
+            tools:ignore="PrivateResource">
+
+            <TextView
+                android:id="@+id/tvScheduleName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/schedule_name"
+                android:fontFamily="@font/gotham_book"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/tvScheduleTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_below="@+id/tvScheduleName"
+                android:layout_gravity="end"
+                android:gravity="center_vertical"
+                android:text="@string/time"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/switchSchedule"
+                android:text="@string/_06_12_2025"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/gotham_book"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                tools:ignore="RelativeOverlap" />
+
+            <Switch
+                android:id="@+id/switchSchedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="10dp"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

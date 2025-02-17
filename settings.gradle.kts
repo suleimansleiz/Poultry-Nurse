@@ -13,9 +13,8 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
 
-
     }
 }
 
-rootProject.name = "P D D C"
+rootProject.name = "Poultry Nurse"
 include(":app")

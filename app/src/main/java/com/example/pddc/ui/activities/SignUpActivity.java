@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -78,7 +79,6 @@ public class SignUpActivity extends AppCompatActivity {
         EditText etPhoneNo = findViewById(R.id.etPhoneNo);
         EditText etRegion = findViewById(R.id.etRegion);
         EditText etFarmLocation = findViewById(R.id.etFarmLocation);
-        EditText etNumberOfFarms = findViewById(R.id.etNumberOfFarms);
 
         etFullName.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         etHouseName.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
@@ -96,18 +96,17 @@ public class SignUpActivity extends AppCompatActivity {
             String phoneNo = etPhoneNo.getText().toString().trim();
             String region = etRegion.getText().toString().trim();
             String farmLocation = etFarmLocation.getText().toString().trim();
-            String numberOfFarms = etNumberOfFarms.getText().toString().trim();
             String farmSize = selectedFarmSize.trim();
             String chickenNo = selectedChickenNo.trim();
             membershipNo = userId + phoneNo;
 
 
-            if (houseName.isEmpty() || fullName.isEmpty() || email.isEmpty() || farmLocation.isEmpty() || phoneNo.isEmpty() || region.isEmpty() || numberOfFarms.isEmpty() || chickenNo.isEmpty() || farmSize.isEmpty()){
+            if (houseName.isEmpty() || fullName.isEmpty() || email.isEmpty() || farmLocation.isEmpty() || phoneNo.isEmpty() || region.isEmpty() || chickenNo.isEmpty() || farmSize.isEmpty()){
                 showAlertDialog("Please fill all the required information.");
             }else if (isOnline()) {
                 btnSignUp.setEnabled(false);
                 btnSignUp.setText(R.string.signing_up);
-                checkIfUserExists(membershipNo, userId, fullName, houseName, email, phoneNo, region, farmLocation, farmSize, chickenNo, numberOfFarms);
+                checkIfUserExists(membershipNo, userId, fullName, houseName, email, phoneNo, region, farmLocation, farmSize, chickenNo);
             } else {
                 btnSignUp.setEnabled(true);
                 btnSignUp.setText(R.string.sign_up);
@@ -126,10 +125,9 @@ public class SignUpActivity extends AppCompatActivity {
                 .show();
     }
 
-    private void checkIfUserExists(String membershipNo, String userId, String fullName, String houseName, String email, String phoneNo, String region, String farmLocation, String farmSize, String chickenNo, String numberOfFarms) {
+    private void checkIfUserExists(String membershipNo, String userId, String fullName, String houseName, String email, String phoneNo, String region, String farmLocation, String farmSize, String chickenNo) {
         this.membershipNo = membershipNo;
         CollectionReference usersRef = db.collection("Users");
-
         usersRef
                 .whereEqualTo("email", email)
                 .whereEqualTo("phoneNo", phoneNo)
@@ -138,13 +136,19 @@ public class SignUpActivity extends AppCompatActivity {
                     if (task.isSuccessful() && !task.getResult().isEmpty()) {
                         showAlertDialog("An account with these credentials already exists!");
                     } else {
-                        saveUserDetails(userId, fullName, houseName, email, phoneNo, region, farmLocation, farmSize, chickenNo, numberOfFarms);
+                        saveUserDetails(userId, fullName, houseName, email, phoneNo, region, farmLocation, farmSize, chickenNo);
+                        SharedPreferences prefs = getSharedPreferences("AppTrialPrefs", MODE_PRIVATE);
+                        if (!prefs.contains("account_created")) {
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putLong("account_created", System.currentTimeMillis());
+                            editor.apply();
+                        }
                     }
                 })
                 .addOnFailureListener(e -> Toast.makeText(SignUpActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
-    private void saveUserDetails(String userId, String fullName, String houseName, String email, String phoneNo, String region, String farmLocation, String farmSize, String chickenNo, String numberOfFarms) {
+    private void saveUserDetails(String userId, String fullName, String houseName, String email, String phoneNo, String region, String farmLocation, String farmSize, String chickenNo) {
         Map<String, Object> user = new HashMap<>();
         user.put("membershipNo", membershipNo);
         user.put("fullName", fullName);
@@ -155,7 +159,6 @@ public class SignUpActivity extends AppCompatActivity {
         user.put("region", region);
         user.put("farmSize", farmSize);
         user.put("chickenNo", chickenNo);
-        user.put("numberOfFarms", numberOfFarms);
 
         db.collection("Users")
                 .document(userId + phoneNo)

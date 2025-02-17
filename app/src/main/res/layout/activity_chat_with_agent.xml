@@ -86,12 +86,39 @@
         android:layout_below="@+id/tbActionBarChatting"
         android:layout_above="@id/messageInputLayout">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewMessages"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            tools:listitem="@layout/item_message" />
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcvInitials"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                android:layout_marginTop="3dp"
+                android:backgroundTint="?attr/colorOnSecondary"
+                android:layout_centerHorizontal="true"
+                app:cardElevation="0dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/you_can_start_with_hello"
+                    android:textSize="14sp"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:fontFamily="@font/gotham_light"
+                    android:layout_margin="5dp"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewMessages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mcvInitials"
+                android:padding="16dp"
+                tools:listitem="@layout/item_message" />
+        </RelativeLayout>
 
     </ScrollView>
 

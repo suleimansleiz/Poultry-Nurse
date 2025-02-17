@@ -41,90 +41,6 @@
     <string name="ai_notification">AI notification</string>
     <string name="morning_brief">Morning Brief</string>
 
-    <!--Notifications Activity Details-->
-    <string-array name="name_AI">
-        <item>AI Notification</item>
-        <item>AI Notification</item>
-        <item>AI Notification</item>
-        <item>AI Notification</item>
-        <item>AI Notification</item>
-        <item>AI Notification</item>
-        <item>AI Notification</item>
-        <item>AI Notification</item>
-        <item>AI Notification</item>
-        <item>AI Notification</item>
-    </string-array>
-
-    <string-array name="rv_Note">
-        <item>Morning Brief</item>
-        <item>Disease Detection Alert</item>
-        <item>Temperature Alert</item>
-        <item>Humidity Alert</item>
-        <item>Ammonia Alert</item>
-        <item>Power Alert</item>
-        <item>Disease Detection Alert</item>
-        <item>Temperature Alert</item>
-        <item>Humidity Alert</item>
-        <item>Ammonia Alert</item>
-    </string-array>
-
-    <string-array name="note_inText">
-        <item>
-            Hello, Good Morning!
-        Today is Sunday, Feb 18th 2024.
-            Have a great day!
-        </item>
-        <item>
-            Attention!
-        I have detected Newcastle Disease among your chicken from the records a few minutes ago.
-        </item>
-        <item>
-            Excuse me for the interruption!
-        The amount of Temperature sensed in your poultry house is too high which is not suitable for the chicken.
-        Please consider regulating immediately to avoid unnecessary Infections.
-            Thank you.
-        </item>
-        <item>
-            Excuse me for the interruption!
-        The amount of Humidity sensed in your poultry house is likely to be caused by wetness in the floor.
-        Please consider changing the wood lashes immediately to avoid unnecessary Infections.
-            Thank you.
-        </item>
-        <item>
-            Excuse me for the interruption!
-        The amount of Ammonia sensed in your poultry house is likely to be caused by too much manure.
-        Please consider cleanliness immediately to avoid unnecessary Infections.
-            Thank you.
-        </item>
-        <item>Attention!
-        It seems like there is a Power outage.
-        Please use the backup Power immediately to resume monitoring.
-            Thanks.
-        </item>
-        <item>
-            Attention!
-        I have detected Coccidiosis Disease among your chicken from the records a few minutes ago.
-        </item>
-        <item>
-            Excuse me for the interruption!
-        The amount of Temperature sensed in your poultry house is very low which is not suitable for the chicken.
-        Please consider regulating immediately to avoid unnecessary Infections.
-            Thank you.
-        </item>
-        <item>
-            Excuse me for the interruption!
-        The amount of Humidity sensed in your poultry house is likely to be caused by wetness in the floor.
-        Please consider changing the wood lashes immediately to avoid unnecessary Infections.
-            Thank you.
-        </item>
-        <item>
-            Excuse me for the interruption!
-        The amount of Ammonia sensed in your poultry house is likely to be caused by too much manure.
-        Please consider cleanliness immediately to avoid unnecessary Infections.
-            Thank you.
-        </item>
-    </string-array>
-
 
     <!--Diseases-->
     <string name="cholera_header">Fowl Cholera</string>
@@ -453,6 +369,49 @@ Symptoms of salmonellosis include diarrhea, closed eyes, loss of appetite, thirs
     <string name="_06_12_2025">06-12-2025</string>
     <string name="_20_chicks">20 Chicks</string>
     <string name="_2_weeks">(2 weeks)</string>
+    <string name="add_batch">Add Batch</string>
+    <string name="batch_name">Batch Name</string>
+    <string name="batch_age">chicks Age (in weeks)</string>
+    <string name="number_of_chicks">Number of Chicks Arrived</string>
+    <string name="btn_add_batch">Add Batch</string>
+    <string name="arrival_date">Arrival Date</string>
+    <string name="schedules_and_remainders">Schedules and Remainders</string>
+    <string name="schedule_name">Schedule Name</string>
+    <string name="no_schedules_created">No Schedules created!</string>
+    <string name="add_schedule">Add Schedule</string>
+    <string name="schedule_date">Schedule Date</string>
+    <string name="no_batches_available">No Batches available!</string>
+    <string name="trial">Your trial expires in 30 days</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="_1_month">1 Month</string>
+    <string name="_15000_tsh">15000 Tsh</string>
+    <string name="pay">Pay</string>
+    <string name="payment_period">Choose your payment period</string>
+    <string name="_3_months">3 Months</string>
+    <string name="_40000_tsh">40000 Tsh</string>
+    <string name="_6_months">6 Months</string>
+    <string name="_80000_tsh">80000 Tsh</string>
+    <string name="_12_months">12 Months</string>
+    <string name="_150000_tsh">150000 Tsh</string>
+    <string name="payment_number">Enter your payment number</string>
+    <string name="pay_no">Phone Number</string>
+    <string name="click_continue_to_finish_your_payment">Click continue to finish your payment.</string>
+    <string name="_255">255</string>
+    <string name="continue_pay">Continue</string>
+    <string name="cancel_pay">Cancel</string>
+    <string name="select_theme">Select Theme</string>
+    <string name="wait">Wait</string>
+    <string name="are_you_sure_you_want_to_logout">Are you sure you want to logout?</string>
+    <string name="cancel_logout" tools:ignore="ButtonCase">CANCEL</string>
+    <string name="yes_logout">YES</string>
+    <string name="ok_theme">OK</string>
+    <string name="do_you_wish_to_delete_this_batch">Do you wish to delete this batch?</string>
+    <string name="no">No</string>
+    <string name="hi">Hi,</string>
+    <string name="trial_expired">Am afraid to inform you that your trial has expired, please pay now to continue using Poultry Nurse</string>
+    <string name="trial_remainder">Trial Remainder</string>
+    <string name="click_pay_now_to_make_payments_now">Click \"Pay Now\" to make payments now.</string>
+    <string name="you_can_start_with_hello">You can Start with \'Hello\'</string>
 
     <string-array name="farm_size">
         <item>Small</item>

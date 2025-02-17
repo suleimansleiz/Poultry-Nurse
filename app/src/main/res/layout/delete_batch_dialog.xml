@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llDeleteBatch"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/corner_edges">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textColor="?attr/colorOnSecondary"
+        android:fontFamily="@font/gotham_book"
+        android:text="@string/do_you_wish_to_delete_this_batch"
+        android:layout_margin="5dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/tvDeleteNot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/tvYesDelete"
+            android:textSize="13sp"
+            android:textColor="?attr/colorOnSecondary"
+            android:fontFamily="@font/gotham_book"
+            android:text="@string/no" />
+
+        <TextView
+            android:id="@+id/tvYesDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:textSize="13sp"
+            android:textColor="?attr/colorOnSecondary"
+            android:fontFamily="@font/gotham_book"
+            android:text="@string/yes_logout"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="10dp"/>
+    </RelativeLayout>
+</LinearLayout>

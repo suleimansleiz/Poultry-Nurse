@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llPayment_bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bottom_sheet_corners">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/drag_handle"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/payment_period"
+        android:textSize="18sp"
+        android:textColor="?attr/colorOnSecondary"
+        android:fontFamily="@font/gotham_book"
+        android:gravity="center_horizontal"
+        android:layout_margin="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/_1_month"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="15sp"
+                android:fontFamily="@font/gotham_book"/>
+
+            <TextView
+                android:id="@+id/tvMonthPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/_15000_tsh"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="12sp"
+                android:fontFamily="@font/gotham_book"/>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPayOneMonth"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:backgroundTint="?attr/colorPrimaryVariant"
+            android:fontFamily="@font/gotham_bold"
+            android:text="@string/pay"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorSecondaryVariant"
+            app:cornerRadius="20dp"
+            tools:ignore="ObsoleteLayoutParam,VisualLintButtonSize,TextContrastCheck,DuplicateSpeakableTextCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/_3_months"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="15sp"
+                android:fontFamily="@font/gotham_book"/>
+
+            <TextView
+                android:id="@+id/tvThreeMonthsPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/_40000_tsh"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="12sp"
+                android:fontFamily="@font/gotham_book"/>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPayThreeMonths"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="?attr/colorPrimaryVariant"
+            android:fontFamily="@font/gotham_bold"
+            android:text="@string/pay"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorSecondaryVariant"
+            app:cornerRadius="20dp"
+            tools:ignore="ObsoleteLayoutParam,VisualLintButtonSize,TextContrastCheck"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/_6_months"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="15sp"
+                android:fontFamily="@font/gotham_book"/>
+
+            <TextView
+                android:id="@+id/tvSixMonthsPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/_80000_tsh"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="12sp"
+                android:fontFamily="@font/gotham_book"/>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPaySixMonths"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="?attr/colorPrimaryVariant"
+            android:fontFamily="@font/gotham_bold"
+            android:text="@string/pay"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorSecondaryVariant"
+            app:cornerRadius="20dp"
+            tools:ignore="ObsoleteLayoutParam,VisualLintButtonSize,TextContrastCheck"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/_12_months"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="15sp"
+                android:fontFamily="@font/gotham_book"/>
+
+            <TextView
+                android:id="@+id/tvTwelveMonthsPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/_150000_tsh"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="12sp"
+                android:fontFamily="@font/gotham_book"/>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPayTwelveMonths"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="?attr/colorPrimaryVariant"
+            android:fontFamily="@font/gotham_bold"
+            android:text="@string/pay"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorSecondaryVariant"
+            app:cornerRadius="20dp"
+            tools:ignore="ObsoleteLayoutParam,VisualLintButtonSize,TextContrastCheck"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:id="@+id/rlBatches_bottom_sheet"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bottom_sheet_corners"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/drag_handle"
+            android:layout_gravity="center"/>
+
+        <!-- Name Input -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            android:backgroundTint="?attr/android:colorEdgeEffect">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etBatchName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@null"
+                android:fontFamily="@font/gotham_book"
+                android:hint="@string/batch_name"
+                android:inputType="text"
+                android:textColor="?attr/colorOnSecondary"
+                android:textColorHint="?attr/colorOnSecondary"
+                android:textSize="14sp"
+                tools:ignore="TextContrastCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            android:backgroundTint="?attr/android:colorEdgeEffect">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etChicksAge"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@null"
+                android:fontFamily="@font/gotham_book"
+                android:hint="@string/batch_age"
+                android:textColor="?attr/colorOnSecondary"
+                android:textColorHint="?attr/colorOnSecondary"
+                android:textSize="14sp"
+                android:inputType="number"
+                tools:ignore="TextContrastCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            android:backgroundTint="?attr/android:colorEdgeEffect">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etChicksNo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@null"
+                android:fontFamily="@font/gotham_book"
+                android:hint="@string/number_of_chicks"
+                android:textColor="?attr/colorOnSecondary"
+                android:textColorHint="?attr/colorOnSecondary"
+                android:textSize="14sp"
+                android:inputType="number"
+                tools:ignore="TextContrastCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Date Input -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            android:backgroundTint="?attr/android:colorEdgeEffect">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etArrivalDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@null"
+                android:textColorHint="?attr/colorOnSecondary"
+                android:clickable="true"
+                android:drawableEnd="@drawable/calendar_icon"
+                android:drawableTint="?attr/colorOnSecondary"
+                android:focusable="false"
+                android:fontFamily="@font/gotham_book"
+                android:hint="@string/arrival_date"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="14sp"
+                tools:ignore="KeyboardInaccessibleWidget,TextContrastCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Save Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddBatch"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="?attr/colorPrimaryVariant"
+            android:fontFamily="@font/gotham_bold"
+            android:text="@string/add_batch"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorSecondaryVariant"
+            app:cornerRadius="20dp"
+            tools:ignore="ObsoleteLayoutParam,VisualLintButtonSize,TextContrastCheck"/>
+    </LinearLayout>
+
+</RelativeLayout>

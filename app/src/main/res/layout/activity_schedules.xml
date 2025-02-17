@@ -2,11 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="?attr/colorPrimary"
-    tools:context=".ui.activities.BatchesActivity">
+    tools:context=".ui.activities.SchedulesActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/ablNotification"
@@ -65,7 +66,6 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
-        android:id="@+id/rlBatches"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ablNotification"
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_gravity="center_vertical"
-                android:text="@string/batches"
+                android:text="@string/schedules_and_remainders"
                 android:textColor="?attr/colorOnSecondary"
                 android:textSize="20sp"
                 android:fontFamily="@font/gotham_bold"/>
@@ -102,31 +102,29 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tvBatchesAvailable"
+            android:id="@+id/tvNoSchedule"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/llBatchesHeader"
-            android:text="@string/no_batches_available"
+            android:gravity="center"
+            android:text="@string/no_schedules_created"
             android:textColor="?attr/colorOnSecondary"
             android:textSize="20sp"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
             android:fontFamily="@font/gotham_book"/>
 
-
         <ScrollView
-            android:id="@+id/svBatches"
+            android:id="@+id/svSchedules"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="none"
             android:background="?attr/colorOnPrimary"
-            android:layout_below="@+id/tvBatchesAvailable">
+            android:layout_below="@+id/tvNoSchedule">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvBatches"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/list_batches"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSchedules"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/list_schedules"/>
         </ScrollView>
     </RelativeLayout>
 </RelativeLayout>

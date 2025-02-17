@@ -1,36 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/llThemeDialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/alert_dialog"
-        android:padding="16dp"
+    android:background="@drawable/corner_edges"
+        android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="18sp"
+        android:text="@string/select_theme"
+        android:gravity="center_horizontal"
+        android:fontFamily="@font/gotham_book"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         tools:ignore="UselessParent">
 
-                <RadioGroup
-                    android:id="@+id/radioGroupTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    tools:ignore="UselessParent">
+        <RadioButton
+            android:id="@+id/rbDarkMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dark_mode"
+            android:fontFamily="@font/gotham_book"
+            android:textColor="?attr/colorOnSecondary"/>
 
-                    <RadioButton
-                        android:id="@+id/rbDarkMode"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/dark_mode"
-                        android:fontFamily="@font/gotham_book"
-                        android:textColor="?attr/colorOnSecondary"/>
+        <RadioButton
+            android:id="@+id/rbLightMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/light_mode"
+            android:fontFamily="@font/gotham_book"
+            android:textColor="?attr/colorOnSecondary"/>
+    </RadioGroup>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp">
 
-                    <RadioButton
-                        android:id="@+id/rbLightMode"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/light_mode"
-                        android:fontFamily="@font/gotham_book"
-                        android:textColor="?attr/colorOnSecondary"/>
-                </RadioGroup>
+        <TextView
+            android:id="@+id/tvCancelTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/tvOkTheme"
+            android:textSize="13sp"
+            android:textColor="?attr/colorOnSecondary"
+            android:fontFamily="@font/gotham_book"
+            android:text="@string/cancel_logout" />
+
+        <TextView
+            android:id="@+id/tvOkTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:textSize="13sp"
+            android:textColor="?attr/colorOnSecondary"
+            android:fontFamily="@font/gotham_book"
+            android:text="@string/ok_theme"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="10dp"/>
+    </RelativeLayout>
             </LinearLayout>
 
 

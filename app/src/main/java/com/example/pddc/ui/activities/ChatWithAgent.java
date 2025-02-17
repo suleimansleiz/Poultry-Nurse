@@ -136,9 +136,9 @@ public class ChatWithAgent extends AppCompatActivity {
             }
         });
 
-        // Initializing Assistant's Message
-        messages.add(new Message("Hello! I'm Talia, your virtual Poultry Nurse. How can I assist you today?", false, getCurrentTime()));
-        chatAdapter.notifyDataSetChanged();
+//        // Initializing Assistant's Message
+//        messages.add(new Message("Hello! I'm Talia, your virtual Poultry Nurse. How can I assist you today?", false, getCurrentTime()));
+//        chatAdapter.notifyDataSetChanged();
     }
 
 
@@ -161,58 +161,64 @@ public class ChatWithAgent extends AppCompatActivity {
     /**
      * Sends a message to OpenAI and retrieves a response.
      */
+    @SuppressLint("NotifyDataSetChanged")
     private void sendMessageToAI(String userInput) {
         OkHttpClient client = new OkHttpClient();
 
-        String jsonRequest = "{"
-                + "\"model\": \"deepseek-chat\","
-                + "\"messages\": [{\"role\": \"user\", \"content\": \"" + userInput + "\"}],"
-                + "\"temperature\": 0.7,"
-                + "\"max_tokens\": 150"
-                + "}";
+        if (Objects.equals(userInput, "Hello")) {
+            messages.add(new Message("Hi, I'm Talia, your virtual Poultry Nurse. How can I assist you today?", false, getCurrentTime()));
+            chatAdapter.notifyDataSetChanged();
+        } else {
+            String jsonRequest = "{"
+                    + "\"model\": \"deepseek-chat\","
+                    + "\"messages\": [{\"role\": \"user\", \"content\": \"" + userInput + "\"}],"
+                    + "\"temperature\": 0.7,"
+                    + "\"max_tokens\": 150"
+                    + "}";
 
-        RequestBody body = RequestBody.create(jsonRequest, MediaType.get("application/json"));
-        String deepSeekApiKey = "YOUR_DEEPSEEK_API_KEY";
-        Request request = new Request.Builder()
-                .url("https://api.deepseek.com/v1/chat/completions")
-                .addHeader("Authorization", "Bearer " + deepSeekApiKey)
-                .post(body)
-                .build();
+            RequestBody body = RequestBody.create(jsonRequest, MediaType.get("application/json"));
+            String deepSeekApiKey = "YOUR_DEEPSEEK_API_KEY";
+            Request request = new Request.Builder()
+                    .url("https://api.deepseek.com/v1/chat/completions")
+                    .addHeader("Authorization", "Bearer " + deepSeekApiKey)
+                    .post(body)
+                    .build();
 
-        client.newCall(request).enqueue(new Callback() {
+            client.newCall(request).enqueue(new Callback() {
 
-            @SuppressLint("NotifyDataSetChanged")
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                runOnUiThread(() -> Toast.makeText(ChatWithAgent.this, "Network Error", Toast.LENGTH_SHORT).show());
-            }
-
-            @SuppressLint("NotifyDataSetChanged")
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    String responseBody = Objects.requireNonNull(response.body()).string();
-                    String aiResponse = extractResponseFromJSON(responseBody);
-
-                    runOnUiThread(() -> {
-                        messages.add(new Message(aiResponse, false, getCurrentTime()));
-                        chatAdapter.notifyDataSetChanged();
-                        recyclerViewMessages.scrollToPosition(messages.size() - 1);
-
-                    });
-
-                }else {
-                    String errorBody = response.body() != null ? response.body().string() : "Unknown Error";
-                    Log.e("DeepSeek Error", errorBody);
-
-                    runOnUiThread(() -> {
-                        messages.add(new Message("I'm sorry, I couldn't process your request. Please try again.", false, getCurrentTime()));
-                        chatAdapter.notifyDataSetChanged();
-                        recyclerViewMessages.scrollToPosition(messages.size() - 1);
-                    });
+                @SuppressLint("NotifyDataSetChanged")
+                @Override
+                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                    runOnUiThread(() -> Toast.makeText(ChatWithAgent.this, "Network Error", Toast.LENGTH_SHORT).show());
                 }
-            }
-        });
+
+                @SuppressLint("NotifyDataSetChanged")
+                @Override
+                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                    if (response.isSuccessful()) {
+                        String responseBody = Objects.requireNonNull(response.body()).string();
+                        String aiResponse = extractResponseFromJSON(responseBody);
+
+                        runOnUiThread(() -> {
+                            messages.add(new Message(aiResponse, false, getCurrentTime()));
+                            chatAdapter.notifyDataSetChanged();
+                            recyclerViewMessages.scrollToPosition(messages.size() - 1);
+
+                        });
+                    } else {
+                        String errorBody = response.body() != null ? response.body().string() : "Unknown Error";
+                        Log.e("DeepSeek Error", errorBody);
+
+                        runOnUiThread(() -> {
+                            messages.add(new Message("I'm sorry, I couldn't process your request. Please try again.", false, getCurrentTime()));
+                            chatAdapter.notifyDataSetChanged();
+                            recyclerViewMessages.scrollToPosition(messages.size() - 1);
+                        });
+                    }
+                }
+            });
+        }
+
     }
 
     /**

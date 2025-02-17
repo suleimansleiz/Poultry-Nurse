@@ -3,9 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-   <androidx.cardview.widget.CardView
+
+   <com.google.android.material.card.MaterialCardView
+       android:id="@+id/mcvBatches"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:padding="5dp"
@@ -25,7 +28,7 @@
             android:padding="5dp">
 
             <TextView
-                android:id="@+id/tvAIName"
+                android:id="@+id/tvBatchName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -36,11 +39,23 @@
                 android:fontFamily="@font/gotham_bold" />
 
             <TextView
+                android:id="@+id/tvChicksNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:layout_below="@+id/tvBatchName"
+                android:text="@string/_20_chicks"
+                android:fontFamily="@font/gotham_book"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+
+            <TextView
                 android:id="@+id/tvChicksAge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_toEndOf="@+id/tvAIName"
+                android:layout_toEndOf="@+id/tvBatchName"
                 android:layout_margin="10dp"
                 android:text="@string/_2_weeks"
                 android:fontFamily="@font/gotham_bold"
@@ -48,11 +63,11 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/tvRecyclerNote"
+                android:id="@+id/tvBatchDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toStartOf="@+id/tvArrowForward"
+                android:layout_toStartOf="@+id/ibEditBatch"
                 android:layout_margin="10dp"
                 android:text="@string/_06_12_2025"
                 android:fontFamily="@font/gotham_book"
@@ -60,20 +75,9 @@
                 android:textColor="@color/black"
                 tools:ignore="RelativeOverlap" />
 
-            <TextView
-                android:id="@+id/tvChicksNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="10dp"
-                android:layout_below="@+id/tvAIName"
-                android:text="@string/_20_chicks"
-                android:fontFamily="@font/gotham_book"
-                android:textSize="15sp"
-                android:textColor="@color/black"/>
 
             <ImageButton
-                android:id="@+id/tvArrowForward"
+                android:id="@+id/ibEditBatch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -85,6 +89,6 @@
                 tools:ignore="ContentDescription,PrivateResource,RelativeOverlap,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         </RelativeLayout>
 
-   </androidx.cardview.widget.CardView>
+   </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>
