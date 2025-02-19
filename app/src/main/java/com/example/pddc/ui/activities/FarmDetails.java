@@ -267,7 +267,6 @@ public class FarmDetails extends AppCompatActivity {
         builder.setView(dialogView)
                 .setCancelable(true);
         tvAmountToBePaid.setText(String.format("You are about to pay %s as a month payment.", monthAmount));
-        String paymentNo = etPaymentNo.getText().toString().trim();
         AlertDialog dialog = builder.create();
 
         btnContinue.setOnClickListener(v -> {
@@ -297,7 +296,6 @@ public class FarmDetails extends AppCompatActivity {
         builder.setView(dialogView)
                 .setCancelable(true);
         tvAmountToBePaid.setText(String.format("You are about to pay %s as a three months payment.", threeMonthsAmount));
-        String paymentNo = etPaymentNo.getText().toString().trim();
         final AlertDialog dialog = builder.create();
 
         btnContinue.setOnClickListener(v -> {
@@ -327,7 +325,6 @@ public class FarmDetails extends AppCompatActivity {
         builder.setView(dialogView)
                 .setCancelable(true);
         tvAmountToBePaid.setText(String.format("You are about to pay %s as a six months payment.", sixMonthsAmount));
-        String paymentNo = etPaymentNo.getText().toString().trim();
         AlertDialog dialog = builder.create();
 
         btnContinue.setOnClickListener(v -> {
@@ -357,7 +354,6 @@ public class FarmDetails extends AppCompatActivity {
         builder.setView(dialogView)
                 .setCancelable(true);
         tvAmountToBePaid.setText(String.format("You are about to pay %s as a twelve months payment.", twelveMonthsAmount));
-        String paymentNo = etPaymentNo.getText().toString().trim();
         AlertDialog dialog = builder.create();
 
         btnContinue.setOnClickListener(v -> {
