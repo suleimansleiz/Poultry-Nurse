@@ -62,6 +62,7 @@ public class FarmDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farm_details);
 
+
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
             Intent intent = new Intent(FarmDetails.this, MainActivity.class);

@@ -9,20 +9,17 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,16 +27,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.pddc.R;
 import com.example.pddc.ui.adapters.ChatAdapter;
 import com.example.pddc.ui.classes.Message;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 
 import okhttp3.Call;
@@ -57,7 +60,8 @@ public class ChatWithAgent extends AppCompatActivity {
     private ChatAdapter chatAdapter;
     private List<Message> messages;
 
-    String api_key;
+    private FirebaseFirestore db;
+    private String farmerId;
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
@@ -66,30 +70,15 @@ public class ChatWithAgent extends AppCompatActivity {
         setContentView(R.layout.activity_chat_with_agent);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+         db = FirebaseFirestore.getInstance();
+        SharedPreferences userCredPreferences = getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
+        farmerId = userCredPreferences.getString("farmerId", "");
+        if (!farmerId.isEmpty()) {
+            loadMessagesFromFirestore(farmerId);
+        }
 
 
-        //Emoji Button
-        ImageButton btnEmoji = findViewById(R.id.btnEmoji);
-        btnEmoji.setOnClickListener(v -> {
-            editTextMessage.requestFocus();
-            editTextMessage.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
-            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            if (inputMethodManager != null) {
-                inputMethodManager.showSoftInput(editTextMessage, InputMethodManager.SHOW_IMPLICIT);
-            }
-        });
-
-        //Attachment Button
-        ImageButton btnAttachFile = findViewById(R.id.btnAttachFile);
-        btnAttachFile.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-            intent.setType("*/*");
-            intent.addCategory(Intent.CATEGORY_OPENABLE);
-            startActivityForResult(Intent.createChooser(intent, "Select a file"),100);
-        });
-
-
+        //Back Button
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
             Intent intent = new Intent(ChatWithAgent.this, MainActivity.class);
@@ -109,54 +98,76 @@ public class ChatWithAgent extends AppCompatActivity {
         recyclerViewMessages.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewMessages.setAdapter(chatAdapter);
 
-        SharedPreferences displayCredentials = getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
-        String userId = displayCredentials.getString("membershipNo", null);
-
-        String agentId = "VA25-Agent-00001";
-        String chatRoomId = userId + "_" + agentId; // Unique chat room ID
-
-        // Load existing messages
 
         // Send Button Click Listener
         buttonSend.setOnClickListener(v -> {
             String userInput = editTextMessage.getText().toString().trim();
 
             if (!userInput.isEmpty()) {
+                String time = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
                         // Add user message
-                        messages.add(new Message(userInput, true, getCurrentTime()));
+                        messages.add(new Message(userInput, true, time));
                         chatAdapter.notifyDataSetChanged();
                         editTextMessage.setText("");
                         recyclerViewMessages.scrollToPosition(messages.size() - 1);
 
+                        saveMessageToFirestore(userInput, true, time);
+
                         // Send user input to AI
                         sendMessageToAI(userInput);
-
             } else {
                 Toast.makeText(this, "Please type a message", Toast.LENGTH_SHORT).show();
             }
         });
-
-//        // Initializing Assistant's Message
-//        messages.add(new Message("Hello! I'm Talia, your virtual Poultry Nurse. How can I assist you today?", false, getCurrentTime()));
-//        chatAdapter.notifyDataSetChanged();
     }
 
 
 
-    private String getCurrentTime() {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm ", Locale.getDefault());
-        return sdf.format(new Date());
+    /**
+     * Saving Messages from Firestore db
+     */
+    private void saveMessageToFirestore(String content, boolean isUser, String time) {
+
+        // Create message object
+        Map<String, Object> messageData = new HashMap<>();
+        messageData.put("content", content);
+        messageData.put("isUser", isUser);
+        messageData.put("time", time);
+        messageData.put("timestamp", FieldValue.serverTimestamp()); // For sorting messages
+
+        // Save message under the user's chat collection
+        db.collection("Users")
+                .document(farmerId)
+                .collection("chats")
+                .add(messageData)
+                .addOnSuccessListener(documentReference -> Log.d("Firestore", "Message saved!"))
+                .addOnFailureListener(e -> Log.e("Firestore", "Error saving message", e));
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
-            Uri selectedFileUri = data.getData();
-            Objects.requireNonNull(selectedFileUri).getLastPathSegment();
 
-        }
+    /**
+     * Loading Messages from Firestore db
+     */
+    @SuppressLint("NotifyDataSetChanged")
+    private void loadMessagesFromFirestore(String farmerId) {
+        db.collection("Users")
+                .document(farmerId)
+                .collection("chats")
+                .orderBy("timestamp", Query.Direction.ASCENDING)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    messages.clear();
+                    for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
+                        String content = document.getString("content");
+                        boolean isUser = Boolean.TRUE.equals(document.getBoolean("isUser"));
+                        String time = document.getString("time");
+                        messages.add(new Message(content, isUser, time));
+                    }
+                    chatAdapter.notifyDataSetChanged();
+                })
+                .addOnFailureListener(e -> Log.e("Firestore", "Error loading messages", e));
     }
+
 
     /**
      * Sends a message to OpenAI and retrieves a response.
@@ -165,24 +176,18 @@ public class ChatWithAgent extends AppCompatActivity {
     private void sendMessageToAI(String userInput) {
         OkHttpClient client = new OkHttpClient();
 
-        if (Objects.equals(userInput, "Hello")) {
-            messages.add(new Message("Hi, I'm Talia, your virtual Poultry Nurse. How can I assist you today?", false, getCurrentTime()));
-            chatAdapter.notifyDataSetChanged();
-        } else {
-            String jsonRequest = "{"
-                    + "\"model\": \"deepseek-chat\","
-                    + "\"messages\": [{\"role\": \"user\", \"content\": \"" + userInput + "\"}],"
-                    + "\"temperature\": 0.7,"
-                    + "\"max_tokens\": 150"
-                    + "}";
+        String jsonRequest = "{"
+                + "\"contents\": [{"
+                + "  \"parts\": [{\"text\": \"You are Talia, a virtual Poultry Nurse assistant. Your job is to help users with poultry farming questions. Stay professional and helpful.\\n\\nUser: " + userInput + "\"}]"
+                + "}]}";
 
-            RequestBody body = RequestBody.create(jsonRequest, MediaType.get("application/json"));
-            String deepSeekApiKey = "YOUR_DEEPSEEK_API_KEY";
+        RequestBody body = RequestBody.create(jsonRequest, MediaType.get("application/json"));
+            String apiKey = getString(R.string.gemini_api_key); // Replace with your key
             Request request = new Request.Builder()
-                    .url("https://api.deepseek.com/v1/chat/completions")
-                    .addHeader("Authorization", "Bearer " + deepSeekApiKey)
-                    .post(body)
+                    .url("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + apiKey)
+                    .post(RequestBody.create(jsonRequest, MediaType.get("application/json")))
                     .build();
+
 
             client.newCall(request).enqueue(new Callback() {
 
@@ -200,24 +205,26 @@ public class ChatWithAgent extends AppCompatActivity {
                         String aiResponse = extractResponseFromJSON(responseBody);
 
                         runOnUiThread(() -> {
-                            messages.add(new Message(aiResponse, false, getCurrentTime()));
+                            String time = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+                            messages.add(new Message(aiResponse, false, time));
                             chatAdapter.notifyDataSetChanged();
                             recyclerViewMessages.scrollToPosition(messages.size() - 1);
 
+                            saveMessageToFirestore(aiResponse, false, time);
                         });
                     } else {
                         String errorBody = response.body() != null ? response.body().string() : "Unknown Error";
-                        Log.e("DeepSeek Error", errorBody);
+                        Log.e("DeepSeek Error", "Response Code: " + response.code() + ", Body: " + errorBody);
 
                         runOnUiThread(() -> {
-                            messages.add(new Message("I'm sorry, I couldn't process your request. Please try again.", false, getCurrentTime()));
+                            String time = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+                            messages.add(new Message("I'm sorry, I couldn't process your request. Please try again.", false, time));
                             chatAdapter.notifyDataSetChanged();
                             recyclerViewMessages.scrollToPosition(messages.size() - 1);
                         });
                     }
                 }
             });
-        }
 
     }
 
@@ -227,12 +234,20 @@ public class ChatWithAgent extends AppCompatActivity {
     private String extractResponseFromJSON(String jsonResponse) {
         try {
             JSONObject jsonObject = new JSONObject(jsonResponse);
-            return jsonObject.getJSONArray("choices").getJSONObject(0).getJSONObject("message").getString("content").trim();
+            JSONArray candidates = jsonObject.getJSONArray("candidates");
+            if (candidates.length() > 0) {
+                JSONObject firstCandidate = candidates.getJSONObject(0);
+                JSONObject content = firstCandidate.getJSONObject("content");
+                JSONArray parts = content.getJSONArray("parts");
+                if (parts.length() > 0) {
+                    return parts.getJSONObject(0).getString("text").trim();
+                }
+            }
+            return "I'm sorry, I couldn't understand the response.";
         } catch (Exception e) {
             return "I'm sorry, I couldn't understand the response. Error: " + e.getMessage();
         }
     }
-
 
 
     /**

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llRandomDialog"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/corner_edges"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvParticularText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="14sp"
+        android:fontFamily="@font/gotham_book"/>
+
+    <TextView
+        android:id="@+id/tvOkContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="14sp"
+        android:fontFamily="@font/gotham_book"
+        android:text="@string/ok_theme"
+        android:layout_gravity="end"/>
+</LinearLayout>

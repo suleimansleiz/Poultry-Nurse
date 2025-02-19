@@ -13,3 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Exclude secrets and sensitive files
+app/src/main/res/values/secrets.xml
+google-services.json

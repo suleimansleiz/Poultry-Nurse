@@ -38,11 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         });
         TextView tv_ForgetDetails = findViewById(R.id.tvForgetDetails);
         tv_ForgetDetails.setOnClickListener(v -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-            builder.setTitle("Apologies!");
-            builder.setMessage("Please contact Developer or Sign Up for new account.");
-            builder.setCancelable(true);
-            builder.setNegativeButton("Ok", (dialog, which) -> dialog.dismiss()).show();
+            Intent intent = new Intent(this, ForgotDetails.class);
+            startActivity(intent);
         });
 
 

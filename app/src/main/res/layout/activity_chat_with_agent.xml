@@ -90,26 +90,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.card.MaterialCardView
+            <TextView
                 android:id="@+id/mcvInitials"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="10dp"
-                android:layout_marginTop="3dp"
-                android:backgroundTint="?attr/colorOnSecondary"
+                android:padding="3dp"
                 android:layout_centerHorizontal="true"
-                app:cardElevation="0dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/you_can_start_with_hello"
-                    android:textSize="14sp"
-                    android:textColor="?attr/colorOnPrimary"
-                    android:fontFamily="@font/gotham_light"
-                    android:layout_margin="5dp"/>
-
-            </com.google.android.material.card.MaterialCardView>
+                android:text="@string/you_can_start_with_hello"
+                android:textSize="14sp"
+                android:background="@drawable/rounded_edittext"
+                android:textColor="?attr/colorOnPrimary"
+                android:fontFamily="@font/gotham_light"
+                android:layout_margin="5dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewMessages"
@@ -160,7 +152,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/text_message"
-                android:backgroundTint="@color/teal_500"
                 android:importantForAutofill="no"
                 android:padding="12dp"
                 android:textColorHint="@color/white"
