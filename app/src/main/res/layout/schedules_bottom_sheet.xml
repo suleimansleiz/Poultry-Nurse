@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/rlSchedulesBottomSheet"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bottom_sheet_corners"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -20,7 +21,6 @@
            android:background="@drawable/drag_handle"
            android:layout_gravity="center"/>
 
-        <!-- Name Input -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -45,7 +45,6 @@
                 tools:ignore="TextContrastCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Date Input -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -74,7 +73,33 @@
                 tools:ignore="KeyboardInaccessibleWidget,TextContrastCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Save Button -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            android:backgroundTint="?attr/android:colorEdgeEffect">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etTime"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@null"
+                android:textColorHint="?attr/colorOnSecondary"
+                android:clickable="true"
+                android:drawableTint="?attr/colorOnSecondary"
+                android:focusable="false"
+                android:fontFamily="@font/gotham_book"
+                android:hint="@string/schedule_time"
+                android:textColor="?attr/colorOnSecondary"
+                android:textSize="14sp"
+                tools:ignore="KeyboardInaccessibleWidget,TextContrastCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />
+        </com.google.android.material.card.MaterialCardView>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSave"
             android:layout_width="match_parent"

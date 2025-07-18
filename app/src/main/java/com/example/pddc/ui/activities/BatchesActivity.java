@@ -70,6 +70,7 @@ public class BatchesActivity extends AppCompatActivity implements RVBatchesInter
 
         //Initializing Views
         rvBatches = findViewById(R.id.rvBatches);
+        formattingDate();
 
         batchesModels = new ArrayList<>();
         adapter = new BatchesAdapter(batchesModels);
@@ -106,6 +107,19 @@ public class BatchesActivity extends AppCompatActivity implements RVBatchesInter
         ShowAvailableBatches(tvBatchesAvailable);
     }
 
+    /** Formatting the batch date **/
+    private void formattingDate() {
+        LinearLayout llListBatches = findViewById(R.id.llListBatches);
+        View view = LayoutInflater.from(this).inflate(R.layout.list_batches, llListBatches);
+        TextView tvBatchDate = view.findViewById(R.id.tvBatchDate);
+
+        java.lang.String formattedDate = "MMM\ndd\nyyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(formattedDate, Locale.getDefault());
+        String newDateString = sdf.format(Calendar.getInstance().getTime());
+        tvBatchDate.setText(newDateString);
+    }
+
+    /** Showing Available Batches from DB **/
     @SuppressLint("NotifyDataSetChanged")
     private void ShowAvailableBatches(TextView tvBatchesAvailable) {
 
@@ -120,7 +134,7 @@ public class BatchesActivity extends AppCompatActivity implements RVBatchesInter
                             String chicksNo = documentSnapshot.getString("chicksNo");
 
                             tvBatchesAvailable.setVisibility(View.GONE);
-                            batchesModels.add(new BatchesModel( batchName, arrivalDate, "(" + chicksAge + " weeks)", chicksNo +" chicks", true));
+                            batchesModels.add(new BatchesModel( batchName, arrivalDate, "Age: " + chicksAge + " weeks", chicksNo +" chicks", true));
                             adapter.notifyDataSetChanged();
                             rvBatches.scrollToPosition(batchesModels.size() -1);
                         } else {
@@ -137,6 +151,7 @@ public class BatchesActivity extends AppCompatActivity implements RVBatchesInter
         return daysOfWeek[dayOfWeek -1];
     }
 
+    /** Bottom Sheet Dialog **/
     @SuppressLint("NotifyDataSetChanged")
     private void showBottomSheetDialog() {
         // Inflate Bottom Sheet Layout
@@ -207,6 +222,7 @@ public class BatchesActivity extends AppCompatActivity implements RVBatchesInter
                 .addOnFailureListener(e -> Toast.makeText(BatchesActivity.this, "Error saving batch details!", Toast.LENGTH_SHORT).show());
     }
 
+    /** Date Picker **/
     private void showDatePicker(EditText etDate) {
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
@@ -214,8 +230,9 @@ public class BatchesActivity extends AppCompatActivity implements RVBatchesInter
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                (view, year1, month1, dayOfMonth) -> {
-                    @SuppressLint("DefaultLocale") String selectedDate = year1 + "-" + String.format("%02d", (month1 + 1)) + "-" + String.format("%02d", dayOfMonth);
+                (view, year1, monthOfYear, dayOfMonth) -> {
+                    @SuppressLint("DefaultLocale") String selectedDate = formatDate(year1, monthOfYear, dayOfMonth);
+                    //year1 + "-" + (monthOfYear + 1) + "-" + dayOfMonth
                     etDate.setText(selectedDate);
                 },
                 year, month, day);
@@ -223,6 +240,15 @@ public class BatchesActivity extends AppCompatActivity implements RVBatchesInter
         datePickerDialog.show();
     }
 
+    /** Formatting the date **/
+    private String formatDate(int year, int month, int day){
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
+        Calendar selectedDate = Calendar.getInstance();
+        selectedDate.set(year, month, day);
+        return sdf.format(selectedDate.getTime());
+    }
+
+    /** Deleting batch on long click **/
     @Override
     public void onItemLongClick(int position) {
         LinearLayout llDeleteBatch = findViewById(R.id.llDeleteBatch);
@@ -236,20 +262,12 @@ public class BatchesActivity extends AppCompatActivity implements RVBatchesInter
             .setCancelable(true);
 
         AlertDialog dialog = builder.create();
-        tvYesDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                batchesModels.remove(position);
-                adapter.notifyItemRemoved(position);
-            }
+        tvYesDelete.setOnClickListener(v -> {
+            batchesModels.remove(position);
+            adapter.notifyItemRemoved(position);
         });
 
-        tvDeleteNot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        tvDeleteNot.setOnClickListener(v -> dialog.dismiss());
         if (dialog.getWindow() != null) {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
         }

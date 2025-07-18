@@ -34,6 +34,15 @@ public class SplashScreen extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(themeMode);
 
 
+        SharedPreferences prefs = getSharedPreferences("AppTrialPrefs", MODE_PRIVATE);
+        long createdTime = prefs.getLong("account_created", 0);
+
+//        if (createdTime == 0) {
+//            createdTime = System.currentTimeMillis();
+//            prefs.edit().putLong("account_created", createdTime);
+//            return 30;
+//        }
+
         //Loading Login status
         handler.postDelayed(() -> {
             SharedPreferences userCredPreferences = getSharedPreferences("AppSettings", Context.MODE_PRIVATE);

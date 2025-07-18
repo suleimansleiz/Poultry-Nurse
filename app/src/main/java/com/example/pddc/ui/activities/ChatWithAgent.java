@@ -170,7 +170,7 @@ public class ChatWithAgent extends AppCompatActivity {
 
 
     /**
-     * Sends a message to OpenAI and retrieves a response.
+     * Sends a message to AI and retrieves a response.
      */
     @SuppressLint("NotifyDataSetChanged")
     private void sendMessageToAI(String userInput) {

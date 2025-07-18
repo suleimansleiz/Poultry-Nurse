@@ -350,6 +350,8 @@ Symptoms of salmonellosis include diarrhea, closed eyes, loss of appetite, thirs
     <string name="humidity_exp" tools:ignore="TypographyDashes">Relative humidity (RH) in poultry houses should be maintained between 50-70% to prevent moisture build-up and litter stickiness. High humidity can contribute to ammonia accumulation and negatively impact bird health. Proper ventilation is necessary to manage RH levels effectively.</string>
     <string name="personal_details">Personal Details</string>
     <string name="your_farm_details">Your Farm Details</string>
+    <string name="your_vaccine_details">Vaccine Details</string>
+    <string name="your_cleanliness_details">Cleanliness Details</string>
     <string name="farm_size">Farm Size:</string>
     <string name="no_of_farms">Number of Farms:</string>
     <string name="farm_region">Region:</string>
@@ -366,9 +368,9 @@ Symptoms of salmonellosis include diarrhea, closed eyes, loss of appetite, thirs
     <string name="membership_number">Membership Number:</string>
     <string name="addbtn">addBtn</string>
     <string name="batch_one">Batch One</string>
-    <string name="_06_12_2025">06–12–2025</string>
+    <string name="_06_12_2025">Feb 12 2025</string>
     <string name="_20_chicks">20 Chicks</string>
-    <string name="_2_weeks">(2 weeks)</string>
+    <string name="_2_weeks">Age: 2 weeks</string>
     <string name="add_batch">Add Batch</string>
     <string name="batch_name">Batch Name</string>
     <string name="batch_age">chicks Age (in weeks)</string>
@@ -380,6 +382,7 @@ Symptoms of salmonellosis include diarrhea, closed eyes, loss of appetite, thirs
     <string name="no_schedules_created">No Schedules created!</string>
     <string name="add_schedule">Add Schedule</string>
     <string name="schedule_date">Schedule Date</string>
+    <string name="schedule_time">Schedule Time</string>
     <string name="no_batches_available">No Batches available!</string>
     <string name="trial">Your trial expires in 30 days</string>
     <string name="pay_now">Pay Now</string>
@@ -417,6 +420,14 @@ Symptoms of salmonellosis include diarrhea, closed eyes, loss of appetite, thirs
     <string name="enter_phone_no">Please enter the phone number you used to create Poultry Nurse Account</string>
     <string name="confirm">Confirm</string>
     <string name="phone_no_does_not_exist">The phone number you provided does not exist. Please Enter a valid phone number.</string>
+    <string name="upload_photo">Upload Photo</string>
+    <string name="image_to_detect">Upload an image to detect diseases</string>
+    <string name="detection_image">Detection Image</string>
+    <string name="scan_disease">Scan Disease</string>
+    <string name="coccidiosis_is_detected">Coccidiosis is detected from the image you scanned!</string>
+    <string name="avian_is_detected">Avian is detected from the image you scanned!</string>
+    <string name="no_disease_is_detected">No disease detected from the image you scanned!</string>
+    <string name="unable_to_detect">Unable to determine the photo. Please upload a valid photo!</string>
 
     <string-array name="farm_size">
         <item>Small</item>
@@ -429,5 +440,8 @@ Symptoms of salmonellosis include diarrhea, closed eyes, loss of appetite, thirs
         <item>Between 50 and 300</item>
         <item>More than 300</item>
     </string-array>
+    <string name="title_activity_rt_monitor">RTMonitorActivity</string>
+    <string name="rt_monitoring_tv">To acquire Real Time Monitoring, please contact support team to assist you. Thank you</string>
+    <string name="iv_monitoring">IVMonitoring</string>
 
 </resources>

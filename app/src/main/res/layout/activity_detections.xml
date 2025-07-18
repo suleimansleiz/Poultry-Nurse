@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="?attr/colorPrimary"
+    tools:context=".ui.activities.Detections">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/Theme.PDDC.PopupOverlay" >
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="?attr/colorPrimary"
+            android:contentDescription="BackBtn"
+            android:src="@drawable/arrow_back_icon"
+            app:tint="@color/white"
+            tools:ignore="HardcodedText,TouchTargetSizeCheck,ImageContrastCheck" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/tvDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="3dp"
+                android:fontFamily="@font/gotham_book"
+                android:text="@string/sunday"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="3dp"
+                android:fontFamily="@font/gotham_book"
+                android:text="@string/_31_march_2024"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:ignore="TextContrastCheck" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:background="?attr/colorOnPrimary">
+
+        <TextView
+            android:id="@+id/tvUploadImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/image_to_detect"
+            android:layout_margin="10dp"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:textColor="?attr/colorOnSecondary"
+            android:fontFamily="@font/gotham_book"/>
+
+        <ImageView
+            android:id="@+id/ivDetectionImage"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_below="@+id/tvUploadImage"
+            android:layout_margin="10dp"
+            android:contentDescription="@string/detection_image"
+            android:scaleType="centerCrop"/>
+
+        <ProgressBar
+            android:id="@+id/pbScanning"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/tvUploadImage"
+            android:layout_centerVertical="true"
+            android:layout_margin="50dp"
+            android:layout_marginTop="175dp"
+            android:layout_marginBottom="50dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tvDetectionResponse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivDetectionImage"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:layout_margin="10dp"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:textColor="?attr/colorOnSecondary"
+            android:fontFamily="@font/gotham_book"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/tvDetectionResponse">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnUpload"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="?attr/colorPrimaryVariant"
+                android:fontFamily="@font/gotham_bold"
+                android:text="@string/upload_photo"
+                android:textAllCaps="false"
+                android:textColor="?attr/colorSecondaryVariant"
+                app:cornerRadius="10dp"
+                tools:ignore="ObsoleteLayoutParam,VisualLintButtonSize,TextContrastCheck" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnScan"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="?attr/colorOnPrimary"
+                android:fontFamily="@font/gotham_bold"
+                android:text="@string/scan_disease"
+                android:textAllCaps="false"
+                android:textColor="?attr/colorOnSecondary"
+                app:cornerRadius="10dp"
+                tools:ignore="ObsoleteLayoutParam,VisualLintButtonSize,TextContrastCheck" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

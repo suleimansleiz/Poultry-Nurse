@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -50,9 +49,8 @@ public class FarmDetails extends AppCompatActivity {
     String threeMonthPayLarge = "110000";
     String sixMonthPayLarge = "200000";
     String twelveMonthPayLarge = "450000";
-
-
-    TextView tvTrial, tvMonthPayment, tvThreeMonthsPayment, tvSixMonthsPayment, tvTwelveMonthsPayment, membershipNo, farmName, fullName, email, phoneNo, farmLocation, region, chickenNo, farmSize;
+    String passFarmSize;
+    TextView tvTrial, membershipNo, farmName, fullName, email, phoneNo, farmLocation, region, chickenNo, farmSize;
     private FirebaseFirestore db;
 
 
@@ -62,7 +60,7 @@ public class FarmDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farm_details);
 
-
+        //Navigating back
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
             Intent intent = new Intent(FarmDetails.this, MainActivity.class);
@@ -165,7 +163,7 @@ public class FarmDetails extends AppCompatActivity {
                         farmSize.setText(farm_Size);
                         chickenNo.setText(chicken_No);
 
-                        checkFarmSize(farm_Size);
+                        passFarmSize = farm_Size; //passing farm size
                     } else {
                         Log.d("Firestore", "No such document");
                     }
@@ -174,44 +172,11 @@ public class FarmDetails extends AppCompatActivity {
 
         // Button to open Bottom Sheet
         MaterialButton mbPayNow = findViewById(R.id.mbPayNow);
-        mbPayNow.setOnClickListener(v -> showBottomSheetDialog());
-    }
-
-    /** Checking Farm Size **/
-    private void checkFarmSize(String farm_Size) {
-        // Inflate Bottom Sheet Layout
-        LinearLayout llPayment_bottom_sheet = findViewById(R.id.llPayment_bottom_sheet);
-        View view = LayoutInflater.from(this).inflate(R.layout.payment_bottom_sheet, llPayment_bottom_sheet);
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        bottomSheetDialog.setContentView(view);
-
-        TextView tvMonthPayment = view.findViewById(R.id.tvMonthPayment);
-        TextView tvThreeMonthsPayment = view.findViewById(R.id.tvThreeMonthsPayment);
-        TextView tvSixMonthsPayment = view.findViewById(R.id.tvSixMonthsPayment);
-        TextView tvTwelveMonthsPayment = view.findViewById(R.id.tvTwelveMonthsPayment);
-
-        if (Objects.equals(farm_Size, "Small")){
-            tvMonthPayment.setText(String.format("%s Tsh", monthPaySmall));
-            tvThreeMonthsPayment.setText(String.format("%s Tsh", threeMonthPaySmall));
-            tvSixMonthsPayment.setText(String.format("%s Tsh", sixMonthPaySmall));
-            tvTwelveMonthsPayment.setText(String.format("%s Tsh", twelveMonthPaySmall));
-        }
-        if (Objects.equals(farm_Size, "Medium")){
-            tvMonthPayment.setText(String.format("%s Tsh", monthPayMedium));
-            tvThreeMonthsPayment.setText(String.format("%s Tsh", threeMonthPayMedium));
-            tvSixMonthsPayment.setText(String.format("%s Tsh", sixMonthPayMedium));
-            tvTwelveMonthsPayment.setText(String.format("%s Tsh", twelveMonthPayMedium));
-        }
-        if (Objects.equals(farm_Size, "Large")) {
-            tvMonthPayment.setText(String.format("%s Tsh", monthPayLarge));
-            tvThreeMonthsPayment.setText(String.format("%s Tsh", threeMonthPayLarge));
-            tvSixMonthsPayment.setText(String.format("%s Tsh", sixMonthPayLarge));
-            tvTwelveMonthsPayment.setText(String.format("%s Tsh", twelveMonthPayLarge));
-        }
+        mbPayNow.setOnClickListener(v -> showBottomSheetDialog(passFarmSize));
     }
 
     /** Opening Payment Plan Bottom Sheet**/
-    private void showBottomSheetDialog() {
+    private void showBottomSheetDialog(String passFarmSize) {
         LinearLayout llPayment_bottom_sheet = findViewById(R.id.llPayment_bottom_sheet);
         // Inflate Bottom Sheet Layout
         View view = LayoutInflater.from(this).inflate(R.layout.payment_bottom_sheet, llPayment_bottom_sheet);
@@ -234,6 +199,30 @@ public class FarmDetails extends AppCompatActivity {
         MaterialButton btnPaySixMonths = view.findViewById(R.id.btnPaySixMonths);
         MaterialButton btnPayTwelveMonths = view.findViewById(R.id.btnPayTwelveMonths);
 
+        TextView tvMonthPayment = view.findViewById(R.id.tvMonthPayment);
+        TextView tvThreeMonthsPayment = view.findViewById(R.id.tvThreeMonthsPayment);
+        TextView tvSixMonthsPayment = view.findViewById(R.id.tvSixMonthsPayment);
+        TextView tvTwelveMonthsPayment = view.findViewById(R.id.tvTwelveMonthsPayment);
+
+        if (Objects.equals(passFarmSize, "Small")){
+            tvMonthPayment.setText(String.format("%s Tsh", monthPaySmall));
+            tvThreeMonthsPayment.setText(String.format("%s Tsh", threeMonthPaySmall));
+            tvSixMonthsPayment.setText(String.format("%s Tsh", sixMonthPaySmall));
+            tvTwelveMonthsPayment.setText(String.format("%s Tsh", twelveMonthPaySmall));
+        }
+        if (Objects.equals(passFarmSize, "Medium")){
+            tvMonthPayment.setText(String.format("%s Tsh", monthPayMedium));
+            tvThreeMonthsPayment.setText(String.format("%s Tsh", threeMonthPayMedium));
+            tvSixMonthsPayment.setText(String.format("%s Tsh", sixMonthPayMedium));
+            tvTwelveMonthsPayment.setText(String.format("%s Tsh", twelveMonthPayMedium));
+        }
+        if (Objects.equals(passFarmSize, "Large")) {
+            tvMonthPayment.setText(String.format("%s Tsh", monthPayLarge));
+            tvThreeMonthsPayment.setText(String.format("%s Tsh", threeMonthPayLarge));
+            tvSixMonthsPayment.setText(String.format("%s Tsh", sixMonthPayLarge));
+            tvTwelveMonthsPayment.setText(String.format("%s Tsh", twelveMonthPayLarge));
+        }
+
         btnPayOneMonth.setOnClickListener(v -> {
             String monthAmount = tvMonthPayment.getText().toString().trim();
             openMonthPaymentDialog(monthAmount);
@@ -252,14 +241,14 @@ public class FarmDetails extends AppCompatActivity {
         });
     }
 
-    /** Inserting Payment Number **/
+    /** Inserting Payment Number 1 month**/
     private void openMonthPaymentDialog(String monthAmount) {
         LinearLayout llPayment_number_dialog = findViewById(R.id.llPayment_number_dialog);
         View dialogView = LayoutInflater.from(this).inflate(R.layout.payment_number_dialog, llPayment_number_dialog);
 
         //Referencing Views
         TextView tvAmountToBePaid = dialogView.findViewById(R.id.tvAmountToBePaid);
-        EditText etPaymentNo = dialogView.findViewById(R.id.etPaymentNo);
+//        EditText etPaymentNo = dialogView.findViewById(R.id.etPaymentNo);
         MaterialButton btnContinue = dialogView.findViewById(R.id.btnContinue);
         MaterialButton btnCancel = dialogView.findViewById(R.id.btnCancel);
 
@@ -282,13 +271,14 @@ public class FarmDetails extends AppCompatActivity {
         dialog.show();
     }
 
+    /** Inserting Payment Number 3 months**/
     private void openThreeMonthsPaymentDialog(String threeMonthsAmount) {
         LinearLayout llPayment_number_dialog = findViewById(R.id.llPayment_number_dialog);
         View dialogView = LayoutInflater.from(this).inflate(R.layout.payment_number_dialog, llPayment_number_dialog);
 
         //Referencing Views
         TextView tvAmountToBePaid = dialogView.findViewById(R.id.tvAmountToBePaid);
-        EditText etPaymentNo = dialogView.findViewById(R.id.etPaymentNo);
+//        EditText etPaymentNo = dialogView.findViewById(R.id.etPaymentNo);
         MaterialButton btnContinue = dialogView.findViewById(R.id.btnContinue);
         MaterialButton btnCancel = dialogView.findViewById(R.id.btnCancel);
 
@@ -311,13 +301,14 @@ public class FarmDetails extends AppCompatActivity {
         dialog.show();
     }
 
+    /** Inserting Payment Number 6 months**/
     private void openSixMonthsPaymentDialog(String sixMonthsAmount) {
         LinearLayout llPayment_number_dialog = findViewById(R.id.llPayment_number_dialog);
         View dialogView = LayoutInflater.from(this).inflate(R.layout.payment_number_dialog, llPayment_number_dialog);
 
         //Referencing Views
         TextView tvAmountToBePaid = dialogView.findViewById(R.id.tvAmountToBePaid);
-        EditText etPaymentNo = dialogView.findViewById(R.id.etPaymentNo);
+//        EditText etPaymentNo = dialogView.findViewById(R.id.etPaymentNo);
         MaterialButton btnContinue = dialogView.findViewById(R.id.btnContinue);
         MaterialButton btnCancel = dialogView.findViewById(R.id.btnCancel);
 
@@ -340,13 +331,14 @@ public class FarmDetails extends AppCompatActivity {
         dialog.show();
     }
 
+    /** Inserting Payment Number 12 months**/
     private void openTwelveMonthsPaymentDialog(String twelveMonthsAmount) {
         LinearLayout llPayment_number_dialog = findViewById(R.id.llPayment_number_dialog);
         View dialogView = LayoutInflater.from(this).inflate(R.layout.payment_number_dialog, llPayment_number_dialog);
 
         //Referencing Views
         TextView tvAmountToBePaid = dialogView.findViewById(R.id.tvAmountToBePaid);
-        EditText etPaymentNo = dialogView.findViewById(R.id.etPaymentNo);
+//        EditText etPaymentNo = dialogView.findViewById(R.id.etPaymentNo);
         MaterialButton btnContinue = dialogView.findViewById(R.id.btnContinue);
         MaterialButton btnCancel = dialogView.findViewById(R.id.btnCancel);
 
@@ -369,6 +361,7 @@ public class FarmDetails extends AppCompatActivity {
         dialog.show();
     }
 
+    /** Showing Number of trial days remaining **/
     private void showRemainingTrialDaysDialog(int remainingDays){
         LinearLayout llTrialRemainderDialog = findViewById(R.id.llTrialRemainderDialog);
         View dialogView = LayoutInflater.from(this).inflate(R.layout.trial_dialog, llTrialRemainderDialog);
@@ -386,7 +379,7 @@ public class FarmDetails extends AppCompatActivity {
         AlertDialog dialog = builder.create();
 
         btnPayNow.setOnClickListener(v -> {
-            showBottomSheetDialog();
+            showBottomSheetDialog(passFarmSize);
             dialog.dismiss();
         });
 

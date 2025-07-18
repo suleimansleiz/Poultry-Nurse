@@ -11,9 +11,18 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission
+        android:name="android.permission.SCHEDULE_EXACT_ALARM"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.SEND_EMAIL" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission
+        android:name="android.permission.CAMERA"
+        tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
 
     <queries>
         <package android:name="com.google.android.gms" />
@@ -30,6 +39,23 @@
         android:theme="@style/Theme.PDDC"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.activities.CleanlinessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.VaccinesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.RTMonitorActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_rt_monitor"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.PDDC.Fullscreen"
+            tools:ignore="DiscouragedApi" />
+        <activity
+            android:name=".ui.activities.Detections"
+            android:exported="false" />
         <activity
             android:name=".ui.activities.ForgotDetails"
             android:exported="false" />
@@ -84,6 +110,20 @@
         <activity
             android:name=".ui.activities.MainActivity"
             android:exported="true" />
+
+        <receiver
+            android:name=".ui.classes.ReminderReceiver"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.pddc.cameraProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

@@ -9,15 +9,18 @@
         android:id="@+id/mcvSchedule"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="5dp"
-        app:cardCornerRadius="12dp"
-        android:layout_margin="10dp">
+        android:padding="5dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:cardElevation="10dp"
+        app:cardBackgroundColor="?attr/colorOnPrimary">
 
         <RelativeLayout
             android:id="@+id/llSchedules"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorContainer"
             android:padding="10dp"
             tools:ignore="PrivateResource">
 
@@ -27,10 +30,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="@string/schedule_name"
-                android:fontFamily="@font/gotham_book"
+                android:fontFamily="@font/gotham_bold"
                 android:layout_marginEnd="8dp"
                 android:textColor="@color/black"
-                android:textSize="17sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/tvScheduleTime"
@@ -42,7 +45,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/time"
                 android:textColor="@color/black"
-                android:textSize="17sp"
+                android:textSize="18sp"
                 tools:ignore="SmallSp" />
 
             <TextView
@@ -55,13 +58,14 @@
                 android:fontFamily="@font/gotham_book"
                 android:layout_marginEnd="10dp"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 tools:ignore="RelativeOverlap" />
 
             <Switch
                 android:id="@+id/switchSchedule"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="?attr/colorPrimary"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_margin="10dp"

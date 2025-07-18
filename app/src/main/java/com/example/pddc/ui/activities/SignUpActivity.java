@@ -6,13 +6,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -117,12 +121,25 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     private void showAlertDialog(String message) {
-        new AlertDialog.Builder(SignUpActivity.this)
-                .setTitle("Error!")
-                .setMessage(message)
-                .setCancelable(true)
-                .setNegativeButton("Ok", (dialog, which) -> dialog.dismiss())
-                .show();
+        LinearLayout llRandomDialog = findViewById(R.id.llRandomDialog);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.payment_number_dialog, llRandomDialog);
+
+        TextView tvParticularText = dialogView.findViewById(R.id.tvParticularText);
+        TextView tvOkContent = dialogView.findViewById(R.id.tvOkContent);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+                builder.setTitle("Error!")
+                .setCancelable(true);
+
+        tvParticularText.setText(message);
+        AlertDialog dialog = builder.create();
+
+        tvOkContent.setOnClickListener(View -> dialog.dismiss());
+
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        dialog.show();
     }
 
     private void checkIfUserExists(String membershipNo, String userId, String fullName, String houseName, String email, String phoneNo, String region, String farmLocation, String farmSize, String chickenNo) {
